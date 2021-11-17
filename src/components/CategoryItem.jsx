@@ -7,6 +7,12 @@ padding: 5px;
 width: 32%;
 height: 70vh;
 position: relative;
+transition: all .3s ease-in-out;
+
+&:hover {
+    box-shadow: rgba(0, 0, 0, 0.22) 2px 19px 43px;
+  transform: translate3d(0px, -10px, 0px);
+}
 `;
 
 const Image = styled.img`
