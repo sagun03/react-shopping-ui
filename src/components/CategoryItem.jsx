@@ -1,25 +1,27 @@
 import React from 'react'
 import styled from 'styled-components'
+import { mobile } from "../responsive";
 
 const Cointainer = styled.div`
-margin: 2px;
-padding: 5px;
-width: 32%;
-height: 70vh;
-position: relative;
-transition: all .3s ease-in-out;
+  flex: 1;
+  margin: 3px;
+  min-width: 400px;
+  height: 70vh;
+  position: relative;
+  transition: all .3s ease-in-out;
 
-&:hover {
-    box-shadow: rgba(0, 0, 0, 0.22) 2px 19px 43px;
-  transform: translate3d(0px, -10px, 0px);
-}
-`;
+  &:hover {
+      box-shadow: rgba(0, 0, 0, 0.22) 2px 19px 43px;
+    transform: translate3d(0px, -10px, 0px);
+  }
+  `;
 
 const Image = styled.img`
-width: 100%;
-height: 100%;
-object-fit: cover;
-opacity: 0.9;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+  ${mobile({ height: "20vh" })}
 `;
 
 const Info = styled.div`
