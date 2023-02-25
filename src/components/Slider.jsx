@@ -1,126 +1,154 @@
-import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
-import styled from "styled-components"
-import React, { useState } from 'react';
-import { SlidesItems } from '../utils/data';
-import { mobile } from "../responsive";
+import styled, { keyframes } from "styled-components";
+import React, { useRef } from "react";
+import { SlidesItems } from "../utils/data";
+import {
+  mobile,
+  ScreenWith1080px,
+  ScreenWith1200px,
+  ScreenWith670px,
+  ScreenWith960px,
+} from "../responsive";
 
+// import "./styles.css";
 
 const Container = styled.div`
-width: 100%;
-height: 100vh;
-display: flex;
-position: relative;
-overflow: hidden;
-${mobile({ display: "none" })}
-
-`;
-
-const Arrow = styled.div`
-width: 50px;
-height: 50px;
-background-color: #fff7f7;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-position: absolute;
-top: 0;
-bottom: 0;
-margin: auto;
-left: ${props => props.direction === "left" && "10px"};
-right: ${props => props.direction === "right" && "10px"};
-corsor: pointer;
-opacity: 0.5;
-z-index: 2;
-`;
-
-const Wrapper = styled.div`
-height: 100%;
-display: flex;
-transition: all 1.5s ease;
-transform: translateX(${props => props.slideIndex * -100}vw)
+  width: 100%;
+  height: inherit;
+  display: flex;
+  position: relative;
+  overflow: visible;
+  ${mobile({ display: "none" })}
 `;
 
 const Slide = styled.div`
-display: flex;
-align-items: center;
-width: 100vw;
-height: 100vh;
-background-color: #${props => props.bg}
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: inherit;
+  background-color: #${(props) => props.bg};
+`;
+
+const zoomInOutAnimation = keyframes`
+0% {
+  transform: scale(1, 1);
+}
+50% {
+  transform: scale(1.2, 1.2);
+}
+100% {
+  transform: scale(1, 1);
+}
 `;
 
 const ImgContainer = styled.div`
-flex: 1;
-height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 27%;
+    left: 8%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: ${zoomInOutAnimation} 5s ease infinite;
+  }
+  &:before {
+    height: 20%;
+    width: 96%;
+    padding-bottom: 60%;
+    background-color: #b5daf0;
+    z-index: 0;
+  }
 `;
 
 const Image = styled.img`
-height: #${props => props.height}
+  display: block;
+  width: 210px;
+  height: 100%;
+  object-fit: cover;
+  padding-left: 2.1rem;
+  z-index: 2;
+  animation: ${zoomInOutAnimation} 5s ease infinite;
+  ${ScreenWith1200px({ width: "170px" })}
+  ${ScreenWith1080px({ width: "150px" })}
+  ${ScreenWith960px({ width: "210px" })}
+  ${ScreenWith670px({ width: "170px" })}
 `;
 
 const InfoContainer = styled.div`
-flex:1;
-padding: 50px;
+  flex: 1;
+  padding: 30px;
+  ${ScreenWith1200px({ padding: "25px" })}
+  ${ScreenWith1080px({ width: "20px" })}
+  ${ScreenWith960px({ padding: "30px" })}
+  ${ScreenWith670px({ padding: "25px" })}
 `;
 
 const Title = styled.h1`
-font-size: 70px;
+  font-size: 50px;
+  text-align: center;
+  ${ScreenWith1200px({ fontSize: "40px" })}
+  ${ScreenWith1080px({ fontSize: "35px" })}
+  ${ScreenWith960px({ fontSize: "50px" })}
+  ${ScreenWith670px({ fontSize: "40px" })}
 `;
 
 const Desc = styled.p`
-margin: 50px 0px;
-font-size: 20px;
-font-weight: 500;
-letter-spacing: 3px
+  margin: 50px 0px;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-align: center;
+  ${ScreenWith1200px({ fontSize: "20px", margin: "30px 0px" })}
+  ${ScreenWith1080px({ fontSize: "15px" })}
+  ${ScreenWith960px({ fontSize: "20px" })}
+  ${ScreenWith670px({ fontSize: "20px" })}
 `;
 
 const Button = styled.button`
-padding: 10px;
-font-size: 20px;
-background-color: transparent;
-cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
+  ${ScreenWith1200px({ fontSize: "15px", padding: "5px" })}
+  ${ScreenWith1080px({ fontSize: "10px", padding: "5px" })}
+  ${ScreenWith960px({ fontSize: "20px", padding: "10px" })}
+  ${ScreenWith670px({ fontSize: "15px", padding: "5px" })}
+`;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 const Slider = () => {
-    const [slideIndex, setSlideIndex] = useState(0)
-    const handleClick = (direction) => {
-    if (direction === "left"){
-        setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2)
-    } else {
-        setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0)
-    }
-    }
-    console.log('slideIndex', slideIndex)
-    return (
-        <Container>
-            <Arrow direction="left" onClick={() => handleClick('left')}>
-                <ArrowLeftOutlined />
-            </Arrow>
-            <Wrapper slideIndex={slideIndex} >
-                {SlidesItems.map(({bg, img, title, desc, height}) => (
-                    <Slide bg={bg}>
-                    <ImgContainer>
-                        <Image src={img} height={height}/>
-                    </ImgContainer>
-                    <InfoContainer>
-                        <Title>
-                           {title}
-                        </Title>
-                        <Desc>
-                            {desc}
-                        </Desc>
-                        <Button>
-                            SHOP NOW
-                        </Button>
-                    </InfoContainer>
-                </Slide>
-                ))}
-            </Wrapper>
-            <Arrow direction="right" onClick={() => handleClick('right')}>
-                <ArrowRightOutlined />
-            </Arrow>
-        </Container>
-    )
-}
+  return (
+    <Container>
+      {SlidesItems.map(({ bg, img, title, desc }, index) => (
+        <>
+          {index === 0 ? (
+            <Slide bg={bg}>
+              <ImgContainer>
+                <Image src={img} />
+              </ImgContainer>
+              <InfoContainer>
+                <Title>{title}</Title>
+                <Desc>{desc}</Desc>
+                <ButtonContainer>
+                  <Button>SHOP NOW</Button>
+                </ButtonContainer>
+              </InfoContainer>
+            </Slide>
+          ) : (
+            <></>
+          )}
+        </>
+      ))}
+    </Container>
+  );
+};
 
-export default Slider
+export default Slider;
