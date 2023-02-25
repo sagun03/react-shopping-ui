@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import {
+  mobile,
   ScreenWith1080px,
   ScreenWith1200px,
   ScreenWith1470px,
   ScreenWith1670px,
   ScreenWith960px,
 } from "../responsive";
+import RightSlider from "./RightSlider";
 import Slider from "./Slider";
 
 const SliderWrapper = styled.div`
@@ -16,7 +18,8 @@ const SliderWrapper = styled.div`
   padding: 0 2rem;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
+  ${mobile({ margin: "3.25rem 0rem" })}
 `;
 
 const LeftContainer = styled.div`
@@ -27,7 +30,8 @@ const LeftContainer = styled.div`
   ${ScreenWith1470px({ width: "600px", height: "400px" })}
   ${ScreenWith1200px({ width: "500px", height: "350px" })}
   ${ScreenWith1080px({ width: "440px", height: "300px" })}
-  ${ScreenWith960px({ width: "650px", height: "425px" })};
+  ${ScreenWith960px({ width: "650px", height: "500px" })};
+  ${mobile({ height: "450px" })}
 `;
 
 const RightContainer = styled.div`
@@ -39,7 +43,7 @@ const RightContainer = styled.div`
   ${ScreenWith1470px({ width: "600px", height: "400px" })}
   ${ScreenWith1200px({ width: "500px", height: "350px" })}
   ${ScreenWith1080px({ width: "440px", height: "300px" })}
-  ${ScreenWith960px({ width: "650px", height: "425px" })}
+  ${ScreenWith960px({ width: "650px", height: "500px" })}
 `;
 
 const SliderContainer = () => {
@@ -48,7 +52,9 @@ const SliderContainer = () => {
       <LeftContainer>
         <Slider />
       </LeftContainer>
-      <RightContainer>Hello</RightContainer>
+      <RightContainer>
+        <RightSlider />
+      </RightContainer>
     </SliderWrapper>
   );
 };

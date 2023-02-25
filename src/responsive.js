@@ -2,7 +2,7 @@ import { css } from "styled-components";
 
 export const mobile = (props) => {
   return css`
-    @media only screen and (max-width: 415px) {
+    @media only screen and (max-width: 550px) {
       ${props}
     }
   `;
@@ -10,7 +10,7 @@ export const mobile = (props) => {
 
 export const ScreenWith1200px = (props) => {
   return css`
-    @media only screen and (max-width: 1280px) {
+    @media only screen and (max-width: 1299px) {
       ${props}
     }
   `;
@@ -18,7 +18,7 @@ export const ScreenWith1200px = (props) => {
 
 export const ScreenWith1080px = (props) => {
   return css`
-    @media only screen and (max-width: 1080px) {
+    @media only screen and (max-width: 1099px) {
       ${props}
     }
   `;
@@ -26,7 +26,7 @@ export const ScreenWith1080px = (props) => {
 
 export const ScreenWith960px = (props) => {
   return css`
-    @media only screen and (max-width: 960px) {
+    @media only screen and (max-width: 990px) {
       ${props}
     }
   `;
@@ -42,7 +42,7 @@ export const ScreenWith670px = (props) => {
 
 export const ScreenWith1670px = (props) => {
   return css`
-    @media only screen and (max-width: 1680px) {
+    @media only screen and (max-width: 1699px) {
       ${props}
     }
   `;
@@ -50,7 +50,7 @@ export const ScreenWith1670px = (props) => {
 
 export const ScreenWith1470px = (props) => {
   return css`
-    @media only screen and (max-width: 1480px) {
+    @media only screen and (max-width: 1499px) {
       ${props}
     }
   `;

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import { Badge } from "@material-ui/core";
-import { mobile } from "../responsive";
+import { mobile, ScreenWith670px } from "../responsive";
 
 const Container = styled.div`
   height: 60px;
@@ -14,7 +14,8 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  ${mobile({ padding: "10px 0px" })}
+  width: 95%;
+  ${mobile({ padding: "10px 0px", width: "100%" })}
 `;
 
 const Left = styled.div`
@@ -30,11 +31,9 @@ const Language = styled.span`
 `;
 
 const SearchContainer = styled.div`
-  border: 0.5px solid lightgray;
   display: flex;
   align-items: center;
-  margin-left: 25px;
-  padding: 5px;
+  margin-left: 1.5rem;
 `;
 
 const Input = styled.input`
@@ -54,7 +53,8 @@ const Logo = styled.h1`
 
 const Logo2 = styled.h1`
   display: none;
-  ${mobile({ fontWeight: "bold", display: "inline-block" })}
+
+  ${mobile({ display: "flex", justifyContent: "flex-end", fontWeight: "bold" })}
 `;
 
 const Right = styled.div`
@@ -79,8 +79,9 @@ const NavBar = () => {
         <Left>
           <Language>EN</Language>
           <SearchContainer>
-            <Input placeholder="Search" />
-            <Search style={{ color: "gray", fontSize: 16 }} />
+            <MenuItem>REGISTER</MenuItem>
+            {/* <Input placeholder="Search" />
+            <Search style={{ color: "gray", fontSize: 16 }} /> */}
           </SearchContainer>
         </Left>
         <Center>
@@ -88,7 +89,6 @@ const NavBar = () => {
           <Logo2>JK</Logo2>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
           <MenuItem>SIGN IN</MenuItem>
           <MenuItem>
             <Badge badgeContent={4} color="primary">

@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import React, { useRef } from "react";
+import React from "react";
 import { SlidesItems } from "../utils/data";
 import {
   mobile,
@@ -9,15 +9,12 @@ import {
   ScreenWith960px,
 } from "../responsive";
 
-// import "./styles.css";
-
 const Container = styled.div`
   width: 100%;
   height: inherit;
   display: flex;
   position: relative;
   overflow: visible;
-  ${mobile({ display: "none" })}
 `;
 
 const Slide = styled.div`
@@ -26,6 +23,7 @@ const Slide = styled.div`
   width: 100%;
   height: inherit;
   background-color: #${(props) => props.bg};
+  ${mobile({ flexDirection: "column" })}
 `;
 
 const zoomInOutAnimation = keyframes`
@@ -45,8 +43,8 @@ const ImgContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  &:before,
-  &:after {
+
+  &:before {
     content: "";
     display: block;
     position: absolute;
@@ -63,6 +61,7 @@ const ImgContainer = styled.div`
     background-color: #b5daf0;
     z-index: 0;
   }
+  ${mobile({ width: "80px", display: "flex", order: "1" })}
 `;
 
 const Image = styled.img`
@@ -77,15 +76,17 @@ const Image = styled.img`
   ${ScreenWith1080px({ width: "150px" })}
   ${ScreenWith960px({ width: "210px" })}
   ${ScreenWith670px({ width: "170px" })}
+  ${mobile({ width: "80px", paddingLeft: ".8rem" })}
 `;
 
 const InfoContainer = styled.div`
   flex: 1;
   padding: 30px;
   ${ScreenWith1200px({ padding: "25px" })}
-  ${ScreenWith1080px({ width: "20px" })}
+  ${ScreenWith1080px({ padding: "20px" })}
   ${ScreenWith960px({ padding: "30px" })}
   ${ScreenWith670px({ padding: "25px" })}
+  ${mobile({ padding: "40px", flex: "0" })}
 `;
 
 const Title = styled.h1`
@@ -95,6 +96,7 @@ const Title = styled.h1`
   ${ScreenWith1080px({ fontSize: "35px" })}
   ${ScreenWith960px({ fontSize: "50px" })}
   ${ScreenWith670px({ fontSize: "40px" })}
+  ${mobile({ fontSize: "20px" })}
 `;
 
 const Desc = styled.p`
@@ -107,6 +109,7 @@ const Desc = styled.p`
   ${ScreenWith1080px({ fontSize: "15px" })}
   ${ScreenWith960px({ fontSize: "20px" })}
   ${ScreenWith670px({ fontSize: "20px" })}
+  ${mobile({ fontSize: "10px" })}
 `;
 
 const Button = styled.button`
