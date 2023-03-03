@@ -8,6 +8,14 @@ export const mobile = (props) => {
   `;
 };
 
+export const sliderHideCustom = (props) => {
+  return css`
+    @media only screen and (min-width: 539px) {
+      ${props}
+    }
+  `;
+};
+
 export const ScreenWith1200px = (props) => {
   return css`
     @media only screen and (max-width: 1299px) {
@@ -51,6 +59,22 @@ export const ScreenWith1670px = (props) => {
 export const ScreenWith1470px = (props) => {
   return css`
     @media only screen and (max-width: 1499px) {
+      ${props}
+    }
+  `;
+};
+
+export const mobileS = (props) => {
+  return css`
+    @media only screen and (max-width: 390px) {
+      ${props}
+    }
+  `;
+};
+
+export const mobileSuperSmall = (props) => {
+  return css`
+    @media only screen and (max-width: 290px) {
       ${props}
     }
   `;

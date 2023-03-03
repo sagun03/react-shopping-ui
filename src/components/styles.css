@@ -15,6 +15,10 @@
   position: relative;
 }
 
+.mySwiperCards {
+  display: none;
+}
+
 @media only screen and (max-width: 670px) {
   .mySwiper {
     width: 90%;
@@ -22,10 +26,32 @@
   }
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 539px) {
   .mySwiper {
     width: 80%;
     height: 12rem;
     display: none;
+  }
+  .mySwiperCards {
+    display: flex;
+    width: 75%;
+    height: 17rem;
+    overflow: visible !important;
+  }
+  .mySwiperCards .swiper-slide {
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    display: flex;
+    border-radius: 10px;
+    padding: 1rem;
+    box-sizing: border-box;
+    position: relative;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .mySwiperCards {
+    width: 75%;
+    height: 17rem;
+    margin-left: 25px !important;
   }
 }

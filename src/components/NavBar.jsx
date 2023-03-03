@@ -15,11 +15,10 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 95%;
-  ${mobile({ padding: "10px 0px", width: "100%" })}
+  ${mobile({ padding: "10px 0px" })}
 `;
 
 const Left = styled.div`
-  flex: 1;
   display: flex;
   align-items: center;
 `;
@@ -30,19 +29,7 @@ const Language = styled.span`
   ${mobile({ display: "none" })}
 `;
 
-const SearchContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: 1.5rem;
-`;
-
-const Input = styled.input`
-  border: none;
-  ${mobile({ width: "50px" })}
-`;
-
 const Center = styled.div`
-  flex: 1;
   text-align: center;
 `;
 
@@ -58,11 +45,10 @@ const Logo2 = styled.h1`
 `;
 
 const Right = styled.div`
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  ${mobile({ flex: 2, justifyContent: "center" })}
+  ${mobile({ justifyContent: "center" })}
 `;
 
 const MenuItem = styled.div`
@@ -78,11 +64,7 @@ const NavBar = () => {
       <Wrapper>
         <Left>
           <Language>EN</Language>
-          <SearchContainer>
-            <MenuItem>REGISTER</MenuItem>
-            {/* <Input placeholder="Search" />
-            <Search style={{ color: "gray", fontSize: 16 }} /> */}
-          </SearchContainer>
+          <MenuItem>REGISTER</MenuItem>
         </Left>
         <Center>
           <Logo>JK Total Washing Solutions</Logo>
