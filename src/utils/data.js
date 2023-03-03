@@ -1,5 +1,5 @@
 import jkLiquid from "../pages/images/jkl.png";
-import Liquid from "../pages/images/liquid.png";
+import Liquid from "../pages/images/editl.png";
 import Liquid2 from "../pages/images/liquid2.png";
 import HandWash from "../pages/images/handWash.png";
 
@@ -32,28 +32,39 @@ export const SlidesItems = [
 export const categories = [
   {
     id: 1,
-    img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    img: Liquid2,
     title: "LIQUID DETERGENT",
+    detail: "Clean beyond measure with our liquid treasure",
+    price: 200,
   },
   {
     id: 2,
-    img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    img: Liquid2,
     title: "HANDWASH COLLECTION!",
+    detail: "Clean hands, happy heart - with every wash",
+    price: 150,
   },
   {
     id: 3,
-    img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    img: Liquid2,
     title: "DISH WASHER",
+    detail:
+      "Let your dishwasher do the dirty work - for sparkling clean dishes every time",
+    price: 80,
   },
   {
     id: 4,
-    img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    img: Liquid2,
     title: "TOILET CLEANER",
+    detail: "Powerful cleaning for a refreshing, hygienic throne",
+    price: 80,
   },
   {
     id: 5,
-    img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    title: "FLOOR CLEARNER",
+    img: Liquid2,
+    title: "FLOOR CLEANER",
+    detail: "Step into a spotless world - with every sweep, mop and swirl",
+    price: 60,
   },
 ];
 

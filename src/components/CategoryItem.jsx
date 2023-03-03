@@ -1,65 +1,96 @@
-import React from 'react'
-import styled from 'styled-components'
-import { mobile } from "../responsive";
+import React from "react";
+import styled from "styled-components";
+import {
+  mobile,
+  ScreenWith1200px,
+  ScreenWith1470px,
+  ScreenWith670px,
+  ScreenWith960px,
+} from "../responsive";
 
-const Cointainer = styled.div`
-  flex: 1;
-  margin: 3px;
-  min-width: 400px;
-  height: 70vh;
-  position: relative;
-  transition: all .3s ease-in-out;
-
-  &:hover {
-      box-shadow: rgba(0, 0, 0, 0.22) 2px 19px 43px;
-    transform: translate3d(0px, -10px, 0px);
-  }
-  `;
+const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 60%;
+`;
 
 const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.9;
-  ${mobile({ height: "20vh" })}
+  display: block;
+  width: 10rem;
 `;
 
+// const Info = styled.div`
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   top: 0;
+//   left: 0;
+//   display: flex;
+//   align-items: center;
+//   flex-direction: column;
+//   justify-content: center;
+// `;
 const Info = styled.div`
-position: absolute;
-width: 100%;
-height: 100%;
-top: 0;
-left: 0;
-display: flex;
-align-items: center;
-flex-direction: column;
-justify-content: center;
+  display: flex;
+  flex-direction: column;
+`;
+const Title = styled.h1`
+  color: black;
+  font-weight: bold;
+  font-family: Verdana, Fantasy;
+  font-size: 1.7rem;
+  ${ScreenWith1470px({ fontSize: "1.6rem" })}
+  ${ScreenWith1200px({ fontSize: "1.5rem" })}
+  ${ScreenWith670px({ fontSize: "1.3rem" })}
 `;
 
-const Title = styled.h1`
-color: white;
-margin-bottom: 20px;
+const Detail = styled.div`
+  font-size: 1rem;
+  font-family: "Lucida Handwriting", "Lucida Handwriting", cursive;
+  ${ScreenWith1470px({ fontSize: "0.9rem" })}
+  ${ScreenWith1200px({ fontSize: "0.8rem" })}
+  ${ScreenWith670px({ fontSize: "0.6rem" })}
+`;
+const Price = styled.div`
+  font-weight: bold;
+  font-size: 1.7rem;
+  font-family
+  ${ScreenWith1470px({ fontSize: "1.6rem" })}
+  ${ScreenWith1200px({ fontSize: "1.4rem" })}
+  ${ScreenWith670px({ fontSize: "1.2rem" })}
 `;
 
 const Button = styled.button`
-border: none;
-cursor: pointer;
-color: gray;
-font-weight: 600;
-padding: 10px;
-background-color: white
+  cursor: pointer;
+  border: none;
+  color: gray;
+  font-weight: 600;
+  padding: 15px 0px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  background-color: #e9f5f5
+  transition: all 0.5s ease;
+  &:hover {
+    background-color: white;
+    transform: scale(1.1);
+  }
 `;
 
-const CategoryItem = ({img, title}) => {
-    return (
-        <Cointainer>
-          <Image src={img} />
-          <Info>
-            <Title>{title}</Title> 
-            <Button>SHOP NOW</Button> 
-        </Info>  
-        </Cointainer>
-    )
-}
+const CategoryItem = ({ img, title, detail, price }) => {
+  return (
+    <>
+      <InfoContainer>
+        <Info>
+          <Title>{title}</Title>
+          <Detail>{detail}</Detail>
+        </Info>
+        <Price>Rs. {price}</Price>
+        <Button>Shop Now</Button>
+      </InfoContainer>
+      <Image src={img} />
+    </>
+  );
+};
 
-export default CategoryItem
+export default CategoryItem;
