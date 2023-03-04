@@ -5,9 +5,9 @@ import CategoryItem from "./CategoryItem";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCards, Navigation, Pagination } from "swiper";
 import "./styles.css";
-import "swiper/swiper.min.css";
-import "swiper/modules/pagination/pagination.min.css";
-import "swiper/modules/navigation/navigation.min.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { sliderHideCustom } from "../responsive";
 
 const Container = styled.div`

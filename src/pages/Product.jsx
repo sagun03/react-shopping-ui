@@ -4,16 +4,15 @@ import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import NewsLetter from "../components/NewsLetter";
-import jkLiquid from './images/jkLiquid.png'
+import jkLiquid from "./images/jkLiquid.png";
 import { mobile } from "../responsive";
-
 
 const Container = styled.div``;
 
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
-  ${mobile({ padding: "10px", flexDirection:"column" })}
+  ${mobile({ padding: "10px", flexDirection: "column" })}
 `;
 
 const ImgContainer = styled.div`
@@ -64,15 +63,6 @@ const FilterTitle = styled.span`
   font-weight: 200;
 `;
 
-const FilterColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-  margin: 0px 5px;
-  cursor: pointer;
-`;
-
 const FilterSize = styled.select`
   margin-left: 10px;
   padding: 5px;
@@ -111,8 +101,8 @@ const Button = styled.button`
   background-color: white;
   cursor: pointer;
   font-weight: 500;
-  &:hover{
-      background-color: #f8f4f4;
+  &:hover {
+    background-color: #f8f4f4;
   }
 `;
 
@@ -128,8 +118,10 @@ const Product = () => {
         <InfoContainer>
           <Title>Liquid Detergent</Title>
           <Desc>
-            PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER,
-            MADE FOR ALL FABRICS WOOLEN ,COTTON ETC
+            PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT
+            FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS
+            CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS
+            WOOLEN ,COTTON ETC
           </Desc>
           <Price>Rs. 200</Price>
           <FilterContainer>

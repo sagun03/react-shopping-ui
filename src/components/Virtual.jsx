@@ -12,8 +12,8 @@ import {
 } from "../responsive";
 
 const VirtualContainer = styled.div`
-  margin: 6rem auto;
-  padding: 2rem;
+  margin: 5rem auto;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-around;
 
@@ -95,7 +95,7 @@ const Virtual = () => {
 
       <RightWrapper>
         <ImageContainer>
-          <ReactCompareImage leftImage={Before} rightImage={After} />
+          <ReactCompareImage leftImage={After} rightImage={Before} />
         </ImageContainer>
       </RightWrapper>
     </VirtualContainer>
