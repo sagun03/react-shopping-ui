@@ -84,6 +84,7 @@ const ProductMenu = styled.li`
     color: #0396ff;
     cursor: pointer;
   }
+  color: ${(props) => props.selected && "#0396ff"};
 `;
 const ProductImageContainer = styled.div`
   display: grid;
@@ -150,9 +151,13 @@ const Products = () => {
       <Image src={Plane} />
       <Heading>Our Featured Products</Heading>
       <ProductsWrapper>
-        <ProductMenuList>
+        <ProductMenuList ref={parent}>
           {ListMenu.map(({ id, title, name }) => (
-            <ProductMenu key={id} onClick={() => filterData(name)}>
+            <ProductMenu
+              selected={selected === title}
+              key={id}
+              onClick={() => filterData(name, title)}
+            >
               {title}
             </ProductMenu>
           ))}
