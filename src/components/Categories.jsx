@@ -17,6 +17,7 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   width: 98%;
+  margin-bottom: 60px;
 `;
 
 const HeadingContainer = styled.div`

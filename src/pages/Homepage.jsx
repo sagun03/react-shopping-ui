@@ -6,6 +6,7 @@ import NavBar from "../components/NavBar";
 import NewsLetter from "../components/NewsLetter";
 import Products from "../components/Products";
 import SliderContainer from "../components/SliderContainer";
+import Virtual from "../components/Virtual";
 
 const homepage = () => {
   return (
@@ -14,6 +15,7 @@ const homepage = () => {
       <NavBar />
       <SliderContainer />
       <Categories />
+      <Virtual />
       <Products />
       <NewsLetter />
       <Footer />

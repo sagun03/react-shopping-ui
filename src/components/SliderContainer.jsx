@@ -13,7 +13,7 @@ import Slider from "./Slider";
 
 const SliderWrapper = styled.div`
   display: flex;
-  margin: 4.25rem 0rem;
+  margin: 4.25rem 0rem 6rem;
   justify-content: center;
   padding: 0 2rem;
   align-items: center;

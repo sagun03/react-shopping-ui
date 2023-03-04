@@ -43,8 +43,8 @@ const Title = styled.h1`
 const Detail = styled.div`
   font-size: 1rem;
   font-family: "Lucida Handwriting", "Lucida Handwriting", cursive;
-  ${ScreenWith1470px({ fontSize: "0.9rem" })}
-  ${ScreenWith1200px({ fontSize: "0.8rem" })}
+  ${ScreenWith1470px({ fontSize: "0.9rem", marginTop: "1rem" })}
+  ${ScreenWith1200px({ fontSize: "0.8rem", marginTop: ".5rem" })}
   ${ScreenWith670px({ fontSize: "0.6rem", marginTop: ".5rem" })}
   ${mobileS({ fontSize: ".8rem", marginTop: ".rem" })}
   ${mobileSuperSmall({ fontSize: "0.8rem" })}

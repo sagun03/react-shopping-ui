@@ -34,10 +34,10 @@ const ImgContainer = styled.div`
   }
   ${ScreenWith1670px({ height: "180px" })}
   ${ScreenWith1470px({ height: "165px" })}
-  ${ScreenWith1200px({ height: "137px" })}
-  ${ScreenWith1080px({ height: "115px" })}
-  ${ScreenWith960px({ height: "210px" })}
-  ${ScreenWith670px({ height: "200px" })}
+  ${ScreenWith1200px({ height: "157px" })}
+  ${ScreenWith1080px({ height: "123px" })}
+  ${ScreenWith960px({ height: "220px" })}
+  ${ScreenWith670px({ height: "230px" })}
   ${mobile({ height: "115px" })}
   ${(p) => (p.fc ? mobile({ position: "relative", bottom: "-57px" }) : "")}
 `;
