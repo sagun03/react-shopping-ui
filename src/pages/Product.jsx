@@ -109,8 +109,8 @@ const Button = styled.button`
 const Product = () => {
   return (
     <Container>
-      <NavBar />
       <Announcement />
+      <NavBar />
       <Wrapper>
         <ImgContainer>
           <Image src={jkLiquid} />

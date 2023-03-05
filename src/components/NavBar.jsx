@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ShoppingCartOutlined } from "@material-ui/icons";
 import { Badge } from "@material-ui/core";
-import { mobile } from "../responsive";
+import { mobile, ScreenWith670px } from "../responsive";
 
 const Container = styled.div`
   height: 60px;
@@ -10,23 +10,23 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  padding: 10px 20px;
+  padding: 10px 0px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 95%;
+  justify-content: space-around;
+  width: 100%;
   ${mobile({ padding: "10px 0px" })}
 `;
 
 const Left = styled.div`
   display: flex;
   align-items: center;
+  gap: 1rem;
 `;
 
 const Language = styled.span`
   font-size: 14px;
   cursor: pointer;
-  ${mobile({ display: "none" })}
 `;
 
 const Center = styled.div`
@@ -35,27 +35,32 @@ const Center = styled.div`
 
 const Logo = styled.h1`
   font-weight: bold;
-  ${mobile({ display: "none" })}
+  ${ScreenWith670px({
+    fontSize: "1.5rem",
+  })} ${mobile({ display: "none" })};
 `;
 
 const Logo2 = styled.h1`
   display: none;
 
-  ${mobile({ display: "flex", justifyContent: "flex-end", fontWeight: "bold" })}
+  ${mobile({
+    display: "flex",
+    justifyContent: "flex-end",
+    fontWeight: "bold",
+  })}
 `;
 
 const Right = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  ${mobile({ justifyContent: "center" })}
+  justify-content: "center";
+  gap: 1rem;
 `;
 
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
-  margin-left: 25px;
-  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+  ${mobile({ fontSize: "12px" })}
 `;
 
 const NavBar = () => {
