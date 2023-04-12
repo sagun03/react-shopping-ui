@@ -8,6 +8,14 @@ export const mobile = (props) => {
   `;
 };
 
+export const tablet = (props) => {
+  return css`
+    @media only screen and (max-width: 750px) {
+      ${props}
+    }
+  `;
+};
+
 export const sliderHideCustom = (props) => {
   return css`
     @media only screen and (min-width: 539px) {

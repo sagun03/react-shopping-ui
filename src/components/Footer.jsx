@@ -77,6 +77,7 @@ const ContactItem = styled.div`
   margin-bottom: 20px;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 `;
 
 const Payment = styled.img`
@@ -130,7 +131,8 @@ const Footer = () => {
           <Phone style={{ marginRight: "10px" }} /> +91 8755447070
         </ContactItem>
         <ContactItem>
-          <MailOutline style={{ marginRight: "10px" }} /> saluja.pawan6@lama.dev
+          <MailOutline style={{ marginRight: "10px" }} />{" "}
+          saluja.pawan6@gmail.com
         </ContactItem>
         <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
       </Right>

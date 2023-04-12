@@ -125,12 +125,6 @@ const Product = () => {
           </Desc>
           <Price>Rs. 200</Price>
           <FilterContainer>
-            {/* <Filter>
-              <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
-            </Filter> */}
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize>

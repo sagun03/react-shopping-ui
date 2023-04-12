@@ -4,12 +4,13 @@ import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import jkLiquid from "./images/jkLiquid.png";
-import { mobile } from "../responsive";
+import { mobile, ScreenWith670px, ScreenWith960px } from "../responsive";
 
 const Container = styled.div``;
 
 const Wrapper = styled.div`
   padding: 20px;
+  margin-bottom: 50px;
   ${mobile({ padding: "10px" })}
 `;
 
@@ -23,6 +24,7 @@ const Top = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  ${mobile({ flexDirection: "column", gap: "2rem" })}
 `;
 
 const TopButton = styled.button`
@@ -47,7 +49,7 @@ const TopText = styled.span`
 const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
-  ${mobile({ flexDirection: "column" })}
+  ${ScreenWith670px({ flexDirection: "column" })}
 `;
 
 const Info = styled.div`
@@ -63,10 +65,18 @@ const Product = styled.div`
 const ProductDetail = styled.div`
   flex: 2;
   display: flex;
+  ${mobile({
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  })}
 `;
 
 const Image = styled.img`
   width: 200px;
+  ${ScreenWith960px({ width: "180px" })}
+  ${ScreenWith670px({ width: "150px" })}
+  mobileSuperSmall
 `;
 
 const Details = styled.div`
@@ -99,13 +109,17 @@ const ProductAmountContainer = styled.div`
 const ProductAmount = styled.div`
   font-size: 24px;
   margin: 5px;
-  ${mobile({ margin: "5px 15px" })}
+  ${mobile({ margin: "5px 15px", fontSize: "16px" })}
+  ${ScreenWith960px({ fontSize: "20px" })}
+  ${ScreenWith670px({ fontSize: "18px" })}
 `;
 
 const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: 200;
-  ${mobile({ marginBottom: "20px" })}
+  ${mobile({ marginBottom: "20px", fontSize: "20px" })}
+  ${ScreenWith960px({ fontSize: "26px" })}
+  ${ScreenWith670px({ fontSize: "24px" })}
 `;
 
 const Hr = styled.hr`
@@ -119,11 +133,14 @@ const Summary = styled.div`
   border: 0.5px solid lightgray;
   border-radius: 10px;
   padding: 20px;
-  height: 60vh;
+  height: fit-content;
 `;
 
 const SummaryTitle = styled.h1`
   font-weight: 200;
+  ${ScreenWith960px({
+    fontSize: "1.5rem",
+  })}
 `;
 
 const SummaryItem = styled.div`
@@ -132,6 +149,10 @@ const SummaryItem = styled.div`
   justify-content: space-between;
   font-weight: ${(props) => props.type === "total" && "500"};
   font-size: ${(props) => props.type === "total" && "24px"};
+
+  ${ScreenWith960px({
+    fontSize: (props) => (props.type === "total" ? "1.25rem" : "1rem"),
+  })}
 `;
 
 const SummaryItemText = styled.span``;
@@ -157,7 +178,6 @@ const Cart = () => {
           <TopButton>CONTINUE SHOPPING</TopButton>
           <TopTexts>
             <TopText>Shopping Bag(2)</TopText>
-            <TopText>Your Wishlist (0)</TopText>
           </TopTexts>
           <TopButton type="filled">CHECKOUT NOW</TopButton>
         </Top>
@@ -199,7 +219,6 @@ const Cart = () => {
                   <ProductId>
                     <b>ID:</b> 93813718293
                   </ProductId>
-                  {/* <ProductColor color="gray" /> */}
                   <ProductSize>
                     <b>Size:</b> 500 gm
                   </ProductSize>
