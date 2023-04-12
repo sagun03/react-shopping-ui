@@ -1,7 +1,7 @@
 import { Send } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
-import { mobile, mobileS } from "../responsive";
+import { mobile, mobileS, mobileSuperSmall } from "../responsive";
 
 const Cointainer = styled.div`
   height: 60vh;
@@ -16,6 +16,7 @@ const Title = styled.h1`
   font-size: 4.3rem;
   margin-bottom: 20px;
   ${mobileS({ fontSize: "3.3rem" })}
+  ${mobileSuperSmall({ fontSize: "2rem" })}
 `;
 const Description = styled.div`
   font-size: 24px;

@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import NewsLetter from "../components/NewsLetter";
 import jkLiquid from "./images/jkLiquid.png";
-import { mobile } from "../responsive";
+import { mobile, ScreenWith670px } from "../responsive";
 
 const Container = styled.div``;
 
@@ -17,19 +17,22 @@ const Wrapper = styled.div`
 
 const ImgContainer = styled.div`
   flex: 1;
+  display: flex;
+  justify-content: center;
 `;
 
 const Image = styled.img`
   width: 100%;
-  height: 90vh;
+  height: 80vh;
   object-fit: cover;
-  ${mobile({ height: "40vh" })}
+  ${mobile({ height: "40vh", width: "60%" })}
 `;
 
 const InfoContainer = styled.div`
   flex: 1;
   padding: 0px 50px;
-  ${mobile({ padding: "10px" })}
+  ${ScreenWith670px({ padding: "0px 10px 0px 50px" })}
+  ${mobile({ padding: "20px" })}
 `;
 
 const Title = styled.h1`
