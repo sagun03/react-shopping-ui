@@ -1,6 +1,11 @@
 import styled from "styled-components";
-import jk from './images/jk.jpeg'
-import {mobile} from "../responsive";
+import jk from "./images/jk.jpeg";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { mobile } from "../responsive";
+import { useState } from "react";
+import { useUserAuth } from "../context/UserAuthContext";
+import { FormHelperText } from "@material-ui/core";
+import GoogleButton from "react-google-button";
 
 const Container = styled.div`
   width: 100vw;
@@ -9,8 +14,7 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url(${jk})
-      center;
+    url(${jk}) center;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -22,6 +26,10 @@ const Wrapper = styled.div`
   padding: 20px;
   background-color: white;
   ${mobile({ width: "75%" })}
+`;
+
+const GoogleButtonContainer = styled.div`
+  margin: 20px 0px;
 `;
 
 const Title = styled.h1`
@@ -51,7 +59,7 @@ const Button = styled.button`
   margin-bottom: 10px;
 `;
 
-const Link = styled.a`
+export const Link = styled.a`
   margin: 5px 0px;
   font-size: 12px;
   text-decoration: underline;
@@ -59,17 +67,66 @@ const Link = styled.a`
 `;
 
 const Login = () => {
+  const [userInfo, setUserInfo] = useState({});
+  const [error, setError] = useState("");
+  const { login, googleSignIn } = useUserAuth();
+  const navigate = useNavigate();
+  const handleOnChange = (key, value) => {
+    setUserInfo((state) => ({ ...state, [key]: value }));
+    setError("");
+  };
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const { email = "", password = "" } = userInfo;
+      await login(email, password);
+      navigate("/");
+    } catch (err) {
+      setUserInfo({});
+      setError(err.message);
+    }
+  };
+  const handleGoogleSignIn = async (e) => {
+    try {
+      e.preventDefault();
+      await googleSignIn();
+      navigate("/");
+    } catch (err) {
+      setError(err.message);
+    }
+  };
   return (
     <Container>
       <Wrapper>
         <Title>SIGN IN</Title>
-        <Form>
-          <Input placeholder="username" />
-          <Input placeholder="password" />
+        {error && (
+          <Title>
+            <FormHelperText error={true}>{error}</FormHelperText>
+          </Title>
+        )}
+        <Form onSubmit={handleSubmit}>
+          <Input
+            placeholder="email"
+            onChange={(e) => handleOnChange("email", e.target.value)}
+          />
+          <Input
+            placeholder="password"
+            onChange={(e) => handleOnChange("password", e.target.value)}
+          />
           <Button>LOGIN</Button>
           <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
+          <RouterLink to="/register">
+            <Link>CREATE A NEW ACCOUNT</Link>
+          </RouterLink>
         </Form>
+        <GoogleButtonContainer>
+          <GoogleButton type="dark" onClick={handleGoogleSignIn} />
+        </GoogleButtonContainer>
+        <RouterLink to="/phonesignup">
+          <Link>
+            <Title>Sign in with phone</Title>
+          </Link>
+        </RouterLink>
       </Wrapper>
     </Container>
   );
