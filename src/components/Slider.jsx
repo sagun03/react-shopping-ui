@@ -105,7 +105,6 @@ const Desc = styled.p`
   font-weight: 500;
   letter-spacing: 3px;
   text-align: center;
-  font-family: "Lucida Handwriting", "Lucida Handwriting", cursive;
 
   ${ScreenWith1200px({ fontSize: "20px", margin: "30px 0px" })}
   ${ScreenWith1080px({ fontSize: "15px" })}

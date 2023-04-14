@@ -30,7 +30,6 @@ const PhoneSignUp = () => {
     }
     try {
       const response = await setUpRecaptcha(number);
-      console.log("response", response);
       if (response) {
         setOpenOtpDialog(true);
         setConfirmObj(response);
@@ -51,6 +50,11 @@ const PhoneSignUp = () => {
       setError(err.message);
     }
   };
+  const onChangeHandler = (number) => {
+    if (error) setError("");
+
+    setNumber(number);
+  };
   return (
     <>
       <Container>
@@ -66,7 +70,7 @@ const PhoneSignUp = () => {
               defaultCountry="IN"
               placeholder="Enter phone number"
               value={number}
-              onChange={setNumber}
+              onChange={(e) => onChangeHandler(e.target.value)}
             />
             <div id="recaptcha-container"></div>
             <RouterLink to="/login">
