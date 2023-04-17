@@ -50,7 +50,7 @@ const Categories = () => {
           loopFillGroupWithBlank={true}
           slidesPerView={3}
           autoplay={{
-            delay: 2500,
+            delay: 3500,
             disableOnInteraction: false,
           }}
           spaceBetween={40}
@@ -73,7 +73,7 @@ const Categories = () => {
           className="mySwiper"
         >
           {categories.map((item, index) => (
-            <SwiperSlide>
+            <SwiperSlide key={item.id}>
               <CategoryItem {...item} key={index} />
             </SwiperSlide>
           ))}

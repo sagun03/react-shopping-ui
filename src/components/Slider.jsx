@@ -8,6 +8,7 @@ import {
   ScreenWith670px,
   ScreenWith960px,
 } from "../responsive";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -131,7 +132,7 @@ const ButtonContainer = styled.div`
 const Slider = () => {
   return (
     <Container>
-      {SlidesItems.map(({ bg, img, title, desc }, index) => (
+      {SlidesItems.map(({ bg, img, title, desc, id }, index) => (
         <>
           {index === 0 ? (
             <Slide bg={bg}>
@@ -141,9 +142,11 @@ const Slider = () => {
               <InfoContainer>
                 <Title>{title}</Title>
                 <Desc>{desc}</Desc>
-                <ButtonContainer>
-                  <Button>SHOP NOW</Button>
-                </ButtonContainer>
+                <Link to={`/product/${id}`}>
+                  <ButtonContainer>
+                    <Button>SHOP NOW</Button>
+                  </ButtonContainer>
+                </Link>
               </InfoContainer>
             </Slide>
           ) : (

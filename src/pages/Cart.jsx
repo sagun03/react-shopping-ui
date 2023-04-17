@@ -3,8 +3,12 @@ import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
-import jkLiquid from "./images/jkLiquid.png";
 import { mobile, ScreenWith670px, ScreenWith960px } from "../responsive";
+import { useSelector } from "react-redux";
+import { Fragment } from "react";
+import { useDispatch } from "react-redux";
+import { addProduct, removeProducts } from "../redux/cartRedux";
+import { v4 as uuidv4 } from "uuid";
 
 const Container = styled.div``;
 
@@ -59,7 +63,8 @@ const Info = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
-  ${mobile({ flexDirection: "column" })}
+  height: 200px;
+  ${mobile({ flexDirection: "column", height: "unset" })};
 `;
 
 const ProductDetail = styled.div`
@@ -73,10 +78,9 @@ const ProductDetail = styled.div`
 `;
 
 const Image = styled.img`
-  width: 200px;
-  ${ScreenWith960px({ width: "180px" })}
-  ${ScreenWith670px({ width: "150px" })}
-  mobileSuperSmall
+  width: 180px;
+  ${ScreenWith960px({ width: "160px" })}
+  ${ScreenWith670px({ width: "120px" })}
 `;
 
 const Details = styled.div`
@@ -88,7 +92,7 @@ const Details = styled.div`
 
 const ProductName = styled.span``;
 
-const ProductId = styled.span``;
+// const ProductId = styled.span``;
 
 const ProductSize = styled.span``;
 
@@ -108,6 +112,13 @@ const ProductAmountContainer = styled.div`
 
 const ProductAmount = styled.div`
   font-size: 24px;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid teal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 5px;
   ${mobile({ margin: "5px 15px", fontSize: "16px" })}
   ${ScreenWith960px({ fontSize: "20px" })}
@@ -134,6 +145,9 @@ const Summary = styled.div`
   border-radius: 10px;
   padding: 20px;
   height: fit-content;
+  ${mobile({
+    marginTop: "2rem",
+  })}
 `;
 
 const SummaryTitle = styled.h1`
@@ -168,10 +182,24 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  const handleClick = (type, item, id = "") => {
+    if (type === "dec") {
+      dispatch(removeProducts({ id }));
+    } else {
+      dispatch(
+        addProduct({
+          productId: id,
+        })
+      );
+    }
+  };
   return (
     <Container>
-      <NavBar />
       <Announcement />
+      <NavBar />
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
@@ -183,62 +211,48 @@ const Cart = () => {
         </Top>
         <Bottom>
           <Info>
-            <Product>
-              <ProductDetail>
-                <Image src={jkLiquid} />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b> Jk Liquid Detergent
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 93813718293
-                  </ProductId>
-                  {/* <ProductColor color="black" /> */}
-                  <ProductSize>
-                    <b>Size:</b> 500 ml
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>2</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>Rs. 400</ProductPrice>
-              </PriceDetail>
-            </Product>
-            <Hr />
-            <Product>
-              <ProductDetail>
-                <Image src={jkLiquid} />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b> Jk Dish Washer
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 93813718293
-                  </ProductId>
-                  <ProductSize>
-                    <b>Size:</b> 500 gm
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>1</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>Rs. 125</ProductPrice>
-              </PriceDetail>
-            </Product>
+            {cart.products?.map((item) => (
+              <Fragment key={uuidv4()}>
+                <Product>
+                  <ProductDetail>
+                    <Image src={item?.img} />
+                    <Details>
+                      <ProductName>
+                        <b>Product:</b> {item?.title}
+                      </ProductName>
+                      {/* <ProductId>
+                        <b>Price:</b> {item?.price}
+                      </ProductId> */}
+                      {/* <ProductColor color="black" /> */}
+                      <ProductSize>
+                        <b>Size:</b> {item?.size}
+                      </ProductSize>
+                    </Details>
+                  </ProductDetail>
+                  <PriceDetail>
+                    <ProductAmountContainer>
+                      <Remove
+                        onClick={() => handleClick("dec", item, item.productId)}
+                      />
+                      <ProductAmount>{item?.quantity}</ProductAmount>
+                      <Add
+                        onClick={() => handleClick("add", item, item.productId)}
+                      />
+                    </ProductAmountContainer>
+                    <ProductPrice>
+                      Rs. {item?.price * item?.quantity}
+                    </ProductPrice>
+                  </PriceDetail>
+                </Product>
+                <Hr />
+              </Fragment>
+            ))}
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>Rs. 525</SummaryItemPrice>
+              <SummaryItemPrice>Rs. {cart?.total}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -254,7 +268,7 @@ const Cart = () => {
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>Rs. 445</SummaryItemPrice>
+              <SummaryItemPrice>Rs. {cart?.total - 40}</SummaryItemPrice>
             </SummaryItem>
             <Button>CHECKOUT NOW</Button>
           </Summary>

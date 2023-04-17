@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {
   mobileS,
@@ -66,7 +67,8 @@ const Button = styled.button`
   padding: 15px 0px;
   border-radius: 15px;
   text-transform: uppercase;
-  background-color: #e9f5f5
+  background-color: #e9f5f5;
+  width: 100%;
   transition: all 0.5s ease;
   &:hover {
     background-color: white;
@@ -74,7 +76,7 @@ const Button = styled.button`
   }
 `;
 
-const CategoryItem = ({ img, title, detail, price }) => {
+const CategoryItem = ({ img, title, detail, price, id }) => {
   return (
     <>
       <InfoContainer>
@@ -83,7 +85,9 @@ const CategoryItem = ({ img, title, detail, price }) => {
           <Detail>{detail}</Detail>
         </Info>
         <Price>Rs. {price}</Price>
-        <Button>Shop Now</Button>
+        <Link to={`/product/${id}`}>
+          <Button>Shop Now</Button>
+        </Link>
       </InfoContainer>
       <Image src={img} />
     </>

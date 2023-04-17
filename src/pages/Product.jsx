@@ -6,6 +6,13 @@ import NavBar from "../components/NavBar";
 import NewsLetter from "../components/NewsLetter";
 import jkLiquid from "./images/jkLiquid.png";
 import { mobile, ScreenWith670px } from "../responsive";
+import { useEffect } from "react";
+import { addProducts } from "../redux/cartRedux";
+import { useState } from "react";
+import { useLocation } from "react-router";
+import { getPrice, getProductById } from "../utils/helper";
+import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
 const Container = styled.div``;
 
@@ -110,6 +117,48 @@ const Button = styled.button`
 `;
 
 const Product = () => {
+  const [product, setProduct] = useState({});
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState("100 ml");
+  const [price, setPrice] = useState(30);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    setPrice(getPrice(size));
+  }, [size]);
+
+  useEffect(() => {
+    if (id) {
+      console.log("getProductById(id)", getProductById(id));
+      setProduct(getProductById(+id));
+    }
+  }, [id]);
+
+  const handleClick = () => {
+    dispatch(
+      addProducts({
+        ...product,
+        quantity,
+        size,
+        price: getPrice(size),
+        productId: uuidv4(),
+      })
+    );
+  };
+
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
   return (
     <Container>
       <Announcement />
@@ -120,17 +169,15 @@ const Product = () => {
         </ImgContainer>
         <InfoContainer>
           <Title>Liquid Detergent</Title>
-          <Desc>
-            PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT
-            FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS
-            CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS
-            WOOLEN ,COTTON ETC
-          </Desc>
-          <Price>Rs. 200</Price>
+          <Desc>{product?.productDescription}</Desc>
+          <Price>Rs. {price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize>
+              <FilterSize
+                value={size}
+                onChange={(e) => setSize(e.target.value)}
+              >
                 <FilterSizeOption>100 ml</FilterSizeOption>
                 <FilterSizeOption>250 ml</FilterSizeOption>
                 <FilterSizeOption>500 ml</FilterSizeOption>
@@ -141,11 +188,11 @@ const Product = () => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
+              <Remove onClick={() => handleQuantity("dec")} />
+              <Amount>{quantity}</Amount>
+              <Add onClick={() => handleQuantity("add")} />
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button onClick={() => handleClick()}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

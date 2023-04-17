@@ -1,6 +1,7 @@
 import { SearchOutlined, ShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Info = styled.div`
   opacity: 0;
@@ -24,9 +25,15 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(135deg, #abdcff 10%, #0396ff 100%);
+  background-image: linear-gradient(
+    95.2deg,
+    rgba(173, 252, 234, 1) 26.8%,
+    rgba(192, 229, 246, 1) 64%
+  );
   position: relative;
   height: inherit;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
   &:hover ${Info} {
     opacity: 1;
@@ -61,7 +68,7 @@ const Icon = styled.div`
   }
 `;
 
-const Product = ({ img }) => {
+const Product = ({ img, id }) => {
   return (
     <Container>
       <Circle />
@@ -71,11 +78,10 @@ const Product = ({ img }) => {
           <ShoppingCartOutlined />
         </Icon>
         <Icon>
-          <SearchOutlined />
+          <Link to={`/product/${id}`}>
+            <SearchOutlined />
+          </Link>
         </Icon>
-        {/* <Icon>
-          <FavoriteBorderOutlined />
-        </Icon> */}
       </Info>
     </Container>
   );

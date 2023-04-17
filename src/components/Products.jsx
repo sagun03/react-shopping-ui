@@ -15,6 +15,10 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import { Divider } from "@material-ui/core";
+import { db } from "../firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect } from "react";
+import { useCallback } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -115,17 +119,29 @@ const ListMenu = [
   { id: 2, title: "Liquid Detergent", name: "detergent" },
   { id: 3, title: "Hand Wash", name: "handWash" },
   { id: 4, title: "Floor Cleaner", name: "floorCleaner" },
-  { id: 5, title: "Washing Soap", name: "washingSoap" },
   { id: 6, title: "Dish Washer", name: "dishWasher" },
   { id: 7, title: "Toilet Cleaner", name: "toiletCleaner" },
   { id: 8, title: "Bathing Soap", name: "bathingSoap" },
 ];
 
 const Products = () => {
+  const [products, setProducts] = useState([]);
+  const productCollectionRef = collection(db, "product");
   const [productImageData, setProductImageData] = useState(popularProducts);
   const [parent] = useAutoAnimate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selected, setSelected] = useState("All");
+  const getProducts = useCallback(async () => {
+    try {
+      const data = await getDocs(productCollectionRef);
+      setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+  useEffect(() => {
+    if (false) getProducts();
+  }, [getProducts]);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -196,7 +212,7 @@ const Products = () => {
 
         <ProductImageContainer ref={parent}>
           {productImageData.map((product) => (
-            <ProductImageWrapper>
+            <ProductImageWrapper key={product.id}>
               <Product {...product} key={product.id} />
             </ProductImageWrapper>
           ))}

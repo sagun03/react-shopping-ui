@@ -8,6 +8,8 @@ export const SlidesItems = [
     img: Liquid2,
     title: "LIQUID DETERGENTS",
     desc: "DON'T COMPROMISE ON CLEANING! GET FLAT 20% FOR NEW USERS",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
     bg: "f5fafd",
     height: "100%",
   },
@@ -18,6 +20,8 @@ export const SlidesItems = [
     desc: "DON'T COMPROMISE ON CLEANING! GET FLAT 20% FOR NEW USERS",
     bg: "fcf1ed",
     height: "100%",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
   },
   {
     id: 3,
@@ -25,117 +29,165 @@ export const SlidesItems = [
     title: "DISH WASHERS",
     desc: "DON'T COMPROMISE ON CLEANING! GET FLAT 20% FOR NEW USERS",
     height: "100%",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
   },
 ];
 
 export const categories = [
   {
-    id: 1,
+    id: 4,
     img: Liquid2,
     title: "LIQUID DETERGENT",
     detail: "Clean beyond measure with our liquid treasure",
     price: 200,
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
   },
   {
-    id: 2,
+    id: 5,
     img: Liquid2,
     title: "HANDWASH COLLECTION!",
     detail: "Clean hands, happy heart - with every wash",
     price: 150,
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
   },
   {
-    id: 3,
+    id: 6,
     img: Liquid2,
     title: "DISH WASHER",
     detail:
       "Let your dishwasher do the dirty work - for sparkling clean dishes every time",
     price: 80,
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
   },
   {
-    id: 4,
+    id: 7,
     img: Liquid2,
     title: "TOILET CLEANER",
     detail: "Powerful cleaning for a refreshing, hygienic throne",
     price: 80,
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
   },
   {
-    id: 5,
+    id: 8,
     img: Liquid2,
     title: "FLOOR CLEANER",
     detail: "Step into a spotless world - with every sweep, mop and swirl",
     price: 60,
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
   },
 ];
 
 export const popularProducts = [
   {
-    id: 1,
-    img: Liquid2,
-    type: "detergent",
-  },
-  {
-    id: 2,
-    img: Liquid2,
-    type: "handWash",
-  },
-  {
-    id: 3,
-    img: Liquid2,
-    type: "handWash",
-  },
-  {
-    id: 4,
-    img: Liquid2,
-    type: "toiletCleaner",
-  },
-  {
-    id: 5,
-    img: Liquid2,
-    type: "floorCleaner",
-  },
-  {
-    id: 6,
-    img: Liquid2,
-    type: "floorCleaner",
-  },
-  {
-    id: 7,
-    img: Liquid2,
-    type: "dishWasher",
-  },
-  {
     id: 9,
     img: Liquid2,
-    type: "dishWasher",
-  },
-  {
-    id: 10,
-    img: Liquid2,
-    type: "washingSoap",
-  },
-  {
-    id: 11,
-    img: Liquid2,
-    type: "washingSoap",
+    type: "detergent",
+    title: "Liquid Detergent",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
   },
   {
     id: 12,
     img: Liquid2,
-    type: "bathingSoap",
-  },
-  {
-    id: 13,
-    img: Liquid2,
-    type: "bathingSoap",
+    type: "handWash",
+    title: "Hand Wash",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
   },
   {
     id: 13,
     img: Liquid2,
     type: "handWash",
+    title: "Hand Wash",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
   },
   {
     id: 14,
     img: Liquid2,
+    type: "toiletCleaner",
+    title: "Floor Cleaner",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+  },
+  {
+    id: 15,
+    img: Liquid2,
+    type: "floorCleaner",
+    title: "Floor Cleaner",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+  },
+  {
+    id: 16,
+    img: Liquid2,
+    type: "floorCleaner",
+    title: "Floor Cleaner",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+  },
+  {
+    id: 17,
+    img: Liquid2,
+    type: "dishWasher",
+    title: "Dish Washer",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+  },
+  {
+    id: 19,
+    img: Liquid2,
+    type: "dishWasher",
+    title: "Dish Washer",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+  },
+  {
+    id: 20,
+    img: Liquid2,
+    type: "washingSoap",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+  },
+  {
+    id: 21,
+    img: Liquid2,
+    type: "washingSoap",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+  },
+  {
+    id: 22,
+    img: Liquid2,
     type: "bathingSoap",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+  },
+  {
+    id: 23,
+    img: Liquid2,
+    type: "bathingSoap",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+  },
+  {
+    id: 23,
+    img: Liquid2,
+    type: "handWash",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+  },
+  {
+    id: 24,
+    img: Liquid2,
+    type: "bathingSoap",
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
   },
 ];

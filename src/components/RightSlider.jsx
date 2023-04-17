@@ -11,6 +11,7 @@ import {
 } from "../responsive";
 import HandWash from "./../pages/images/hw.png";
 import FloorCleaner from "./../pages/images/fc.png";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -120,30 +121,34 @@ const RightSlider = () => {
   return (
     <Container>
       <ChildContainer>
-        <Slide bg={"fcf1ed"}>
-          <InfoContainer>
-            <Title>{"Strawberry Handwash"}</Title>
-            <Desc>
-              {"DON'T COMPROMISE ON CLEANING! GET FLAT 20% FOR NEW USERS"}
-            </Desc>
-          </InfoContainer>
-          <ImgContainer>
-            <Image src={HandWash} />
-          </ImgContainer>
-        </Slide>
+        <Link to={`/product/2`}>
+          <Slide bg={"fcf1ed"}>
+            <InfoContainer>
+              <Title>{"Strawberry Handwash"}</Title>
+              <Desc>
+                {"DON'T COMPROMISE ON CLEANING! GET FLAT 20% FOR NEW USERS"}
+              </Desc>
+            </InfoContainer>
+            <ImgContainer>
+              <Image src={HandWash} />
+            </ImgContainer>
+          </Slide>
+        </Link>
       </ChildContainer>
       <ChildContainer>
-        <Slide fc={true} bg={"F7F7F7"}>
-          <ImgContainer fc={true}>
-            <Image fc={true} src={FloorCleaner} />
-          </ImgContainer>
-          <InfoContainer>
-            <Title>{"Floor Cleaner"}</Title>
-            <Desc>
-              {"DON'T COMPROMISE ON CLEANING! GET FLAT 20% FOR NEW USERS"}
-            </Desc>
-          </InfoContainer>
-        </Slide>
+        <Link to={`/product/3`}>
+          <Slide fc={true} bg={"F7F7F7"}>
+            <ImgContainer fc={true}>
+              <Image fc={true} src={FloorCleaner} />
+            </ImgContainer>
+            <InfoContainer>
+              <Title>{"Floor Cleaner"}</Title>
+              <Desc>
+                {"DON'T COMPROMISE ON CLEANING! GET FLAT 20% FOR NEW USERS"}
+              </Desc>
+            </InfoContainer>
+          </Slide>
+        </Link>
       </ChildContainer>
     </Container>
   );

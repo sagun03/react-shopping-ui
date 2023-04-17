@@ -1,10 +1,10 @@
-// import Product from "./pages/Product";
+import Product from "./pages/Product";
 import Homepage from "./pages/Homepage";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
-// import Cart from "./pages/Cart";
+import Cart from "./pages/Cart";
 import "./App.css";
 import { useEffect } from "react";
 import { auth } from "./firebase";
@@ -24,6 +24,8 @@ const App = () => {
         <Router>
           <Routes>
             <Route path="/" element={<Homepage />} />
+            <Route path="/product/:id" element={<Product />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/phonesignup" element={<PhoneSignUp />} />
