@@ -136,9 +136,9 @@ const Products = () => {
       const data = await getDocs(productCollectionRef);
       setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     } catch (err) {
-      console.log(err);
+      console.log(err, products);
     }
-  }, []);
+  }, [products, productCollectionRef]);
   useEffect(() => {
     if (false) getProducts();
   }, [getProducts]);

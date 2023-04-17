@@ -24,6 +24,7 @@ export const UserAuthContextProvider = ({ children }) => {
   const logOut = () => {
     signOut(auth);
   };
+  console.log("user", user);
 
   const googleSignIn = () => {
     const googleAuthProvider = new GoogleAuthProvider();
