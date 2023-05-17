@@ -9,12 +9,17 @@ import "./App.css";
 import { useEffect } from "react";
 import { auth } from "./firebase";
 import PhoneSignUp from "./pages/PhoneSignUp";
+import { useState } from "react";
+import Orders from "./pages/Orders";
+import Checkout from "./pages/Checkout";
 
 const App = () => {
+  const [accessToken, setAccessToken] = useState("");
+  console.log("accessToken", accessToken);
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log("user", user);
+        setAccessToken(user?.accessTOken);
       }
     });
   }, []);
@@ -29,6 +34,8 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/phonesignup" element={<PhoneSignUp />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </Router>
       </UserAuthContextProvider>

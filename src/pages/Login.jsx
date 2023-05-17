@@ -48,6 +48,12 @@ const Input = styled.input`
   margin: 10px 0;
   padding: 10px;
 `;
+export const WrapperContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
 
 const Button = styled.button`
   width: 40%;
@@ -64,6 +70,11 @@ export const Link = styled.a`
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
+`;
+
+const Agreement = styled.span`
+  font-size: 12px;
+  margin: 20px 0px 5px;
 `;
 
 const Login = () => {
@@ -113,20 +124,24 @@ const Login = () => {
             placeholder="password"
             onChange={(e) => handleOnChange("password", e.target.value)}
           />
-          <Button>LOGIN</Button>
-          <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <RouterLink to="/register">
-            <Link>CREATE A NEW ACCOUNT</Link>
-          </RouterLink>
+          <WrapperContainer>
+            <Button>LOGIN</Button>
+            <Agreement>DO NOT YOU REMEMBER THE PASSWORD?</Agreement>
+            <RouterLink to="/register">
+              <Link>CREATE A NEW ACCOUNT</Link>
+            </RouterLink>
+          </WrapperContainer>
         </Form>
-        <GoogleButtonContainer>
-          <GoogleButton type="dark" onClick={handleGoogleSignIn} />
-        </GoogleButtonContainer>
-        <RouterLink to="/phonesignup">
-          <Link>
-            <Title>Sign in with phone</Title>
-          </Link>
-        </RouterLink>
+        <WrapperContainer>
+          <GoogleButtonContainer>
+            <GoogleButton type="dark" onClick={handleGoogleSignIn} />
+          </GoogleButtonContainer>
+          <RouterLink to="/phonesignup">
+            <Link>
+              <Title>Sign in with phone</Title>
+            </Link>
+          </RouterLink>
+        </WrapperContainer>
       </Wrapper>
     </Container>
   );

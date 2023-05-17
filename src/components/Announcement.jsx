@@ -11,7 +11,9 @@ const Container = styled.div`
   padding: 2px;
 `;
 const Announcement = () => {
-  return <Container>Super Deal! Free Shipping on Order Over Rs. 250</Container>;
+  return (
+    <Container>Super Deal! Extra 20% Discount on Order Over Rs. 200</Container>
+  );
 };
 
 export default Announcement;

@@ -5,6 +5,10 @@ import { Badge } from "@material-ui/core";
 import { mobile, ScreenWith670px } from "../responsive";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { auth } from "../firebase";
+import { useState } from "react";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const Container = styled.div`
   height: 60px;
@@ -24,11 +28,6 @@ const Left = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-`;
-
-const Language = styled.span`
-  font-size: 14px;
-  cursor: pointer;
 `;
 
 const Center = styled.div`
@@ -62,24 +61,56 @@ const Right = styled.div`
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
   ${mobile({ fontSize: "12px" })}
 `;
 
 const NavBar = () => {
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+      }
+    });
+  }, []);
   const { quantity } = useSelector((state) => state.cart);
   return (
     <Container>
       <Wrapper>
         <Left>
-          <Language>EN</Language>
-          <MenuItem>REGISTER</MenuItem>
+          {user.accessToken ? (
+            <Link to="/orders">
+              <MenuItem>
+                {" "}
+                <AccountCircleIcon /> Orders
+              </MenuItem>
+            </Link>
+          ) : (
+            <Link to="/register">
+              <MenuItem>REGISTER</MenuItem>
+            </Link>
+          )}
         </Left>
-        <Center>
-          <Logo>JK Total Washing Solutions</Logo>
-          <Logo2>JK</Logo2>
-        </Center>
+        <Link to="/">
+          <Center>
+            <Logo>JK Total Washing Solutions</Logo>
+            <Logo2>JK</Logo2>
+          </Center>
+        </Link>
         <Right>
-          <MenuItem>SIGN IN</MenuItem>
+          {user.accessToken ? (
+            <MenuItem>
+              {(user?.displayName?.slice(0, 2)?.toUpperCase() ||
+                user?.email?.slice(0, 2)?.toUpperCase() ||
+                user?.phoneNumber?.slice(0, 2)) + ".."}
+            </MenuItem>
+          ) : (
+            <Link to="/login">
+              <MenuItem>SIGN IN</MenuItem>
+            </Link>
+          )}
           <MenuItem>
             <Link to="/cart">
               <Badge badgeContent={quantity} color="primary">

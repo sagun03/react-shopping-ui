@@ -4,7 +4,7 @@ import { mobile } from "../responsive";
 import { useState } from "react";
 import { useUserAuth } from "../context/UserAuthContext";
 import { FormHelperText } from "@material-ui/core";
-import { useNavigate } from "react-router";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 export const Container = styled.div`
   width: 100vw;
@@ -37,6 +37,13 @@ export const Form = styled.form`
   flex-wrap: wrap;
 `;
 
+export const WrapperContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
 const Input = styled.input`
   flex: 1;
   min-width: 40%;
@@ -46,7 +53,7 @@ const Input = styled.input`
 
 const Agreement = styled.span`
   font-size: 12px;
-  margin: 20px 0px;
+  margin: 20px 0px 5px;
 `;
 
 export const Button = styled.button`
@@ -55,6 +62,12 @@ export const Button = styled.button`
   padding: 15px 20px;
   background-color: teal;
   color: white;
+  cursor: pointer;
+`;
+export const Link = styled.a`
+  margin: 10px 0px;
+  font-size: 12px;
+  text-decoration: underline;
   cursor: pointer;
 `;
 
@@ -99,11 +112,17 @@ const Register = () => {
             onChange={(e) => handleOnChange("password", e.target.value)}
           />
           <Input placeholder="confirm password" />
-          <Agreement>
-            By creating an account, I consent to the processing of my personal
-            data in accordance with the <b>PRIVACY POLICY</b>
-          </Agreement>
-          <Button>CREATE</Button>
+          <WrapperContainer>
+            <Agreement>
+              By creating an account, I consent to the processing of my personal
+              data in accordance with the <b>PRIVACY POLICY</b>
+            </Agreement>
+            <Button>CREATE</Button>
+            <Agreement>Already have Account?</Agreement>
+            <RouterLink to="/login">
+              <Link>Login Here</Link>
+            </RouterLink>
+          </WrapperContainer>
         </Form>
       </Wrapper>
     </Container>
