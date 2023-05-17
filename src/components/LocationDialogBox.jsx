@@ -77,7 +77,7 @@ const LocationDialogBox = ({ open, setOpen }) => {
             </Button>
             {pincode === "246761" && (
               <a
-                href={`https://wa.me/91?text=${encodeURIComponent(
+                href={`https://wa.me/917017932528?text=${encodeURIComponent(
                   `Hi I want to order these items from your website, these are the following: \n ${cart?.products?.map(
                     (item, index) =>
                       `${index + 1}: Name: ${item?.title}, Quantity: ${
