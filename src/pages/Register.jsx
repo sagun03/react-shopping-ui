@@ -76,13 +76,31 @@ const Register = () => {
   const [error, setError] = useState("");
   const { signUp } = useUserAuth();
   const navigate = useNavigate();
+
+  const isValidEmail = (email) => {
+    return /\S+@\S+\.\S+/.test(email);
+  };
   const handleOnChange = (key, value) => {
+    setError("");
+    if (key === "email" && !isValidEmail(value)) {
+      setError("Email is invalid");
+    } else {
+      setError("");
+    }
     setUserInfo((state) => ({ ...state, [key]: value }));
   };
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const { email = "", password = "" } = userInfo;
+      const { email = "", password = "", confirmPassword = "" } = userInfo;
+      if (password !== confirmPassword) {
+        setError("Password doesn't match");
+        return;
+      }
+      if (error) {
+        alert("please resolve error first");
+        return;
+      }
       await signUp(email, password);
       navigate("/");
     } catch (err) {
@@ -109,9 +127,14 @@ const Register = () => {
           />
           <Input
             placeholder="password"
+            type={"password"}
             onChange={(e) => handleOnChange("password", e.target.value)}
           />
-          <Input placeholder="confirm password" />
+          <Input
+            placeholder="confirm password"
+            type={"password"}
+            onChange={(e) => handleOnChange("confirmPassword", e.target.value)}
+          />
           <WrapperContainer>
             <Agreement>
               By creating an account, I consent to the processing of my personal

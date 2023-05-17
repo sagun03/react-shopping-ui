@@ -122,6 +122,7 @@ const Login = () => {
           />
           <Input
             placeholder="password"
+            type={"password"}
             onChange={(e) => handleOnChange("password", e.target.value)}
           />
           <WrapperContainer>

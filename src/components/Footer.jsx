@@ -1,12 +1,6 @@
-import {
-  Facebook,
-  Instagram,
-  MailOutline,
-  Phone,
-  Room,
-  WhatsApp,
-} from "@material-ui/icons";
+import { MailOutline, Phone, Room, WhatsApp } from "@material-ui/icons";
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mobile, ScreenWith670px } from "../responsive";
 
@@ -95,30 +89,32 @@ const Footer = () => {
           soap ,checmical trading in DHAMPUR
         </Desc>
         <SocialCointainer>
-          <SocialIcon color="3B5999">
+          {/* <SocialIcon color="3B5999">
             <Facebook />
           </SocialIcon>
           <SocialIcon color="E4405F">
             <Instagram />
-          </SocialIcon>
+          </SocialIcon> */}
           <SocialIcon color="25D366">
-            <WhatsApp />
+            <a
+              href={`https://wa.me/919560363492?text=${encodeURIComponent(
+                `Hi I Visited your side`
+              )}`}
+            >
+              <WhatsApp />
+            </a>
           </SocialIcon>
         </SocialCointainer>
       </Left>
       <Center>
         <Title>Useful Links</Title>
         <List>
-          <ListItem>Home</ListItem>
-          <ListItem>Cart</ListItem>
-          <ListItem>Man Fashion</ListItem>
-          <ListItem>Woman Fashion</ListItem>
-          <ListItem>Accessories</ListItem>
-          <ListItem>My Account</ListItem>
-          <ListItem>Order Tracking</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Terms</ListItem>
+          <ListItem>
+            <Link to="/">Home </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/cart">Cart</Link>
+          </ListItem>
         </List>
       </Center>
       <Right>
