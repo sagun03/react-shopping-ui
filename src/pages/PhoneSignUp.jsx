@@ -70,7 +70,7 @@ const PhoneSignUp = () => {
               defaultCountry="IN"
               placeholder="Enter phone number"
               value={number}
-              onChange={(e) => onChangeHandler(e.target.value)}
+              onChange={onChangeHandler}
             />
             <div id="recaptcha-container"></div>
             <RouterLink to="/login">

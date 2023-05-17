@@ -21,7 +21,11 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  width: 40%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
   padding: 20px;
   background-color: white;
   ${mobile({ width: "75%" })}
@@ -35,6 +39,10 @@ export const Title = styled.h1`
 export const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const WrapperContainer = styled.div`
@@ -57,7 +65,6 @@ const Agreement = styled.span`
 `;
 
 export const Button = styled.button`
-  width: 40%;
   border: none;
   padding: 15px 20px;
   background-color: teal;
