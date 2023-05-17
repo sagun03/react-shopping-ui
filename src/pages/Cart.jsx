@@ -9,7 +9,9 @@ import { Fragment } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct, removeProducts } from "../redux/cartRedux";
 import { v4 as uuidv4 } from "uuid";
-
+import addToCart from "./images/addToCart.png";
+import { Link } from "react-router-dom";
+import OrderSummary from "../components/OrderSummary";
 const Container = styled.div``;
 
 const Wrapper = styled.div`
@@ -28,6 +30,8 @@ const Top = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  background: whitesmoke;
+  margin: 20px;
   ${mobile({ flexDirection: "column", gap: "2rem" })}
 `;
 
@@ -139,46 +143,13 @@ const Hr = styled.hr`
   height: 1px;
 `;
 
-const Summary = styled.div`
-  flex: 1;
-  border: 0.5px solid lightgray;
-  border-radius: 10px;
-  padding: 20px;
-  height: fit-content;
-  ${mobile({
-    marginTop: "2rem",
-  })}
-`;
-
-const SummaryTitle = styled.h1`
-  font-weight: 200;
-  ${ScreenWith960px({
-    fontSize: "1.5rem",
-  })}
-`;
-
-const SummaryItem = styled.div`
-  margin: 30px 0px;
+const CartImageContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  font-weight: ${(props) => props.type === "total" && "500"};
-  font-size: ${(props) => props.type === "total" && "24px"};
-
-  ${ScreenWith960px({
-    fontSize: (props) => (props.type === "total" ? "1.25rem" : "1rem"),
-  })}
+  justify-content: center;
 `;
 
-const SummaryItemText = styled.span``;
-
-const SummaryItemPrice = styled.span``;
-
-const Button = styled.button`
-  width: 100%;
-  padding: 10px;
-  background-color: black;
-  color: white;
-  font-weight: 600;
+const CartImage = styled.img`
+  max-width: 100%;
 `;
 
 const Cart = () => {
@@ -201,78 +172,75 @@ const Cart = () => {
       <Announcement />
       <NavBar />
       <Wrapper>
-        <Title>YOUR BAG</Title>
-        <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
-          <TopTexts>
-            <TopText>Shopping Bag(2)</TopText>
-          </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
-        </Top>
-        <Bottom>
-          <Info>
-            {cart.products?.map((item) => (
-              <Fragment key={uuidv4()}>
-                <Product>
-                  <ProductDetail>
-                    <Image src={item?.img} />
-                    <Details>
-                      <ProductName>
-                        <b>Product:</b> {item?.title}
-                      </ProductName>
-                      {/* <ProductId>
-                        <b>Price:</b> {item?.price}
-                      </ProductId> */}
-                      {/* <ProductColor color="black" /> */}
-                      <ProductSize>
-                        <b>Size:</b> {item?.size}
-                      </ProductSize>
-                    </Details>
-                  </ProductDetail>
-                  <PriceDetail>
-                    <ProductAmountContainer>
-                      <Remove
-                        onClick={() => handleClick("dec", item, item.productId)}
-                      />
-                      <ProductAmount>{item?.quantity}</ProductAmount>
-                      <Add
-                        onClick={() => handleClick("add", item, item.productId)}
-                      />
-                    </ProductAmountContainer>
-                    <ProductPrice>
-                      Rs. {item?.price * item?.quantity}
-                    </ProductPrice>
-                  </PriceDetail>
-                </Product>
-                <Hr />
-              </Fragment>
-            ))}
-          </Info>
-          <Summary>
-            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-            <SummaryItem>
-              <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>Rs. {cart?.total}</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>Rs. 40</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>Rs. -40</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>New User Discount</SummaryItemText>
-              <SummaryItemPrice>Rs. -40</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem type="total">
-              <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>Rs. {cart?.total - 40}</SummaryItemPrice>
-            </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
-          </Summary>
-        </Bottom>
+        {cart?.products.length === 0 ? (
+          <Link to="/">
+            <Title>Click Here to Add Product</Title>
+          </Link>
+        ) : (
+          <Title>YOUR BAG</Title>
+        )}
+        {cart?.products.length === 0 ? (
+          <CartImageContainer>
+            <CartImage src={addToCart} alt="add to cart" />
+          </CartImageContainer>
+        ) : (
+          <>
+            {" "}
+            <Top>
+              <Link to="/">
+                {" "}
+                <TopButton>CONTINUE SHOPPING</TopButton>
+              </Link>
+              <TopTexts>
+                <TopText>Shopping Bag({cart?.quantity})</TopText>
+              </TopTexts>
+              <Link to="/checkout">
+                <TopButton type="filled">CHECKOUT NOW</TopButton>
+              </Link>
+            </Top>
+            <Bottom>
+              <Info>
+                {cart.products?.map((item) => (
+                  <Fragment key={uuidv4()}>
+                    <Product>
+                      <ProductDetail>
+                        <Image src={item?.img} />
+                        <Details>
+                          <ProductName>
+                            <b>Product:</b> {item?.title}
+                          </ProductName>
+                          <ProductSize>
+                            <b>Size:</b> {item?.size}
+                          </ProductSize>
+                        </Details>
+                      </ProductDetail>
+                      <PriceDetail>
+                        <ProductAmountContainer>
+                          <Remove
+                            onClick={() =>
+                              handleClick("dec", item, item.productId)
+                            }
+                          />
+                          <ProductAmount>{item?.quantity}</ProductAmount>
+                          <Add
+                            onClick={() =>
+                              handleClick("add", item, item.productId)
+                            }
+                          />
+                        </ProductAmountContainer>
+                        <ProductPrice>
+                          Rs. {item?.price * item?.quantity}
+                        </ProductPrice>
+                      </PriceDetail>
+                    </Product>
+                    <Hr />
+                  </Fragment>
+                ))}
+              </Info>
+              <OrderSummary />
+            </Bottom>{" "}
+          </>
+        )}
       </Wrapper>
       <Footer />
     </Container>
