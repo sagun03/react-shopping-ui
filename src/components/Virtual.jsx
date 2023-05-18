@@ -45,7 +45,7 @@ const LeftDescription = styled.span`
   text-transform: uppercase;
   display: block;
   width: 20rem;
-  font-family: "Lucida Handwriting", "Lucida Handwriting", cursive;
+  font-family: "Lucida Handwriting", "Lucida Handwriting";
 `;
 const LeftBuyNow = styled.span`
   font-size: 1.6rem;

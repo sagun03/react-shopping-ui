@@ -31,24 +31,23 @@ const Info = styled.div`
 const Title = styled.h1`
   color: black;
   font-weight: bold;
-  font-family: Verdana, Fantasy;
   font-size: 1.7rem;
 
   ${ScreenWith1470px({ fontSize: "1.6rem" })}
   ${ScreenWith1200px({ fontSize: "1.5rem" })}
   ${ScreenWith670px({ fontSize: "1.3rem", marginTop: "1rem" })}
-  ${mobileS({ fontSize: "1rem", marginTop: "1.2rem" })}
-  ${mobileSuperSmall({ fontSize: "0.9rem" })}
+  ${mobileS({ fontSize: "1.2rem", marginTop: "1.2rem" })}
+  ${mobileSuperSmall({ fontSize: "1rem" })}
 `;
 
 const Detail = styled.div`
   font-size: 1rem;
-  font-family: "Lucida Handwriting", "Lucida Handwriting", cursive;
+  margin-top: 20px;
   ${ScreenWith1470px({ fontSize: "0.9rem", marginTop: "1rem" })}
   ${ScreenWith1200px({ fontSize: "0.8rem", marginTop: ".5rem" })}
-  ${ScreenWith670px({ fontSize: "0.6rem", marginTop: ".5rem" })}
-  ${mobileS({ fontSize: ".8rem", marginTop: ".rem" })}
-  ${mobileSuperSmall({ fontSize: "0.8rem" })}
+    ${ScreenWith670px({ fontSize: "0.8rem", marginTop: ".5rem" })}
+    ${mobileS({ fontSize: ".8rem", marginTop: ".5rem" })}
+    ${mobileSuperSmall({ fontSize: "0.8rem", marginTop: ".5rem" })};
 `;
 const Price = styled.div`
   font-weight: bold;
@@ -61,13 +60,11 @@ const Price = styled.div`
 
 const Button = styled.button`
   cursor: pointer;
-  border: none;
-  color: gray;
   font-weight: 600;
+  background-color: transparent;
   padding: 15px 0px;
   border-radius: 15px;
   text-transform: uppercase;
-  background-color: #e9f5f5;
   width: 100%;
   transition: all 0.5s ease;
   &:hover {

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { categories } from "../utils/data";
 import CategoryItem from "./CategoryItem";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectCards, Navigation, Pagination } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper";
 import "./styles.css";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -34,8 +34,6 @@ const EffectCardHeading = styled.span`
   font-size: 35px;
   font-weight: 500;
   background-color: #8bc6ec;
-  background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
-
   padding: 5px 10px;
   color: white;
 `;
@@ -44,6 +42,9 @@ const Categories = () => {
   return (
     <>
       <Container>
+        <HeadingContainer>
+          <EffectCardHeading>Popular Products</EffectCardHeading>
+        </HeadingContainer>
         <Swiper
           effect={"fade"}
           // centeredSlides={false}
@@ -78,7 +79,7 @@ const Categories = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <HeadingContainer>
+        {/* <HeadingContainer>
           <EffectCardHeading>Flip The Cards</EffectCardHeading>
         </HeadingContainer>
         <Swiper
@@ -93,7 +94,7 @@ const Categories = () => {
               <CategoryItem {...item} key={index} />
             </SwiperSlide>
           ))}
-        </Swiper>
+        </Swiper> */}
       </Container>
     </>
   );
