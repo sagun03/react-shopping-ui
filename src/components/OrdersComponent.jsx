@@ -6,8 +6,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 300px;
-  margin: 40px;
+  height: 500px;
+  margin: 130px 40px 60px;
   padding: 20px;
   background: aliceblue;
 `;

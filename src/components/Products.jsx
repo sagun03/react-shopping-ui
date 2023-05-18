@@ -155,7 +155,7 @@ const Products = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  console.log("productImageData", productImageData);
   const filterData = (name = "", title) => {
     if (name) {
       const filterData = popularProducts.filter(({ type }) => type === name);

@@ -4,6 +4,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ScreenWith670px } from "../responsive";
 import { getPrice } from "../utils/helper";
+import { useDispatch } from "react-redux";
+import { addProducts } from "../redux/cartRedux";
+import { v4 as uuidv4 } from "uuid";
+import { useState } from "react";
+import Alert from "./Alert";
 
 const Info = styled.div`
   opacity: 0;
@@ -44,7 +49,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color #F6F6F6;
+  background-color #fbfcfe;
 // background-image linear-gradient(315deg, #e7eff9 0%, #cfd6e6 74%);
   // background-image: linear-gradient(
   //   95.2deg,
@@ -89,14 +94,32 @@ const Icon = styled.div`
   }
 `;
 
-const Product = ({ img, id, title, size }) => {
+const Product = ({ img, id, title, size, ...rest }) => {
+  const dispatch = useDispatch();
+  const [openAlert, setOpenAlert] = useState(false);
+
+  const handleClick = () => {
+    dispatch(
+      addProducts({
+        ...rest,
+        img,
+        title,
+        size,
+        quantity: 1,
+        id,
+        price: getPrice(size),
+        productId: uuidv4(),
+      })
+    );
+    setOpenAlert(true);
+  };
   return (
     <WrapperContainer>
       <Container>
         {/* <Circle /> */}
         <Image src={img} />
         <Info>
-          <Icon>
+          <Icon onClick={handleClick}>
             <ShoppingCartOutlined />
           </Icon>
           <Icon>
@@ -111,6 +134,14 @@ const Product = ({ img, id, title, size }) => {
         <span style={{ marginTop: "10px" }}> Size: {size}</span>
         <span style={{ marginTop: "10px" }}> Price: Rs. {getPrice(size)}</span>
       </Content>
+      {openAlert && (
+        <Alert
+          open={openAlert}
+          type={"success"}
+          message={"Your Product has been added into Cart"}
+          setOpen={setOpenAlert}
+        />
+      )}
     </WrapperContainer>
   );
 };

@@ -159,6 +159,7 @@ export const popularProducts = [
     id: 20,
     img: Liquid2,
     type: "washingSoap",
+    title: "Washing Soap",
     size: "100 ml",
     productDescription:
       "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
@@ -168,6 +169,7 @@ export const popularProducts = [
     img: Liquid2,
     type: "washingSoap",
     size: "100 ml",
+    title: "Washing Soap",
     productDescription:
       "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
   },
@@ -175,6 +177,7 @@ export const popularProducts = [
     id: 22,
     img: Liquid2,
     type: "bathingSoap",
+    title: "Bathing Soap",
     size: "100 ml",
     productDescription:
       "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
@@ -183,6 +186,7 @@ export const popularProducts = [
     id: 23,
     img: Liquid2,
     type: "bathingSoap",
+    title: "Bathing Soap",
     size: "100 ml",
     productDescription:
       "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
@@ -192,6 +196,7 @@ export const popularProducts = [
     img: Liquid2,
     type: "handWash",
     size: "500 ml",
+    title: "Hand Wash",
     productDescription:
       "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
   },
@@ -199,6 +204,7 @@ export const popularProducts = [
     id: 24,
     img: Liquid2,
     type: "bathingSoap",
+    title: "Bathing Soap",
     size: "100 ml",
     productDescription:
       "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",

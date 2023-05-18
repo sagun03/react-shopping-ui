@@ -15,8 +15,9 @@ import OrderSummary from "../components/OrderSummary";
 const Container = styled.div``;
 
 const Wrapper = styled.div`
-  padding: 20px;
-  margin-bottom: 50px;
+  padding: 2.5rem;
+  margin-bottom: 5rem;
+  margin-top: 5rem;
   ${mobile({ padding: "10px" })}
 `;
 

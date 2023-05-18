@@ -13,13 +13,13 @@ import Slider from "./Slider";
 
 const SliderWrapper = styled.div`
   display: flex;
-  margin: 4.25rem 0rem 6rem;
+  margin: 7.25rem 0rem 6rem;
   justify-content: center;
   padding: 0 2rem;
   align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
-  ${mobile({ margin: "3.25rem 0rem" })}
+  ${mobile({ margin: "6.25rem 0rem" })}
 `;
 
 const LeftContainer = styled.div`

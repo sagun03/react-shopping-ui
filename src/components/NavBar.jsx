@@ -2,17 +2,30 @@ import React from "react";
 import styled from "styled-components";
 import { ShoppingCartOutlined } from "@material-ui/icons";
 import { Badge } from "@material-ui/core";
-import { mobile, ScreenWith670px } from "../responsive";
+import {
+  mobile,
+  mobileS,
+  mobileSuperSmall,
+  ScreenWith670px,
+} from "../responsive";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { auth } from "../firebase";
 import { useState } from "react";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import HomeIcon from "@material-ui/icons/Home";
 
 const Container = styled.div`
   height: 60px;
-  ${mobile({ height: "50px" })}
+  overflow: hidden;
+  background-color: white;
+  position: fixed;
+  top: 2.5%;
+  width: 100%;
+  z-index: 1299;
+  ${mobile({ height: "50px", top: "1.8%" })}
+  ${mobileS({ top: "1.6%" })}
+  ${mobileSuperSmall({ top: "1.3%" })}
 `;
 
 const Wrapper = styled.div`
@@ -80,12 +93,14 @@ const NavBar = () => {
     <Container>
       <Wrapper>
         <Left>
+          <Link to="/">
+            <MenuItem>
+              <HomeIcon />
+            </MenuItem>
+          </Link>
           {user.accessToken ? (
             <Link to="/orders">
-              <MenuItem>
-                {" "}
-                <AccountCircleIcon /> Orders
-              </MenuItem>
+              <MenuItem> Orders</MenuItem>
             </Link>
           ) : (
             <Link to="/register">
@@ -102,9 +117,9 @@ const NavBar = () => {
         <Right>
           {user.accessToken ? (
             <MenuItem>
-              {(user?.displayName?.slice(0, 2)?.toUpperCase() ||
-                user?.email?.slice(0, 2)?.toUpperCase() ||
-                user?.phoneNumber?.slice(0, 2)) + ".."}
+              {(user?.displayName?.slice(0, 5)?.toUpperCase() ||
+                user?.email?.slice(0, 5)?.toUpperCase() ||
+                user?.phoneNumber?.slice(0, 5)) + ".."}
             </MenuItem>
           ) : (
             <Link to="/login">

@@ -11,7 +11,8 @@ import { CustomButton } from "./OrderSummary";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 
 const LocationDialogBox = ({ open, setOpen }) => {
-  const handleClose = () => {
+  const handleClose = (event, reason) => {
+    if (reason && reason === "backdropClick") return;
     setPincode("");
     setOpen(false);
   };
@@ -42,6 +43,7 @@ const LocationDialogBox = ({ open, setOpen }) => {
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        disableEscapeKeyDown
       >
         <DialogTitle id="alert-dialog-title">
           <>

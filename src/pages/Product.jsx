@@ -13,8 +13,11 @@ import { useLocation } from "react-router";
 import { getPrice, getProductById } from "../utils/helper";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import Alert from "../components/Alert";
 
-const Container = styled.div``;
+const Container = styled.div`
+  margin-top: 50px;
+`;
 
 const Wrapper = styled.div`
   padding: 50px;
@@ -124,6 +127,7 @@ const Product = () => {
   const [size, setSize] = useState("100 ml");
   const [price, setPrice] = useState(30);
   const dispatch = useDispatch();
+  const [openAlert, setOpenAlert] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -150,6 +154,7 @@ const Product = () => {
         productId: uuidv4(),
       })
     );
+    setOpenAlert(true);
   };
 
   const handleQuantity = (type) => {
@@ -168,7 +173,7 @@ const Product = () => {
           <Image src={jkLiquid} />
         </ImgContainer>
         <InfoContainer>
-          <Title>Liquid Detergent</Title>
+          <Title>{product?.title}</Title>
           <Desc>{product?.productDescription}</Desc>
           <Price>Rs. {price}</Price>
           <FilterContainer>
@@ -198,6 +203,14 @@ const Product = () => {
       </Wrapper>
       <NewsLetter />
       <Footer />
+      {openAlert && (
+        <Alert
+          open={openAlert}
+          type={"success"}
+          message={"Your Product has been added into Cart"}
+          setOpen={setOpenAlert}
+        />
+      )}
     </Container>
   );
 };
