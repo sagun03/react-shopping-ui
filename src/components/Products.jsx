@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React, { useState } from "react";
 import { popularProducts } from "../utils/data";
 import Product from "./Product";
-import Plane from "../pages/images/plane.png";
+// import Plane from "../pages/images/plane.png";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import {
   mobileS,
@@ -19,6 +19,7 @@ import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect } from "react";
 import { useCallback } from "react";
+import productBackground from "../pages/images/productBackground.jpg";
 
 const Container = styled.div`
   display: flex;
@@ -31,13 +32,19 @@ const Container = styled.div`
   justify-content: center;
   gap: 2rem;
 `;
-const Image = styled.img``;
+// const Image = styled.img`
+//   position: relative;
+//   left: 50%;
+// `;
 const Heading = styled.h1`
+  padding-left: 120px;
   ${mobileS({
     fontSize: "1.7rem",
+    paddingLeft: "30px",
   })}
   ${mobileSuperSmall({
     fontSize: "1.5rem",
+    paddingLeft: "20px",
   })}
 `;
 
@@ -92,28 +99,26 @@ const ProductMenu = styled.li`
 `;
 const ProductImageContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  height: 28rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  height: 70rem;
   overflow-y: scroll;
 
   ${ScreenWith960px({
-    height: "35rem",
+    height: "70rem",
     gridTemplateColumns: "repeat(auto-fill, minmax(310px, 1fr))",
   })}
   ${ScreenWith670px({
-    height: "35rem",
-    gridTemplateColumns: "none",
+    height: "auto",
+    overflowY: "unset",
     display: "block",
   })}
 `;
-const ProductImageWrapper = styled.div`
-  height: 9rem;
-  position: relative;
-  overflow: hidden;
-  ${ScreenWith960px({
-    height: "12rem",
-  })}
+const ProductImageWrapper = styled.div``;
+const Wrapper = styled.div`
+  background-image: url(${productBackground});
+  padding: 120px 0px;
 `;
+
 const ListMenu = [
   { id: 1, title: "All", name: "" },
   { id: 2, title: "Liquid Detergent", name: "detergent" },
@@ -163,62 +168,67 @@ const Products = () => {
   };
 
   return (
-    <Container>
-      <Image src={Plane} />
-      <Heading>Our Featured Products</Heading>
-      <ProductsWrapper>
-        <ProductMenuList ref={parent}>
-          {ListMenu.map(({ id, title, name }) => (
-            <ProductMenu
-              selected={selected === title}
-              key={id}
-              onClick={() => filterData(name, title)}
-            >
-              {title}
-            </ProductMenu>
-          ))}
-        </ProductMenuList>
-        <ProductMenuListMobile ref={parent}>
-          <CustomButton
-            variant="contained"
-            startIcon={<FormatListBulletedIcon />}
-            onClick={handleClick}
-          >
-            {selected}
-          </CustomButton>
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-            ref={parent}
-            variant={"selectedMenu"}
-          >
-            {ListMenu.map(({ id, title, name }) => (
-              <>
-                {id !== 1 && <Divider />}
-                <MenuItem
-                  key={id}
-                  selected={selected === title}
-                  onClick={() => filterData(name, title)}
-                >
-                  {title}
-                </MenuItem>
-              </>
-            ))}
-          </Menu>
-        </ProductMenuListMobile>
+    <>
+      {/* <Image src={Plane} /> */}
 
-        <ProductImageContainer ref={parent}>
-          {productImageData.map((product) => (
-            <ProductImageWrapper key={product.id}>
-              <Product {...product} key={product.id} />
-            </ProductImageWrapper>
-          ))}
-        </ProductImageContainer>
-      </ProductsWrapper>
-    </Container>
+      <Wrapper>
+        <Heading>Our Products Range</Heading>
+      </Wrapper>
+      <Container>
+        <ProductsWrapper>
+          <ProductMenuList ref={parent}>
+            {ListMenu.map(({ id, title, name }) => (
+              <ProductMenu
+                selected={selected === title}
+                key={id}
+                onClick={() => filterData(name, title)}
+              >
+                {title}
+              </ProductMenu>
+            ))}
+          </ProductMenuList>
+          <ProductMenuListMobile ref={parent}>
+            <CustomButton
+              variant="contained"
+              startIcon={<FormatListBulletedIcon />}
+              onClick={handleClick}
+            >
+              {selected}
+            </CustomButton>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+              ref={parent}
+              variant={"selectedMenu"}
+            >
+              {ListMenu.map(({ id, title, name }) => (
+                <>
+                  {id !== 1 && <Divider />}
+                  <MenuItem
+                    key={id}
+                    selected={selected === title}
+                    onClick={() => filterData(name, title)}
+                  >
+                    {title}
+                  </MenuItem>
+                </>
+              ))}
+            </Menu>
+          </ProductMenuListMobile>
+
+          <ProductImageContainer ref={parent}>
+            {productImageData.map((product) => (
+              <ProductImageWrapper key={product.id}>
+                <Product {...product} key={product.id} />
+              </ProductImageWrapper>
+            ))}
+          </ProductImageContainer>
+        </ProductsWrapper>
+      </Container>
+    </>
   );
 };
 

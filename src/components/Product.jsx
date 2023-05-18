@@ -2,15 +2,17 @@ import { SearchOutlined, ShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components";
 import React from "react";
 import { Link } from "react-router-dom";
+import { ScreenWith670px } from "../responsive";
+import { getPrice } from "../utils/helper";
 
 const Info = styled.div`
   opacity: 0;
-  height: inherit;
+  height: 100%;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: 3;
   display: flex;
   align-items: center;
@@ -19,37 +21,56 @@ const Info = styled.div`
   cursor: pointer;
   gap: 2rem;
 `;
+const WrapperContainer = styled.div`
+  height: 30rem;
+  margin: 20px;
+  position: relative;
+  overflow: hidden;
+  ${ScreenWith670px({
+    margin: 0,
+  })}
+`;
+
+const Content = styled.div`
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  margin: 10px;
+`;
 
 const Container = styled.div`
   margin: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(
-    95.2deg,
-    rgba(173, 252, 234, 1) 26.8%,
-    rgba(192, 229, 246, 1) 64%
-  );
+  background-color #F6F6F6;
+// background-image linear-gradient(315deg, #e7eff9 0%, #cfd6e6 74%);
+  // background-image: linear-gradient(
+  //   95.2deg,
+  //   rgba(173, 252, 234, 1) 26.8%,
+  //   rgba(192, 229, 246, 1) 64%
+  // );
   position: relative;
-  height: inherit;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  height: 75%;
+  // box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+  //   rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
   &:hover ${Info} {
     opacity: 1;
   }
 `;
-const Circle = styled.div`
-  width: 8rem;
-  height: 7rem;
-  border-radius: 50%;
-  background-color: white;
-  position: absolute;
-`;
+// const Circle = styled.div`
+//   width: 8rem;
+//   height: 7rem;
+//   border-radius: 50%;
+//   background-color: white;
+//   position: absolute;
+// `;
 
 const Image = styled.img`
   z-index: 2;
-  height: 7rem;
+  height: 90%;
   margin-left: 1rem;
 `;
 const Icon = styled.div`
@@ -68,22 +89,29 @@ const Icon = styled.div`
   }
 `;
 
-const Product = ({ img, id }) => {
+const Product = ({ img, id, title, size }) => {
   return (
-    <Container>
-      <Circle />
-      <Image src={img} />x
-      <Info>
-        <Icon>
-          <ShoppingCartOutlined />
-        </Icon>
-        <Icon>
-          <Link to={`/product/${id}`}>
-            <SearchOutlined />
-          </Link>
-        </Icon>
-      </Info>
-    </Container>
+    <WrapperContainer>
+      <Container>
+        {/* <Circle /> */}
+        <Image src={img} />
+        <Info>
+          <Icon>
+            <ShoppingCartOutlined />
+          </Icon>
+          <Icon>
+            <Link to={`/product/${id}`}>
+              <SearchOutlined />
+            </Link>
+          </Icon>
+        </Info>
+      </Container>
+      <Content>
+        <span style={{ marginTop: "10px" }}>Name: {title}</span>
+        <span style={{ marginTop: "10px" }}> Size: {size}</span>
+        <span style={{ marginTop: "10px" }}> Price: Rs. {getPrice(size)}</span>
+      </Content>
+    </WrapperContainer>
   );
 };
 
