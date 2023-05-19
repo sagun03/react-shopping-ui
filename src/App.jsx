@@ -6,23 +6,11 @@ import Login from "./pages/Login";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 import Cart from "./pages/Cart";
 import "./App.css";
-import { useEffect } from "react";
-import { auth } from "./firebase";
 import PhoneSignUp from "./pages/PhoneSignUp";
-import { useState } from "react";
 import Orders from "./pages/Orders";
 import Checkout from "./pages/Checkout";
 
 const App = () => {
-  const [accessToken, setAccessToken] = useState("");
-  console.log("accessToken", accessToken);
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setAccessToken(user?.accessTOken);
-      }
-    });
-  }, []);
   return (
     <>
       <UserAuthContextProvider>

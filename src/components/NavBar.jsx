@@ -2,12 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ShoppingCartOutlined } from "@material-ui/icons";
 import { Badge } from "@material-ui/core";
-import {
-  mobile,
-  mobileS,
-  mobileSuperSmall,
-  ScreenWith670px,
-} from "../responsive";
+import { mobile, mobileSuperSmall, ScreenWith670px } from "../responsive";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
@@ -20,12 +15,11 @@ const Container = styled.div`
   overflow: hidden;
   background-color: white;
   position: fixed;
-  top: 2.5%;
+  top: 20px;
   width: 100%;
   z-index: 1299;
-  ${mobile({ height: "50px", top: "1.8%" })}
-  ${mobileS({ top: "1.6%" })}
-  ${mobileSuperSmall({ top: "1.3%" })}
+  ${mobile({ height: "50px", top: "20px" })}
+  ${mobileSuperSmall({ top: "15px" })}
 `;
 
 const Wrapper = styled.div`

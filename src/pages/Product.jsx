@@ -139,7 +139,6 @@ const Product = () => {
 
   useEffect(() => {
     if (id) {
-      console.log("getProductById(id)", getProductById(id));
       setProduct(getProductById(+id));
     }
   }, [id]);

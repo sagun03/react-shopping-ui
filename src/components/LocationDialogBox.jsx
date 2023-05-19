@@ -18,24 +18,7 @@ const LocationDialogBox = ({ open, setOpen }) => {
   };
   const cart = useSelector((state) => state.cart);
   const [pincode, setPincode] = useState("");
-  console.log(
-    cart?.product,
-    "result",
-    <>
-      Hi I want to order these items from your website, these are the following:{" "}
-      {cart?.products?.map(
-        (item, index) =>
-          `${index + 1}: Name: ${item?.title} Quantity: ${
-            item?.quantity
-          } Size: ${item?.size}. Your Final Total Amount is Rs. ${
-            cart?.total < 200
-              ? cart?.total
-              : cart?.total - ((20 / 100) * cart?.total + 0.0).toFixed(2)
-          }
-          ${cart?.total < 200 && +`, with discount of 20%`}`
-      )}
-    </>
-  );
+
   return (
     <div>
       <Dialog

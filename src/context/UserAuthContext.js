@@ -24,7 +24,6 @@ export const UserAuthContextProvider = ({ children }) => {
   const logOut = () => {
     signOut(auth);
   };
-  console.log("user", user);
 
   const googleSignIn = () => {
     const googleAuthProvider = new GoogleAuthProvider();
@@ -39,7 +38,8 @@ export const UserAuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      const userData = currentUser?.providerData;
+      setUser(userData);
     });
 
     return () => {
@@ -48,7 +48,7 @@ export const UserAuthContextProvider = ({ children }) => {
   }, []);
   return (
     <userAuthContext.Provider
-      value={{ signUp, login, logOut, googleSignIn, setUpRecaptcha }}
+      value={{ signUp, login, logOut, googleSignIn, setUpRecaptcha, user }}
     >
       {children}
     </userAuthContext.Provider>

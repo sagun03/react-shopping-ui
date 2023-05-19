@@ -136,14 +136,15 @@ const Products = () => {
   const [parent] = useAutoAnimate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selected, setSelected] = useState("All");
+
   const getProducts = useCallback(async () => {
     try {
       const data = await getDocs(productCollectionRef);
       setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     } catch (err) {
-      console.log(err, products);
+      console.log(err);
     }
-  }, [products, productCollectionRef]);
+  }, [productCollectionRef]);
   useEffect(() => {
     if (false) getProducts();
   }, [getProducts]);
@@ -155,7 +156,7 @@ const Products = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  console.log("productImageData", productImageData);
+  console.log("products", products);
   const filterData = (name = "", title) => {
     if (name) {
       const filterData = popularProducts.filter(({ type }) => type === name);
