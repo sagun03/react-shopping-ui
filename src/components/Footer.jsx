@@ -6,6 +6,8 @@ import { mobile, ScreenWith670px } from "../responsive";
 
 const Cointainer = styled.div`
   display: flex;
+  background-color: #f8fcff;
+  padding-top: 30px;
   ${mobile({ flexDirection: "column" })}
 `;
 

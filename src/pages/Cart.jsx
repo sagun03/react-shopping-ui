@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import { mobile, ScreenWith670px, ScreenWith960px } from "../responsive";
 import { useSelector } from "react-redux";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct, removeProducts } from "../redux/cartRedux";
 import { v4 as uuidv4 } from "uuid";
@@ -156,6 +156,10 @@ const CartImage = styled.img`
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleClick = (type, item, id = "") => {
     if (type === "dec") {
