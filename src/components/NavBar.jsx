@@ -1,7 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { ShoppingCartOutlined } from "@material-ui/icons";
-import { Badge } from "@material-ui/core";
+import {
+  Backdrop,
+  Badge,
+  CircularProgress,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  withStyles,
+} from "@material-ui/core";
 import { mobile, mobileSuperSmall, ScreenWith670px } from "../responsive";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -9,6 +17,9 @@ import { useEffect } from "react";
 import { auth } from "../firebase";
 import { useState } from "react";
 import HomeIcon from "@material-ui/icons/Home";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { useUserAuth } from "../context/UserAuthContext";
+import Alert from "./Alert";
 
 const Container = styled.div`
   height: 60px;
@@ -73,8 +84,68 @@ const MenuItem = styled.div`
   ${mobile({ fontSize: "12px" })}
 `;
 
+const StyledMenu = withStyles({
+  paper: {
+    background: "teal",
+    color: "white",
+    marginTop: "10px",
+    "&:hover": {
+      background: "#59b3b5",
+    },
+  },
+})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: "bottom",
+      horizontal: "center",
+    }}
+    transformOrigin={{
+      vertical: "top",
+      horizontal: "center",
+    }}
+    {...props}
+  />
+));
+
+const StyledMenuItem = withStyles(() => ({
+  root: {
+    "&:focus": {
+      backgroundColor: "grey",
+      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
+        color: "white",
+      },
+    },
+  },
+}))(MenuItem);
+const StyledListIcon = withStyles(() => ({
+  root: {
+    display: "flex",
+    justifyContent: "center",
+    color: "white !important",
+  },
+}))(ListItemIcon);
+const StyledListText = withStyles(() => ({
+  root: {
+    marginRight: "18px",
+  },
+}))(ListItemText);
+
 const NavBar = () => {
   const [user, setUser] = useState({});
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [error, setError] = useState(false);
+  const { logOut } = useUserAuth();
+  const [loading, setLoading] = useState(false);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -82,6 +153,22 @@ const NavBar = () => {
       }
     });
   }, []);
+  const onClickHandler = async (e) => {
+    try {
+      setAnchorEl(null);
+      setLoading(true);
+      e.preventDefault();
+      await logOut();
+      setTimeout(() => {
+        setLoading(false);
+        window.location.reload();
+      }, 1000);
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+      setError(true);
+    }
+  };
   const { quantity } = useSelector((state) => state.cart);
   return (
     <Container>
@@ -94,7 +181,7 @@ const NavBar = () => {
           </Link>
           {user.accessToken ? (
             <Link to="/orders">
-              <MenuItem> Orders</MenuItem>
+              <MenuItem>My Orders</MenuItem>
             </Link>
           ) : (
             <Link to="/register">
@@ -110,11 +197,27 @@ const NavBar = () => {
         </Link>
         <Right>
           {user.accessToken ? (
-            <MenuItem>
-              {(user?.displayName?.slice(0, 5)?.toUpperCase() ||
-                user?.email?.slice(0, 5)?.toUpperCase() ||
-                user?.phoneNumber?.slice(0, 5)) + ".."}
-            </MenuItem>
+            <>
+              <MenuItem onClick={handleClick}>
+                {(user?.displayName?.slice(0, 5)?.toUpperCase() ||
+                  user?.email?.slice(0, 5)?.toUpperCase() ||
+                  user?.phoneNumber?.slice(0, 5)) + ".."}
+              </MenuItem>
+              <StyledMenu
+                id="customized-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <StyledMenuItem onClick={onClickHandler}>
+                  <StyledListIcon>
+                    <ExitToAppIcon fontSize="small" />
+                  </StyledListIcon>
+                  <StyledListText primary="Logout" />
+                </StyledMenuItem>
+              </StyledMenu>
+            </>
           ) : (
             <Link to="/login">
               <MenuItem>SIGN IN</MenuItem>
@@ -129,6 +232,17 @@ const NavBar = () => {
           </MenuItem>
         </Right>
       </Wrapper>
+      {error && (
+        <Alert
+          open={error}
+          type={"error"}
+          message={"Something Went Wrong, Please try again"}
+          setOpen={setError}
+        />
+      )}
+      <Backdrop open={loading} onClick={() => setLoading(false)}>
+        <CircularProgress color="primary" />
+      </Backdrop>
     </Container>
   );
 };

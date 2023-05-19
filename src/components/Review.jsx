@@ -5,85 +5,74 @@ import {
   ListItem,
   ListItemText,
   Typography,
+  withStyles,
 } from "@material-ui/core";
 import * as React from "react";
 
-const products = [
-  {
-    name: "Product 1",
-    desc: "A nice thing",
-    price: "$9.99",
+const StyledList = withStyles(() => ({
+  root: {
+    width: "100%",
+    border: "2px solid steelblue",
+    height: "180px",
+    overflowY: "scroll",
+    "@media only screen and (max-width: 550px)": {
+      height: "280px",
+    },
   },
-  {
-    name: "Product 2",
-    desc: "Another thing",
-    price: "$3.45",
-  },
-  {
-    name: "Product 3",
-    desc: "Something else",
-    price: "$6.51",
-  },
-  {
-    name: "Product 4",
-    desc: "Best thing of all",
-    price: "$14.11",
-  },
-  { name: "Shipping", desc: "", price: "Free" },
-];
-const addresses = ["1 MUI Drive", "Reactville", "Anytown", "99999", "USA"];
-const payments = [
-  { name: "Card type", detail: "Visa" },
-  { name: "Card holder", detail: "Mr John Smith" },
-  { name: "Card number", detail: "xxxx-xxxx-xxxx-1234" },
-  { name: "Expiry date", detail: "04/2024" },
-];
+}))(List);
 
-const Review = () => {
+const StyledListItem = withStyles(() => ({
+  root: {
+    border: "1px solid aliceblue",
+    gap: "3rem",
+    "@media only screen and (max-width: 550px)": {
+      gap: "2rem",
+    },
+  },
+}))(ListItem);
+
+const Review = ({ products, order }) => {
+  console.log(products, order);
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Order summary
+      <Typography variant="h9" gutterBottom>
+        Date: {order?.date}
       </Typography>
-      <List disablePadding>
-        {products.map((product) => (
-          <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
-          </ListItem>
+      <Typography variant="h6" gutterBottom>
+        Order summary ({order?.status})
+      </Typography>
+      <StyledList disablePadding>
+        {products.map((product, index) => (
+          <StyledListItem key={product.title} sx={{ py: 1, px: 0 }}>
+            <ListItemText
+              primary={
+                <>
+                  {index + 1}. {product.title}
+                  <> ({product?.quantity})</>
+                </>
+              }
+              secondary={product.size}
+            />
+            <Typography variant="body2">
+              {<> Rs. {product.price} </>}
+            </Typography>
+          </StyledListItem>
         ))}
-        <ListItem sx={{ py: 1, px: 0 }}>
+        <StyledListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            $34.06
+            Rs. {order?.total}
           </Typography>
-        </ListItem>
-      </List>
+        </StyledListItem>
+      </StyledList>
       <Divider />
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
+      <Grid style={{ width: "100%" }}>
+        <Grid item>
           <Typography variant="h6" gutterBottom style={{ marginTop: "20px" }}>
-            Shipping
+            Shipping Address:
           </Typography>
-          <Typography gutterBottom>John Smith</Typography>
-          <Typography gutterBottom>{addresses.join(", ")}</Typography>
-        </Grid>
-        <Grid item container direction="column" xs={12} sm={6}>
-          <Typography variant="h6" gutterBottom style={{ marginTop: "20px" }}>
-            Payment details
-          </Typography>
-          <Grid container>
-            {payments.map((payment) => (
-              <React.Fragment key={payment.name}>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.name}</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.detail}</Typography>
-                </Grid>
-              </React.Fragment>
-            ))}
-          </Grid>
+          <Typography gutterBottom>{order?.name}</Typography>
+          <Typography gutterBottom>{order?.address}</Typography>
         </Grid>
       </Grid>
     </React.Fragment>

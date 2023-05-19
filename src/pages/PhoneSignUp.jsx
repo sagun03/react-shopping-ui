@@ -1,4 +1,6 @@
 import {
+  Backdrop,
+  CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
@@ -23,6 +25,7 @@ const PhoneSignUp = () => {
   const [confirmObj, setConfirmObj] = useState({});
   const { setUpRecaptcha } = useUserAuth();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
   const getOtp = async (e) => {
     e.preventDefault();
     if (number === "" || number === undefined) {
@@ -40,6 +43,7 @@ const PhoneSignUp = () => {
   };
 
   const verifyOtp = async (e) => {
+    setLoading(true);
     e.preventDefault();
     if (otp === "" || otp === null) return;
     try {
@@ -48,6 +52,7 @@ const PhoneSignUp = () => {
       navigate("/");
     } catch (err) {
       setError(err.message);
+      setLoading(false);
     }
   };
   const onChangeHandler = (number) => {
@@ -109,6 +114,9 @@ const PhoneSignUp = () => {
             </DialogActions>
           </Dialog>
         </Wrapper>
+        <Backdrop open={loading} onClick={() => setLoading(false)}>
+          <CircularProgress color="primary" />
+        </Backdrop>
       </Container>
     </>
   );

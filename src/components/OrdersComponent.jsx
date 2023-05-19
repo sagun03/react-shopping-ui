@@ -6,22 +6,56 @@ import styled from "styled-components";
 import { db } from "../firebase";
 import { useUserAuth } from "../context/UserAuthContext";
 import { CircularProgress } from "@material-ui/core";
+import Review from "./Review";
+import { mobile } from "../responsive";
 
 const Wrapper = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  height: 500px;
-  margin: 130px 40px 60px;
+  flex-direction: row;
+  height: fit-content;
+  flex-wrap: wrap;
+  margin: 30px 40px 60px;
   padding: 20px;
-  background: aliceblue;
+  gap: 2rem;
+  background: #bde0ff;
+  // width: 90%;
+  // display: grid;
+  // grid-template-columns: 25% auto;
+  ${mobile({
+    flexDirection: "column",
+    margin: "30px 5px 10px",
+  })}
+`;
+
+const OrderWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 350px;
+  margin-top: 20px;
+  padding: 20px;
+  background: #e2eaff;
+  ${mobile({
+    height: "450px",
+  })}
+`;
+const Title = styled.h1`
+  font-weight: 300;
+  text-align: center;
+  margin-top: 100px;
 `;
 
 const OrdersComponent = () => {
   const ordersCollectionRef = collection(db, "order");
   const { user } = useUserAuth();
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const [userOrders, setUserOrders] = useState(undefined);
   const getOrders = useCallback(async () => {
@@ -45,23 +79,20 @@ const OrdersComponent = () => {
   });
   return (
     <>
+      <Title>Your Orders</Title>
       {!loading &&
         (userOrders?.length > 0 ? (
-          <Wrapper>
-            your orders:{" "}
-            {userOrders?.map((order) => (
-              <>
-                Total: {order?.total} \n Status: {order?.status} \n Address:{" "}
-                {order?.address} \n Products:{" "}
-                {order?.products.map((product, index) => (
-                  <>
-                    {" "}
-                    {index + 1}: Name: {product?.title}
-                  </>
-                ))}
-              </>
-            ))}{" "}
-          </Wrapper>
+          <>
+            <Wrapper>
+              {userOrders?.map((order) => (
+                <>
+                  <OrderWrapper>
+                    <Review order={order} products={order?.products} />
+                  </OrderWrapper>
+                </>
+              ))}{" "}
+            </Wrapper>
+          </>
         ) : (
           <Wrapper>No orders yet... but I can smell them coming!</Wrapper>
         ))}

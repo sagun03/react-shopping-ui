@@ -22,6 +22,7 @@ export const UserAuthContextProvider = ({ children }) => {
     signInWithEmailAndPassword(auth, email, password);
 
   const logOut = () => {
+    console.log("inside logout");
     signOut(auth);
   };
 
@@ -48,7 +49,16 @@ export const UserAuthContextProvider = ({ children }) => {
   }, []);
   return (
     <userAuthContext.Provider
-      value={{ signUp, login, logOut, googleSignIn, setUpRecaptcha, user }}
+      value={{
+        signUp,
+        login,
+        logOut,
+        googleSignIn,
+        setUpRecaptcha,
+        user,
+        signOut,
+        auth,
+      }}
     >
       {children}
     </userAuthContext.Provider>

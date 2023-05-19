@@ -7,7 +7,6 @@ const CustomAlert = (props) => {
 };
 
 const Alert = ({ type, message, open, setOpen }) => {
-  console.log("open", open);
   const getAlert = (type, message) => {
     // eslint-disable-next-line default-case
     switch (type) {
