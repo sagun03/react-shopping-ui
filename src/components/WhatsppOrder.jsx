@@ -7,7 +7,7 @@ const Container = styled.div``;
 const WhatsappOrder = () => {
   return (
     <Container>
-      <OrderSummary />{" "}
+      <OrderSummary />
     </Container>
   );
 };

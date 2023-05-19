@@ -9,13 +9,22 @@ import { TextField } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { CustomButton } from "./OrderSummary";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
+import { useUserAuth } from "../context/UserAuthContext";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../redux/cartRedux";
 
 const LocationDialogBox = ({ open, setOpen }) => {
+  const dispatch = useDispatch();
+
   const handleClose = (event, reason) => {
     if (reason && reason === "backdropClick") return;
     setPincode("");
     setOpen(false);
   };
+  const handleClick = () => {
+    dispatch(clearCart());
+  };
+  const { user } = useUserAuth();
   const cart = useSelector((state) => state.cart);
   const [pincode, setPincode] = useState("");
 
@@ -62,8 +71,11 @@ const LocationDialogBox = ({ open, setOpen }) => {
             </Button>
             {pincode === "246761" && (
               <a
+                target="_blank"
                 href={`https://wa.me/917017932528?text=${encodeURIComponent(
-                  `Hi I want to order these items from your website, these are the following: \n ${cart?.products?.map(
+                  `Hi I want to order these items from your website userId: ${
+                    (Array.isArray(user) && user[0]?.uid) || ""
+                  }, these are the following: \n ${cart?.products?.map(
                     (item, index) =>
                       `${index + 1}: Name: ${item?.title}, Quantity: ${
                         item?.quantity
@@ -76,9 +88,10 @@ const LocationDialogBox = ({ open, setOpen }) => {
                   } ${cart?.total > 200 ? `, with discount of 20%` : ""}
                   `
                 )}`}
+                rel="noreferrer"
               >
                 <CustomButton
-                  onClick={handleClose}
+                  onClick={() => handleClick()}
                   variant="contained"
                   startIcon={<WhatsAppIcon />}
                 >
