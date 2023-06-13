@@ -13,7 +13,7 @@ import Slider from "./Slider";
 
 const SliderWrapper = styled.div`
   display: flex;
-  margin: 7.25rem 0rem 6rem;
+  margin: 5rem 0rem 6rem;
   justify-content: center;
   padding: 0 2rem;
   align-items: center;
@@ -46,16 +46,36 @@ const RightContainer = styled.div`
   ${ScreenWith960px({ width: "650px", height: "500px" })}
 `;
 
+const HeadingContainer = styled.div`
+  // border-bottom: 1px solid black;
+  text-align: center;
+`;
+
+const EffectCardHeading = styled.div`
+  padding: 5px 10px;
+  color: black;
+  font-family: Roboto;
+  font-size: 48px;
+  font-weight: 400;
+  color: #333;
+  margin: 6rem 0rem 0rem;
+`;
+
 const SliderContainer = () => {
   return (
-    <SliderWrapper data-test-id="SliderWrapper">
-      <LeftContainer>
-        <Slider />
-      </LeftContainer>
-      <RightContainer>
-        <RightSlider />
-      </RightContainer>
-    </SliderWrapper>
+    <>
+      <HeadingContainer>
+        <EffectCardHeading>Featured Categories</EffectCardHeading>
+      </HeadingContainer>
+      <SliderWrapper data-test-id="SliderWrapper">
+        <LeftContainer>
+          <Slider />
+        </LeftContainer>
+        <RightContainer>
+          <RightSlider />
+        </RightContainer>
+      </SliderWrapper>
+    </>
   );
 };
 

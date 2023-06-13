@@ -1,12 +1,16 @@
 import jkLiquid from "../pages/images/jkl.png";
 import Liquid2 from "../pages/images/liquid2.png";
 import HandWash from "../pages/images/handWash.png";
+import FrontLoadCollection1 from "../pages/images/frontLoadCollection1.png";
+// import DishGel from "../pages/images/DishGel.png";
+import HandwashColection3 from "../pages/images/handwashCollection3.png";
+import ToiletColection3 from "../pages/images/ToiletCollection3.png";
 
 export const SlidesItems = [
   {
     id: 1,
     img: Liquid2,
-    title: "LIQUID DETERGENTS",
+    title: "Liquid Detergents",
     desc: "DON'T COMPROMISE ON CLEANING! GET FLAT 20% FOR NEW USERS",
     productDescription:
       "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
@@ -208,5 +212,26 @@ export const popularProducts = [
     size: "100 ml",
     productDescription:
       "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+  },
+];
+
+export const ClouserItems = [
+  {
+    id: 3,
+    img: HandwashColection3,
+    title: "Handwash Collection",
+    desc: "Keep Your Hands Protected and Refreshed with Our Handwash Collection",
+  },
+  {
+    id: 1,
+    img: FrontLoadCollection1,
+    title: "Liquid Detergent Collection",
+    desc: "Experience the Power of Clean with Our Liquid Detergent Collection",
+  },
+  {
+    id: 2,
+    img: ToiletColection3,
+    title: "Toilet Cleaner Collection",
+    desc: "Say Goodbye to Stubborn Stains and Embrace a Spotless Toilet with Our Toilet Cleaner Collection",
   },
 ];

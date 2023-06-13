@@ -12,11 +12,11 @@ import {
 } from "../responsive";
 
 const VirtualContainer = styled.div`
-  margin: 5rem auto;
-  padding: 1rem 2rem;
+  margin: 5rem auto 0rem;
+  padding: 5rem 2rem 10rem;
   display: flex;
   justify-content: space-around;
-
+  background: rgb(248, 250, 255);
   ${ScreenWith960px({
     gap: "1rem",
     flexDirection: "column",
@@ -38,18 +38,21 @@ const LeftHeading = styled.span`
   font-size: 2rem;
   text-transform: uppercase;
   display: block;
-  font-weight: bold;
+  font-family: Roboto;
+  font-size: 48px;
+  font-weight: 400;
 `;
 const LeftDescription = styled.span`
-  font-size: 1.6rem;
-  text-transform: uppercase;
+  font-size: 1.4rem;
   display: block;
   width: 20rem;
-  font-family: "Lucida Handwriting", "Lucida Handwriting";
+  font-family: Roboto;
+  font-weight: 300;
 `;
 const LeftBuyNow = styled.span`
   font-size: 1.6rem;
   font-weight: bold;
+  font-family: Roboto;
 `;
 const Image = styled.img`
   position: absolute;
@@ -83,22 +86,56 @@ const ImageContainer = styled.div`
   })}
 `;
 
+const Svg = styled.svg`
+  position: relative;
+  right: 0px;
+  z-index: 0;
+  width: 100%;
+  height: auto;
+  top: auto;
+  bottom: 4rem;
+  transform: rotateZ(-180deg);
+`;
+
 const Virtual = () => {
   return (
-    <VirtualContainer>
-      <LeftWrapper>
-        <LeftHeading>Virtual Try-On</LeftHeading>
-        <LeftDescription>Never Buy the wrong Detergent Again!</LeftDescription>
-        <LeftBuyNow>Try Now!</LeftBuyNow>
-        <Image src={LiquidIcon} />
-      </LeftWrapper>
+    <>
+      <VirtualContainer>
+        <LeftWrapper>
+          <LeftHeading>Virtual Try-On</LeftHeading>
+          <LeftDescription>
+            Never Buy the wrong Detergent Again!
+          </LeftDescription>
+          <LeftBuyNow>Try Now!</LeftBuyNow>
+          <Image src={LiquidIcon} />
+        </LeftWrapper>
 
-      <RightWrapper>
-        <ImageContainer>
-          <ReactCompareImage leftImage={After} rightImage={Before} />
-        </ImageContainer>
-      </RightWrapper>
-    </VirtualContainer>
+        <RightWrapper>
+          <ImageContainer>
+            <ReactCompareImage leftImage={After} rightImage={Before} />
+          </ImageContainer>
+        </RightWrapper>
+      </VirtualContainer>
+      <Svg
+        width="1600"
+        height="100"
+        viewBox="0 0 1600 100"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0)">
+          <path
+            d="M1198 43.1753C1403.45 43.1753 1600 73.398 1600 73.398V0H0.00012207V50.3484C0.00012207 50.3484 225.015 100 477.6 100C756.866 100 883.158 43.1753 1198 43.1753Z"
+            fill="#ffff"
+          ></path>
+        </g>
+        <defs>
+          <clipPath id="clip0">
+            <path d="M0 0H1600V100H0V0Z" fill="white"></path>
+          </clipPath>
+        </defs>
+      </Svg>
+    </>
   );
 };
 

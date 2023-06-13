@@ -37,14 +37,18 @@ const Container = styled.div`
 //   left: 50%;
 // `;
 const Heading = styled.h1`
-  padding-left: 120px;
+  // padding-left: 120px;
+  font-family: Roboto;
+  font-size: 38px;
+
+  font-weight: 400;
   ${mobileS({
     fontSize: "1.7rem",
-    paddingLeft: "30px",
+    // paddingLeft: "30px",
   })}
   ${mobileSuperSmall({
     fontSize: "1.5rem",
-    paddingLeft: "20px",
+    // paddingLeft: "20px",
   })}
 `;
 
@@ -62,10 +66,10 @@ const ProductMenuList = styled.ul`
   gap: 2rem;
   font-weight: 500;
   font-size: 1.3rem;
-
+  margin-top: 4rem;
   ${ScreenWith960px({
     display: "none",
-  })}
+  })};
 `;
 const ProductMenuListMobile = styled.div`
   display: none;
@@ -77,8 +81,8 @@ const ProductMenuListMobile = styled.div`
 `;
 const CustomButton = styled(Button)`
   &.MuiButton-root {
-    background-color: #0396ff;
-    border-color: #0396ff;
+    background-color: #0077CC;;
+    border-color: #0077CC;;
     color: white;
     &:hover {
       box-shadow: none;
@@ -95,6 +99,9 @@ const ProductMenu = styled.li`
     color: #0396ff;
     cursor: pointer;
   }
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
   color: ${(props) => props.selected && "#0396ff"};
 `;
 const ProductImageContainer = styled.div`
@@ -115,8 +122,20 @@ const ProductImageContainer = styled.div`
 `;
 const ProductImageWrapper = styled.div``;
 const Wrapper = styled.div`
-  background-image: url(${productBackground});
-  padding: 120px 0px;
+  // background-image: url(${productBackground});
+  // background: linear-gradient(
+  //   rgba(243, 251, 255, 0) 7.46%,
+  //   rgb(214, 237, 255) 56.5%
+  // );
+  background: linear-gradient(
+      0deg,
+      rgba(242, 246, 255, 0) 0%,
+      rgb(242, 246, 255) 100%
+    ),
+    rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  padding: 80px 0px 30px;
 `;
 
 const ListMenu = [
@@ -188,9 +207,10 @@ const Products = () => {
               </ProductMenu>
             ))}
           </ProductMenuList>
-          <ProductMenuListMobile ref={parent}>
+          <ProductMenuListMobile>
             <CustomButton
               variant="contained"
+              color="inherit"
               startIcon={<FormatListBulletedIcon />}
               onClick={handleClick}
             >
@@ -200,9 +220,9 @@ const Products = () => {
               id="simple-menu"
               anchorEl={anchorEl}
               keepMounted
+              color="inherit"
               open={Boolean(anchorEl)}
               onClose={handleClose}
-              ref={parent}
               variant={"selectedMenu"}
             >
               {ListMenu.map(({ id, title, name }) => (
@@ -210,6 +230,11 @@ const Products = () => {
                   {id !== 1 && <Divider />}
                   <MenuItem
                     key={id}
+                    style={{
+                      fontFamily: "Roboto",
+                      fontSize: "28px",
+                      fontWeight: "400",
+                    }}
                     selected={selected === title}
                     onClick={() => filterData(name, title)}
                   >

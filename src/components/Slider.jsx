@@ -9,6 +9,8 @@ import {
   ScreenWith960px,
 } from "../responsive";
 import { Link } from "react-router-dom";
+import AnimateIn from "../customeHooks/AnimateIn";
+// import { Animate } from "../customeHooks/AnimateIn";
 
 const Container = styled.div`
   width: 100%;
@@ -91,34 +93,58 @@ const InfoContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 50px;
+  font-size: 40px;
+  font-weight: 400;
   text-align: center;
-  ${ScreenWith1200px({ fontSize: "40px" })}
-  ${ScreenWith1080px({ fontSize: "35px" })}
-  ${ScreenWith960px({ fontSize: "50px" })}
-  ${ScreenWith670px({ fontSize: "40px" })}
-  ${mobile({ fontSize: "20px" })}
+  // animation: 2s anim-lineUp ease-out infinite;
+  ${ScreenWith1200px({ fontSize: "30px" })}
+  ${ScreenWith1080px({ fontSize: "25px" })}
+  ${ScreenWith960px({ fontSize: "40px" })}
+  ${ScreenWith670px({ fontSize: "30px" })}
+  ${mobile({ fontSize: "20px" })} // @keyframes anim-lineUp {
+  //   0% {
+  //     opacity: 0;
+  //     transform: translateY(80%);
+  //   }
+  //   20% {
+  //     opacity: 0;
+  //   }
+  //   50% {
+  //     opacity: 1;
+  //     transform: translateY(0%);
+  //   }
+  //   100% {
+  //     opacity: 1;
+  //     transform: translateY(0%);
+  //   }
+  // }
 `;
 
 const Desc = styled.p`
   margin: 50px 0px;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 400;
   letter-spacing: 3px;
   text-align: center;
 
-  ${ScreenWith1200px({ fontSize: "20px", margin: "30px 0px" })}
-  ${ScreenWith1080px({ fontSize: "15px" })}
-  ${ScreenWith960px({ fontSize: "20px" })}
-  ${ScreenWith670px({ fontSize: "20px" })}
+  ${ScreenWith1200px({ fontSize: "15px", margin: "30px 0px" })}
+  ${ScreenWith1080px({ fontSize: "10px" })}
+  ${ScreenWith960px({ fontSize: "15px" })}
+  ${ScreenWith670px({ fontSize: "15px" })}
   ${mobile({ fontSize: "10px" })}
 `;
 
 const Button = styled.button`
   padding: 10px;
   font-size: 20px;
-  background-color: transparent;
+  background-color: #333;
+  color: white;
   cursor: pointer;
+  transition: transform 2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
   ${ScreenWith1200px({ fontSize: "15px", padding: "5px" })}
   ${ScreenWith1080px({ fontSize: "10px", padding: "5px" })}
   ${ScreenWith960px({ fontSize: "20px", padding: "10px" })}
@@ -140,13 +166,55 @@ const Slider = () => {
                 <Image src={img} />
               </ImgContainer>
               <InfoContainer>
-                <Title>{title}</Title>
-                <Desc>{desc}</Desc>
-                <Link to={`/product/${id}`}>
-                  <ButtonContainer>
-                    <Button>SHOP NOW</Button>
-                  </ButtonContainer>
-                </Link>
+                <AnimateIn
+                  to={{
+                    transform: "translateY(0)",
+                    opacity: 1,
+                    transitionDelay: "0.2s",
+                  }}
+                  from={{
+                    "-webkit-animation-duration": "1s",
+                    transform: "translateY(-30px)",
+                    opacity: 0,
+                  }}
+                  transition="all 1s ease 0s"
+                >
+                  <Title>{title}</Title>
+                </AnimateIn>
+                <AnimateIn
+                  to={{
+                    transform: "translateY(0)",
+                    opacity: 1,
+                    transitionDelay: "0.3s",
+                  }}
+                  from={{
+                    "-webkit-animation-duration": "1s",
+                    transform: "translateY(-30px)",
+                    opacity: 0,
+                  }}
+                  transition="all 1s ease 0s"
+                >
+                  <Desc>{desc}</Desc>
+                </AnimateIn>
+                <AnimateIn
+                  to={{
+                    transform: "translateY(0)",
+                    opacity: 1,
+                    transitionDelay: "0.5s",
+                  }}
+                  from={{
+                    "-webkit-animation-duration": "1s",
+                    transform: "translateY(-30px)",
+                    opacity: 0,
+                  }}
+                  transition="all 1s ease 0s"
+                >
+                  <Link to={`/product/${id}`}>
+                    <ButtonContainer>
+                      <Button>SHOP NOW</Button>
+                    </ButtonContainer>
+                  </Link>
+                </AnimateIn>
               </InfoContainer>
             </Slide>
           ) : (

@@ -49,8 +49,8 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color #fbfcfe;
-// background-image linear-gradient(315deg, #e7eff9 0%, #cfd6e6 74%);
+  // background-color: #f5f5f5;
+  // background-image linear-gradient(315deg, #e7eff9 0%, #cfd6e6 74%);
   // background-image: linear-gradient(
   //   95.2deg,
   //   rgba(173, 252, 234, 1) 26.8%,
@@ -58,8 +58,8 @@ const Container = styled.div`
   // );
   position: relative;
   height: 75%;
-  // box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-  //   rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  // box-shadow: rgba(50, 50, 93, 0.1) 5px 13px 27px -5px,
+  //   rgba(0, 0, 0, 0.2) 0px 8px 16px -8px;
 
   &:hover ${Info} {
     opacity: 1;

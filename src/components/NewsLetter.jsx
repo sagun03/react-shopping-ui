@@ -5,7 +5,19 @@ import { mobile, mobileS, mobileSuperSmall } from "../responsive";
 
 const Cointainer = styled.div`
   height: 60vh;
-  background-color: #fcf5f5;
+
+  background: linear-gradient(
+      rgba(243, 251, 255, 0) 7.46%,
+      rgb(214, 237, 255) 56.5%
+    ),
+    linear-gradient(rgba(87, 176, 251, 0) 2.71%, rgba(87, 176, 251, 0.5) 65%),
+    rgb(214, 237, 255);
+  // background: linear-gradient(
+  //     0deg,
+  //     rgba(242, 246, 255, 0) 0%,
+  //     rgb(242, 246, 255) 100%
+  //   ),
+  //   rgb(255, 255, 255);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,6 +27,7 @@ const Cointainer = styled.div`
 const Title = styled.h1`
   font-size: 4.3rem;
   margin-bottom: 20px;
+  font-family: Roboto;
   ${mobileS({ fontSize: "3.3rem" })}
   ${mobileSuperSmall({ fontSize: "2rem" })}
 `;

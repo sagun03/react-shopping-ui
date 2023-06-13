@@ -6,9 +6,10 @@ import { mobile, ScreenWith670px } from "../responsive";
 
 const Cointainer = styled.div`
   display: flex;
-  background-color: #f8fcff;
-  padding-top: 30px;
+  background: #1d2b36;
+  padding-top: 5rem;
   ${mobile({ flexDirection: "column" })}
+  color: white;
 `;
 
 const Left = styled.div`
@@ -26,6 +27,7 @@ const Center = styled.div`
 `;
 const Title = styled.h2`
   margin-bottom: 30px;
+  color: white;
 `;
 
 const List = styled.ul`
@@ -47,10 +49,13 @@ const Right = styled.div`
   ${mobile({ backgroundColor: "#fff8f8" })}
 `;
 
-const Logo = styled.h1``;
+const Logo = styled.h1`
+  color: white;
+`;
 
 const Desc = styled.p`
   margin: 20px 0px;
+  color: white;
 `;
 
 const SocialCointainer = styled.div`
@@ -75,6 +80,7 @@ const ContactItem = styled.div`
   align-items: center;
   flex-wrap: wrap;
   word-wrap: break-word;
+  color: white;
 `;
 
 const Payment = styled.img`

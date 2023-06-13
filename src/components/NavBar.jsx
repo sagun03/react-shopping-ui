@@ -22,15 +22,16 @@ import { useUserAuth } from "../context/UserAuthContext";
 import Alert from "./Alert";
 
 const Container = styled.div`
-  height: 60px;
+  height: 55px;
   overflow: hidden;
   background-color: white;
   position: fixed;
-  top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  top: 0px;
   width: 100%;
   z-index: 1299;
-  ${mobile({ height: "50px", top: "20px" })}
-  ${mobileSuperSmall({ top: "15px" })}
+  ${mobile({ top: "0px" })}
+  ${mobileSuperSmall({ top: "0px" })}
 `;
 
 const Wrapper = styled.div`
@@ -53,7 +54,8 @@ const Center = styled.div`
 `;
 
 const Logo = styled.h1`
-  font-weight: bold;
+  font-weight: 400;
+
   ${ScreenWith670px({
     fontSize: "1.5rem",
   })} ${mobile({ display: "none" })};
@@ -61,11 +63,11 @@ const Logo = styled.h1`
 
 const Logo2 = styled.h1`
   display: none;
+  font-weight: 400;
 
   ${mobile({
     display: "flex",
     justifyContent: "flex-end",
-    fontWeight: "bold",
   })}
 `;
 
@@ -90,7 +92,7 @@ const StyledMenu = withStyles({
     color: "white",
     marginTop: "10px",
     "&:hover": {
-      background: "#59b3b5",
+      background: "#f2f6ff",
     },
   },
 })((props) => (

@@ -30,7 +30,7 @@ const Info = styled.div`
 `;
 const Title = styled.h1`
   color: black;
-  font-weight: bold;
+  font-weight: 400;
   font-size: 1.7rem;
 
   ${ScreenWith1470px({ fontSize: "1.6rem" })}

@@ -12,6 +12,7 @@ import {
 import HandWash from "./../pages/images/hw.png";
 import FloorCleaner from "./../pages/images/fc.png";
 import { Link } from "react-router-dom";
+import AnimateIn from "../customeHooks/AnimateIn";
 
 const Container = styled.div`
   width: 100%;
@@ -91,29 +92,31 @@ const Slide = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 50px;
+  font-size: 40px;
   text-align: center;
-  ${ScreenWith1470px({ fontSize: "45px" })}
-  ${ScreenWith1200px({ fontSize: "35px" })}
+  font-weight: 400;
+  ${ScreenWith1470px({ fontSize: "35px" })}
+  ${ScreenWith1200px({ fontSize: "25px" })}
   ${ScreenWith1080px({ fontSize: "30px" })}
-  ${ScreenWith960px({ fontSize: "50px" })}
-  ${ScreenWith670px({ fontSize: "40px" })}
+  ${ScreenWith960px({ fontSize: "40px" })}
+  ${ScreenWith670px({ fontSize: "30px" })}
   ${mobile({ fontSize: "20px" })}
 `;
 
 const Desc = styled.p`
   margin-top: 45px;
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 3px;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 2px;
   text-align: center;
+  line-height: 1.6;
 
   ${ScreenWith1670px({ marginTop: "20px" })}
-  ${ScreenWith1470px({ fontSize: "15px" })}
-  ${ScreenWith1200px({ fontSize: "15px", marginTop: "15px" })}
-  ${ScreenWith1080px({ fontSize: "10px" })}
-  ${ScreenWith960px({ fontSize: "20px" })}
-  ${ScreenWith670px({ fontSize: "20px" })}
+  ${ScreenWith1470px({ fontSize: "12px" })}
+  ${ScreenWith1200px({ fontSize: "12px", marginTop: "15px" })}
+  ${ScreenWith1080px({ fontSize: "8px" })}
+  ${ScreenWith960px({ fontSize: "18px" })}
+  ${ScreenWith670px({ fontSize: "18px" })}
   ${mobile({ fontSize: "8px" })}
 `;
 
@@ -121,34 +124,62 @@ const RightSlider = () => {
   return (
     <Container>
       <ChildContainer>
-        <Link to={`/product/2`}>
-          <Slide bg={"fcf1ed"}>
-            <InfoContainer>
-              <Title>{"Strawberry Handwash"}</Title>
-              <Desc>
-                {"DON'T COMPROMISE ON CLEANING! GET FLAT 20% FOR NEW USERS"}
-              </Desc>
-            </InfoContainer>
-            <ImgContainer>
-              <Image src={HandWash} />
-            </ImgContainer>
-          </Slide>
-        </Link>
+        <AnimateIn
+          to={{
+            opacity: 1,
+            scale: "1",
+            transitionDelay: "0s",
+          }}
+          from={{
+            "-webkit-animation-duration": "1s",
+            scale: "0",
+            opacity: 0,
+          }}
+          transition="all 1s ease 0s"
+        >
+          <Link to={`/product/2`}>
+            <Slide bg={"fcf1ed"}>
+              <InfoContainer>
+                <Title>{"Strawberry Handwash"}</Title>
+                <Desc>
+                  {"DON'T COMPROMISE ON CLEANING! GET FLAT 20% FOR NEW USERS"}
+                </Desc>
+              </InfoContainer>
+              <ImgContainer>
+                <Image src={HandWash} />
+              </ImgContainer>
+            </Slide>
+          </Link>
+        </AnimateIn>
       </ChildContainer>
       <ChildContainer>
-        <Link to={`/product/3`}>
-          <Slide fc={true} bg={"F7F7F7"}>
-            <ImgContainer fc={true}>
-              <Image fc={true} src={FloorCleaner} />
-            </ImgContainer>
-            <InfoContainer>
-              <Title>{"Floor Cleaner"}</Title>
-              <Desc>
-                {"DON'T COMPROMISE ON CLEANING! GET FLAT 20% FOR NEW USERS"}
-              </Desc>
-            </InfoContainer>
-          </Slide>
-        </Link>
+        <AnimateIn
+          to={{
+            opacity: 1,
+            scale: "1",
+            transitionDelay: "0.1s",
+          }}
+          from={{
+            "-webkit-animation-duration": "1s",
+            scale: "0",
+            opacity: 0,
+          }}
+          transition="all 1s ease 0s"
+        >
+          <Link to={`/product/3`}>
+            <Slide fc={true} bg={"F7F7F7"}>
+              <ImgContainer fc={true}>
+                <Image fc={true} src={FloorCleaner} />
+              </ImgContainer>
+              <InfoContainer>
+                <Title>{"Floor Cleaner"}</Title>
+                <Desc>
+                  {"DON'T COMPROMISE ON CLEANING! GET FLAT 20% FOR NEW USERS"}
+                </Desc>
+              </InfoContainer>
+            </Slide>
+          </Link>
+        </AnimateIn>
       </ChildContainer>
     </Container>
   );

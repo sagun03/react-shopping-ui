@@ -8,7 +8,7 @@ import "./styles.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { sliderHideCustom } from "../responsive";
+import AnimateIn from "../customeHooks/AnimateIn";
 
 const Container = styled.div`
   font-size: 14px;
@@ -16,26 +16,21 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 98%;
-  margin-bottom: 60px;
+  padding-bottom: 5rem;
+  margin-bottom: 5rem;
 `;
 
 const HeadingContainer = styled.div`
-  width: 101%;
-  height: 20px;
-  border-bottom: 1px solid black;
   text-align: center;
-  margin: 10px auto 80px;
-
-  ${sliderHideCustom({ display: "none" })}
 `;
 
-const EffectCardHeading = styled.span`
-  font-size: 35px;
-  font-weight: 500;
-  background-color: #8bc6ec;
+const EffectCardHeading = styled.div`
   padding: 5px 10px;
-  color: white;
+  color: #333;
+  font-family: Roboto;
+  font-size: 48px;
+  font-weight: 400;
+  margin: 0rem 0rem 4rem;
 `;
 
 const Categories = () => {
@@ -43,7 +38,20 @@ const Categories = () => {
     <>
       <Container>
         <HeadingContainer>
-          <EffectCardHeading>Popular Products</EffectCardHeading>
+          <AnimateIn
+            to={{
+              // transform: "translateY(0)",
+              opacity: 1,
+              transitionDelay: "0.3s",
+            }}
+            from={{
+              "-webkit-animation-duration": "1s",
+              opacity: 0,
+            }}
+            transition="all 1s ease 0s"
+          >
+            <EffectCardHeading>Popular Products</EffectCardHeading>
+          </AnimateIn>
         </HeadingContainer>
         <Swiper
           effect={"fade"}
@@ -51,9 +59,10 @@ const Categories = () => {
           loopFillGroupWithBlank={true}
           slidesPerView={3}
           autoplay={{
-            delay: 3500,
+            delay: 0,
             disableOnInteraction: false,
           }}
+          speed={6000}
           spaceBetween={40}
           slicePerView={1}
           navigation={false}
