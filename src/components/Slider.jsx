@@ -101,7 +101,7 @@ const Title = styled.h1`
   ${ScreenWith1080px({ fontSize: "25px" })}
   ${ScreenWith960px({ fontSize: "40px" })}
   ${ScreenWith670px({ fontSize: "30px" })}
-  ${mobile({ fontSize: "20px" })} // @keyframes anim-lineUp {
+  ${mobile({ fontSize: "30px" })} // @keyframes anim-lineUp {
   //   0% {
   //     opacity: 0;
   //     transform: translateY(80%);
@@ -131,7 +131,7 @@ const Desc = styled.p`
   ${ScreenWith1080px({ fontSize: "10px" })}
   ${ScreenWith960px({ fontSize: "15px" })}
   ${ScreenWith670px({ fontSize: "15px" })}
-  ${mobile({ fontSize: "10px" })}
+  ${mobile({ fontSize: "15px" })}
 `;
 
 const Button = styled.button`

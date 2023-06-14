@@ -43,7 +43,7 @@ const Heading = styled.h1`
 
   font-weight: 400;
   ${mobileS({
-    fontSize: "1.7rem",
+    fontSize: "48px",
     // paddingLeft: "30px",
   })}
   ${mobileSuperSmall({
@@ -136,6 +136,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   padding: 80px 0px 30px;
+  text-align: center;
 `;
 
 const ListMenu = [

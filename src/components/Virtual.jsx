@@ -26,6 +26,10 @@ const VirtualContainer = styled.div`
     padding: "1rem",
     textAlign: "center",
   })}
+  ${mobile({
+    margin: "3rem 0",
+    padding: "4rem 2rem 3rem",
+  })}
 `;
 const LeftWrapper = styled.div`
   display: flex;
@@ -53,6 +57,11 @@ const LeftBuyNow = styled.span`
   font-size: 1.6rem;
   font-weight: bold;
   font-family: Roboto;
+  ${mobile({
+    fontSize: "28px",
+    fontWeight: "400",
+    paddingTop: "2rem",
+  })}
 `;
 const Image = styled.img`
   position: absolute;

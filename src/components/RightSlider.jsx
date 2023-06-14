@@ -100,7 +100,7 @@ const Title = styled.h1`
   ${ScreenWith1080px({ fontSize: "30px" })}
   ${ScreenWith960px({ fontSize: "40px" })}
   ${ScreenWith670px({ fontSize: "30px" })}
-  ${mobile({ fontSize: "20px" })}
+  ${mobile({ fontSize: "30px" })}
 `;
 
 const Desc = styled.p`
@@ -117,7 +117,7 @@ const Desc = styled.p`
   ${ScreenWith1080px({ fontSize: "8px" })}
   ${ScreenWith960px({ fontSize: "18px" })}
   ${ScreenWith670px({ fontSize: "18px" })}
-  ${mobile({ fontSize: "8px" })}
+  ${mobile({ fontSize: "12px" })}
 `;
 
 const RightSlider = () => {
