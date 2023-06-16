@@ -4,10 +4,11 @@ import Categories from "../components/Categories";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import NewsLetter from "../components/NewsLetter";
-import Products from "../components/Products";
+// import Products from "../components/Products";
 import SliderContainer from "../components/SliderContainer";
 import Virtual from "../components/Virtual";
 import Crousel from "../components/Crousel";
+import SimpleMap from "../components/Map";
 
 const homepage = () => {
   return (
@@ -16,9 +17,10 @@ const homepage = () => {
       <NavBar />
       <Crousel />
       <SliderContainer />
-      <Virtual />
       <Categories />
-      <Products />
+      <Virtual />
+      {/* <Products /> */}
+      <SimpleMap />
       <NewsLetter />
       <Footer />
     </>

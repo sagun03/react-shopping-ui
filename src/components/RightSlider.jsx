@@ -137,7 +137,7 @@ const RightSlider = () => {
           }}
           transition="all 1s ease 0s"
         >
-          <Link to={`/product/2`}>
+          <Link to={`/products`}>
             <Slide bg={"fcf1ed"}>
               <InfoContainer>
                 <Title>{"Strawberry Handwash"}</Title>
@@ -166,7 +166,7 @@ const RightSlider = () => {
           }}
           transition="all 1s ease 0s"
         >
-          <Link to={`/product/3`}>
+          <Link to={`/products`}>
             <Slide fc={true} bg={"F7F7F7"}>
               <ImgContainer fc={true}>
                 <Image fc={true} src={FloorCleaner} />

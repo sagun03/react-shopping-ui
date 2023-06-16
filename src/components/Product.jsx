@@ -27,7 +27,7 @@ const Info = styled.div`
   gap: 2rem;
 `;
 const WrapperContainer = styled.div`
-  height: 30rem;
+  height: 20rem;
   margin: 20px;
   position: relative;
   overflow: hidden;
@@ -37,8 +37,10 @@ const WrapperContainer = styled.div`
 `;
 
 const Content = styled.div`
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-direction: column;
   margin-top: 25px;
   margin: 10px;
@@ -57,7 +59,7 @@ const Container = styled.div`
   //   rgba(192, 229, 246, 1) 64%
   // );
   position: relative;
-  height: 75%;
+  height: 70%;
   // box-shadow: rgba(50, 50, 93, 0.1) 5px 13px 27px -5px,
   //   rgba(0, 0, 0, 0.2) 0px 8px 16px -8px;
 
@@ -76,7 +78,6 @@ const Container = styled.div`
 const Image = styled.img`
   z-index: 2;
   height: 90%;
-  margin-left: 1rem;
 `;
 const Icon = styled.div`
   width: 40px;
@@ -94,7 +95,7 @@ const Icon = styled.div`
   }
 `;
 
-const Product = ({ img, id, title, size, ...rest }) => {
+const Product = ({ img, id, title, size, price, ...rest }) => {
   const dispatch = useDispatch();
   const [openAlert, setOpenAlert] = useState(false);
 
@@ -130,9 +131,11 @@ const Product = ({ img, id, title, size, ...rest }) => {
         </Info>
       </Container>
       <Content>
-        <span style={{ marginTop: "10px" }}>Name: {title}</span>
-        <span style={{ marginTop: "10px" }}> Size: {size}</span>
-        <span style={{ marginTop: "10px" }}> Price: Rs. {getPrice(size)}</span>
+        <span style={{ marginTop: "5px", fontSize: "0.9rem" }}>
+          Name: {title}
+        </span>
+        <span style={{ marginTop: "5px" }}> Size: {size}</span>
+        <span style={{ marginTop: "5px" }}> Rs. {price}</span>
       </Content>
       {openAlert && (
         <Alert

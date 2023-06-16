@@ -1,24 +1,26 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import styled from "styled-components";
 import React, { useState } from "react";
 import { popularProducts } from "../utils/data";
 import Product from "./Product";
 // import Plane from "../pages/images/plane.png";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import SearchIcon from "@material-ui/icons/Search";
 import {
   mobileS,
   mobileSuperSmall,
   ScreenWith670px,
   ScreenWith960px,
 } from "../responsive";
+import { v4 as uuidv4 } from "uuid";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
-import { Divider } from "@material-ui/core";
-import { db } from "../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { Divider, InputAdornment, Select, TextField } from "@material-ui/core";
+// import { db } from "../firebase";
+// import { collection, getDocs } from "firebase/firestore";
 import { useEffect } from "react";
-import { useCallback } from "react";
 import productBackground from "../pages/images/productBackground.jpg";
 
 const Container = styled.div`
@@ -37,10 +39,9 @@ const Container = styled.div`
 //   left: 50%;
 // `;
 const Heading = styled.h1`
-  // padding-left: 120px;
   font-family: Roboto;
   font-size: 38px;
-
+  padding-left: 4rem;
   font-weight: 400;
   ${mobileS({
     fontSize: "48px",
@@ -55,7 +56,7 @@ const Heading = styled.h1`
 const ProductsWrapper = styled.div`
   width: 90%;
   display: grid;
-  grid-template-columns: 25% auto;
+  grid-template-columns: 22% auto;
 
   ${ScreenWith960px({ gridTemplateColumns: "none", gap: "2rem" })}
 `;
@@ -66,7 +67,11 @@ const ProductMenuList = styled.ul`
   gap: 2rem;
   font-weight: 500;
   font-size: 1.3rem;
-  margin-top: 4rem;
+  margin-top: 2rem;
+  border: 1px solid #e9e8e8;
+  border-radius: 10px;
+  padding: 30px;
+  height: fit-content;
   ${ScreenWith960px({
     display: "none",
   })};
@@ -100,43 +105,75 @@ const ProductMenu = styled.li`
     cursor: pointer;
   }
   font-family: Roboto;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: ${(props) => (props?.title ? "22px" : "18px")};
+  font-weight: 400;
   color: ${(props) => props.selected && "#0396ff"};
 `;
 const ProductImageContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  height: 70rem;
-  overflow-y: scroll;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  height: fit-content;
+  gap: 1.5rem;
+  // overflow-y: scroll;
 
   ${ScreenWith960px({
-    height: "70rem",
+    // height: "70rem",
     gridTemplateColumns: "repeat(auto-fill, minmax(310px, 1fr))",
   })}
   ${ScreenWith670px({
-    height: "auto",
-    overflowY: "unset",
+    // height: "auto",
+    // overflowY: "unset",
     display: "block",
   })}
 `;
+
+const ProductHeader = styled.div`
+  padding: 20px 60px;
+  border-bottom: 1px solid #d8d8d8;
+`;
+
+const ProductHeaderContainer = styled.div`
+  max-width: 1300px;
+`;
+
+const ProductHeaderContent = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+`;
+const ProductHeaderCount = styled.div`
+  flex: 1;
+  text-align: left;
+  padding: 0 1rem;
+`;
+const ProductHeaderLeft = styled.div`
+  flex: 1;
+  padding: 0 1rem;
+`;
+const ProductHeaderLeftContent = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+const HeaderLeftSelect = styled.div``;
 const ProductImageWrapper = styled.div``;
+const HeaderLeftSearch = styled.div``;
 const Wrapper = styled.div`
-  // background-image: url(${productBackground});
+  background-image: url(${productBackground});
   // background: linear-gradient(
   //   rgba(243, 251, 255, 0) 7.46%,
   //   rgb(214, 237, 255) 56.5%
   // );
-  background: linear-gradient(
-      0deg,
-      rgba(242, 246, 255, 0) 0%,
-      rgb(242, 246, 255) 100%
-    ),
-    rgb(255, 255, 255);
+  // background: linear-gradient(
+  //     0deg,
+  //     rgba(242, 246, 255, 0) 0%,
+  //     rgb(242, 246, 255) 100%
+  //   ),
+  //   rgb(255, 255, 255);
   display: flex;
-  justify-content: center;
-  padding: 80px 0px 30px;
-  text-align: center;
+  // justify-content: center;
+  margin-top: 60px;
+  padding: 90px 0px;
+  // text-align: center;
 `;
 
 const ListMenu = [
@@ -150,24 +187,28 @@ const ListMenu = [
 ];
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
-  const productCollectionRef = collection(db, "product");
+  // const [products, setProducts] = useState([]);
+  // const productCollectionRef = collection(db, "product");
   const [productImageData, setProductImageData] = useState(popularProducts);
   const [parent] = useAutoAnimate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selected, setSelected] = useState("All");
-
-  const getProducts = useCallback(async () => {
-    try {
-      const data = await getDocs(productCollectionRef);
-      setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    } catch (err) {
-      console.log(err);
-    }
-  }, [productCollectionRef]);
+  const [priceSelect, setPriceSelect] = useState("default");
+  const [search, setSearch] = useState("");
+  // const getProducts = useCallback(async () => {
+  //   try {
+  //     const data = await getDocs(productCollectionRef);
+  //     setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }, [productCollectionRef]);
+  // useEffect(() => {
+  //   if (false) getProducts();
+  // }, [getProducts]);
   useEffect(() => {
-    if (false) getProducts();
-  }, [getProducts]);
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -176,7 +217,6 @@ const Products = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  console.log("products", products);
   const filterData = (name = "", title) => {
     if (name) {
       const filterData = popularProducts.filter(({ type }) => type === name);
@@ -187,7 +227,25 @@ const Products = () => {
     setSelected(title);
     handleClose();
   };
+  const sortCallBack = (first, second) => {
+    if (priceSelect === "priceLowToHigh") {
+      return first?.price - second?.price;
+    } else if (priceSelect === "priceHighToLow") {
+      return second?.price - first?.price;
+    }
+    return;
+  };
 
+  useEffect(() => {
+    if (search === "") {
+      setProductImageData(popularProducts);
+      return;
+    }
+    const filterBySearch = productImageData.filter((item) =>
+      item.title.toLowerCase().includes(search?.toLowerCase() || "")
+    );
+    setProductImageData(filterBySearch);
+  }, [search]);
   return (
     <>
       {/* <Image src={Plane} /> */}
@@ -195,9 +253,60 @@ const Products = () => {
       <Wrapper>
         <Heading>Our Products Range</Heading>
       </Wrapper>
+      <ProductHeader>
+        <ProductHeaderContainer>
+          <ProductHeaderContent>
+            <ProductHeaderCount>
+              Browse Products ({productImageData?.length})
+            </ProductHeaderCount>
+            <ProductHeaderLeft>
+              <ProductHeaderLeftContent>
+                <HeaderLeftSelect>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    value={priceSelect}
+                    onChange={(event) => setPriceSelect(event.target.value)}
+                    // inputProps={{ style: { minWidth: "3rem" } }}
+                    style={{ minWidth: "8rem" }}
+                  >
+                    <MenuItem value={"default"}>Default</MenuItem>
+                    <MenuItem value={"priceHighToLow"}>
+                      Price - High to Low
+                    </MenuItem>
+                    <MenuItem value={"priceLowToHigh"}>
+                      Price - Low to High
+                    </MenuItem>
+                  </Select>
+                </HeaderLeftSelect>
+                <HeaderLeftSearch>
+                  <TextField
+                    placeholder="Search"
+                    variant="outlined"
+                    InputProps={{
+                      style: { height: "2rem" },
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <SearchIcon />
+                        </InputAdornment>
+                      ),
+                    }}
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                </HeaderLeftSearch>
+              </ProductHeaderLeftContent>
+            </ProductHeaderLeft>
+          </ProductHeaderContent>
+        </ProductHeaderContainer>
+      </ProductHeader>
       <Container>
         <ProductsWrapper>
           <ProductMenuList ref={parent}>
+            <>
+              <ProductMenu title="category">
+                Category <Divider style={{ marginTop: "1rem" }} />
+              </ProductMenu>
+            </>
             {ListMenu.map(({ id, title, name }) => (
               <ProductMenu
                 selected={selected === title}
@@ -247,11 +356,14 @@ const Products = () => {
           </ProductMenuListMobile>
 
           <ProductImageContainer ref={parent}>
-            {productImageData.map((product) => (
-              <ProductImageWrapper key={product.id}>
-                <Product {...product} key={product.id} />
-              </ProductImageWrapper>
-            ))}
+            {productImageData
+              .slice()
+              .sort(sortCallBack)
+              .map((product) => (
+                <ProductImageWrapper key={uuidv4()}>
+                  <Product {...product} key={uuidv4()} />
+                </ProductImageWrapper>
+              ))}
           </ProductImageContainer>
         </ProductsWrapper>
       </Container>
