@@ -209,7 +209,7 @@ const Slider = () => {
                   }}
                   transition="all 1s ease 0s"
                 >
-                  <Link to={`/products`}>
+                  <Link to={`/products?name=detergent&title=${title}`}>
                     <ButtonContainer>
                       <Button>SHOP NOW</Button>
                     </ButtonContainer>

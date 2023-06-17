@@ -20,6 +20,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { useUserAuth } from "../context/UserAuthContext";
 import Alert from "./Alert";
+import Logos from "../pages/images/logo.png";
 
 const Container = styled.div`
   height: 55px;
@@ -67,7 +68,7 @@ const Logo2 = styled.h1`
 
   ${mobile({
     display: "flex",
-    justifyContent: "flex-end",
+    height: "38px",
   })}
 `;
 
@@ -194,7 +195,10 @@ const NavBar = () => {
         <Link to="/">
           <Center>
             <Logo>JK Total Washing Solutions</Logo>
-            <Logo2>JK</Logo2>
+            <Logo2>
+              {" "}
+              <img src={Logos} alt="logo" />
+            </Logo2>
           </Center>
         </Link>
         <Right>

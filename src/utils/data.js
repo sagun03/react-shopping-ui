@@ -5,12 +5,14 @@ import FrontLoadCollection1 from "../pages/images/frontLoadCollection1.png";
 // import DishGel from "../pages/images/DishGel.png";
 import HandwashColection3 from "../pages/images/handwashCollection3.png";
 import ToiletColection3 from "../pages/images/ToiletCollection3.png";
+import Colin from "../pages/images/colin.png";
 
 export const SlidesItems = [
   {
     id: 1,
     img: Liquid2,
     title: "Liquid Detergents",
+    categoryTitle: "Liquid Detergent",
     desc: "DON'T COMPROMISE ON CLEANING! GET FLAT 20% FOR NEW USERS",
     productDescription:
       "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
@@ -122,7 +124,7 @@ export const popularProducts = [
     id: 14,
     img: Liquid2,
     type: "toiletCleaner",
-    title: "Floor Cleaner",
+    title: "Toilet Cleaner",
     size: "100 ml",
     price: 30,
     productDescription:
@@ -228,25 +230,50 @@ export const popularProducts = [
     productDescription:
       "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
   },
+  {
+    id: 44,
+    img: Liquid2,
+    type: "glassCleaner",
+    title: "Glass Cleaner",
+    size: "100 ml",
+    price: 30,
+    productDescription:
+      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+  },
 ];
 
 export const ClouserItems = [
   {
-    id: 3,
-    img: HandwashColection3,
-    title: "Handwash Collection",
-    desc: "Keep Your Hands Protected and Refreshed with Our Handwash Collection",
-  },
-  {
     id: 1,
     img: FrontLoadCollection1,
     title: "Liquid Detergent Collection",
+    categoryTitle: "Liquid Detergent",
+    name: "detergent",
     desc: "Experience the Power of Clean with Our Liquid Detergent Collection",
   },
+  {
+    id: 3,
+    img: HandwashColection3,
+    title: "Handwash Collection",
+    categoryTitle: "Hand Wash",
+    name: "handWash",
+    desc: "Keep Your Hands Protected and Refreshed with Our Handwash Collection",
+  },
+
   {
     id: 2,
     img: ToiletColection3,
     title: "Toilet Cleaner Collection",
+    categoryTitle: "Toilet Cleaner",
+    name: "toiletCleaner",
     desc: "Say Goodbye to Stubborn Stains and Embrace a Spotless Toilet with Our Toilet Cleaner Collection",
+  },
+  {
+    id: 20,
+    img: Colin,
+    title: "Glass Cleaner Collection",
+    categoryTitle: "Glass Cleaner",
+    name: "glassCleaner",
+    desc: "Crystal clear shine, every time!",
   },
 ];

@@ -5,13 +5,14 @@ import styled from "styled-components";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-
+import { v4 as uuidv4 } from "uuid";
 import "./crousel.css";
 
 // import required modules
 import { Autoplay } from "swiper";
 import { ClouserItems } from "../utils/data";
 import { ScreenWith1080px, ScreenWith960px, tablet } from "../responsive";
+import { Link } from "react-router-dom";
 
 const Container = styled.div``;
 
@@ -125,7 +126,6 @@ const Button = styled.button`
   ${tablet({
     textAlign: "center",
     fontSize: "20px",
-    width: "50%",
   })}
 `;
 
@@ -145,20 +145,24 @@ const Crousel = () => {
         modules={[Autoplay]}
         className="myCrousel"
       >
-        {ClouserItems.map(({ img, title, desc }, index) => (
-          <SwiperSlide className={`slide${index + 1}`}>
-            <Slide>
-              <ImgContainer className="img">
-                <Image src={img} />
-              </ImgContainer>
-              <InfoContainer className="info">
-                <Title className="title">{title}</Title>
-                <Desc className="desc">{desc}</Desc>
-                <Button className="buttton">SHOP NOW</Button>
-              </InfoContainer>
-            </Slide>
-          </SwiperSlide>
-        ))}
+        {ClouserItems.map(
+          ({ img, title, desc, name, categoryTitle }, index) => (
+            <SwiperSlide className={`slide${index + 1}`} key={uuidv4()}>
+              <Slide>
+                <ImgContainer className="img">
+                  <Image src={img} />
+                </ImgContainer>
+                <InfoContainer className="info">
+                  <Title className="title">{title}</Title>
+                  <Desc className="desc">{desc}</Desc>
+                  <Link to={`/products?name=${name}&title=${categoryTitle}`}>
+                    <Button className="buttton">SHOP NOW</Button>
+                  </Link>
+                </InfoContainer>
+              </Slide>
+            </SwiperSlide>
+          )
+        )}
       </Swiper>
     </Container>
   );

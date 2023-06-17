@@ -7,21 +7,23 @@ import Product from "./Product";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import SearchIcon from "@material-ui/icons/Search";
 import {
+  mobile,
   mobileS,
   mobileSuperSmall,
   ScreenWith670px,
   ScreenWith960px,
 } from "../responsive";
 import { v4 as uuidv4 } from "uuid";
+import { useSearchParams } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import { Divider, InputAdornment, Select, TextField } from "@material-ui/core";
 // import { db } from "../firebase";
 // import { collection, getDocs } from "firebase/firestore";
 import { useEffect } from "react";
 import productBackground from "../pages/images/productBackground.jpg";
+import { FilterListOutlined } from "@material-ui/icons";
 
 const Container = styled.div`
   display: flex;
@@ -44,7 +46,7 @@ const Heading = styled.h1`
   padding-left: 4rem;
   font-weight: 400;
   ${mobileS({
-    fontSize: "48px",
+    fontSize: "38px",
     // paddingLeft: "30px",
   })}
   ${mobileSuperSmall({
@@ -86,12 +88,12 @@ const ProductMenuListMobile = styled.div`
 `;
 const CustomButton = styled(Button)`
   &.MuiButton-root {
-    background-color: #0077CC;;
-    border-color: #0077CC;;
-    color: white;
+    // background-color: #0077CC;
+    border-color: #0077CC;
+    // color: white;
     &:hover {
       box-shadow: none;
-      background-color: #0062cc;
+      // background-color: #0062cc;
       border-color: #0396ff;
     }
     &:focus {
@@ -123,7 +125,7 @@ const ProductImageContainer = styled.div`
   ${ScreenWith670px({
     // height: "auto",
     // overflowY: "unset",
-    display: "block",
+    // display: "block",
   })}
 `;
 
@@ -140,6 +142,10 @@ const ProductHeaderContent = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  ${mobile({
+    flexDirection: "column",
+    gap: "1rem",
+  })}
 `;
 const ProductHeaderCount = styled.div`
   flex: 1;
@@ -153,6 +159,11 @@ const ProductHeaderLeft = styled.div`
 const ProductHeaderLeftContent = styled.div`
   display: flex;
   justify-content: space-around;
+  ${mobile({
+    flexDirection: "column",
+    gap: "1rem",
+    alignItems: "center",
+  })}
 `;
 const HeaderLeftSelect = styled.div``;
 const ProductImageWrapper = styled.div``;
@@ -209,6 +220,7 @@ const Products = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const [serachParam] = useSearchParams();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -219,6 +231,7 @@ const Products = () => {
   };
   const filterData = (name = "", title) => {
     if (name) {
+      setSearch("");
       const filterData = popularProducts.filter(({ type }) => type === name);
       setProductImageData(filterData);
     } else {
@@ -227,6 +240,16 @@ const Products = () => {
     setSelected(title);
     handleClose();
   };
+  useEffect(() => {
+    const param = serachParam.get("name");
+    const paramTitle = serachParam.get("title");
+
+    if (param) {
+      filterData(param);
+      setSelected(paramTitle);
+    }
+  }, [serachParam]);
+
   const sortCallBack = (first, second) => {
     if (priceSelect === "priceLowToHigh") {
       return first?.price - second?.price;
@@ -237,19 +260,20 @@ const Products = () => {
   };
 
   useEffect(() => {
-    if (search === "") {
-      setProductImageData(popularProducts);
-      return;
+    // if (search === "" && !selected) {
+    //   setProductImageData(popularProducts);
+    //   return;
+    // }
+    if (search) {
+      setSelected("All");
+      const filterBySearch = popularProducts.filter((item) =>
+        item.title.toLowerCase().includes(search?.toLowerCase() || "")
+      );
+      setProductImageData(filterBySearch);
     }
-    const filterBySearch = productImageData.filter((item) =>
-      item.title.toLowerCase().includes(search?.toLowerCase() || "")
-    );
-    setProductImageData(filterBySearch);
   }, [search]);
   return (
     <>
-      {/* <Image src={Plane} /> */}
-
       <Wrapper>
         <Heading>Our Products Range</Heading>
       </Wrapper>
@@ -283,6 +307,7 @@ const Products = () => {
                   <TextField
                     placeholder="Search"
                     variant="outlined"
+                    value={search}
                     InputProps={{
                       style: { height: "2rem" },
                       startAdornment: (
@@ -319,9 +344,9 @@ const Products = () => {
           </ProductMenuList>
           <ProductMenuListMobile>
             <CustomButton
-              variant="contained"
+              variant="outlined"
               color="inherit"
-              startIcon={<FormatListBulletedIcon />}
+              startIcon={<FilterListOutlined />}
               onClick={handleClick}
             >
               {selected}
@@ -340,11 +365,11 @@ const Products = () => {
                   {id !== 1 && <Divider />}
                   <MenuItem
                     key={id}
-                    style={{
-                      fontFamily: "Roboto",
-                      fontSize: "28px",
-                      fontWeight: "400",
-                    }}
+                    // style={{
+                    //   fontFamily: "Roboto",
+                    //   fontSize: "28px",
+                    //   fontWeight: "400",
+                    // }}
                     selected={selected === title}
                     onClick={() => filterData(name, title)}
                   >
@@ -354,7 +379,6 @@ const Products = () => {
               ))}
             </Menu>
           </ProductMenuListMobile>
-
           <ProductImageContainer ref={parent}>
             {productImageData
               .slice()

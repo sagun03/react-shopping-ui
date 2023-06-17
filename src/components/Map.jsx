@@ -1,6 +1,4 @@
 import React from "react";
-import GoogleMapReact from "google-map-react";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
 import Map from "../pages/images/maps.png";
 import styled from "styled-components";
 import { mobile } from "../responsive";
@@ -44,22 +42,6 @@ const Wrapper = styled.div`
   text-align: center;
 `;
 const SimpleMap = () => {
-  const defaultProps = {
-    address:
-      "GURUNANAK GRAM UDYOG SEWA SANTHAN , 2KM MILE STONE NAGINA ROAD DHAMPUR, DHAMPUIR, Uttar Pradesh 246761",
-    center: {
-      lat: 29.324006102523754,
-      lng: 78.49786334293917,
-    },
-    zoom: 11,
-  };
-  const location = {
-    address:
-      "GURUNANAK GRAM UDYOG SEWA SANTHAN , 2KM MILE STONE NAGINA ROAD DHAMPUR, DHAMPUIR, Uttar Pradesh 246761",
-    lat: 29.324006102523754,
-    lng: 78.49786334293917,
-  };
-
   return (
     // Important! Always set the container height explicitly
     <>
@@ -72,7 +54,7 @@ const SimpleMap = () => {
           alt="map"
           onClick={() =>
             window.open(
-              "https://www.google.com/maps/place/JK+DETERGENT+POWDER+AND+SOAP/@29.3200918,78.4992511,15z/data=!4m14!1m7!3m6!1s0x390bc86819fb8d33:0x7052b3e4be01f611!2sJK+DETERGENT+POWDER+AND+SOAP!8m2!3d29.3235856!4d78.4972448!16s%2Fg%2F11ckqr8k0t!3m5!1s0x390bc86819fb8d33:0x7052b3e4be01f611!8m2!3d29.3235856!4d78.4972448!16s%2Fg%2F11ckqr8k0t?entry=ttu",
+              "https://www.google.com/maps/place/JK+DETERGENT+POWDER+AND+SOAP/@29.3236119,78.4971436,20z/data=!4m14!1m7!3m6!1s0x390bc86819fb8d33:0x7052b3e4be01f611!2sJK+DETERGENT+POWDER+AND+SOAP!8m2!3d29.3235856!4d78.4972448!16s%2Fg%2F11ckqr8k0t!3m5!1s0x390bc86819fb8d33:0x7052b3e4be01f611!8m2!3d29.3235856!4d78.4972448!16s%2Fg%2F11ckqr8k0t?entry=ttu",
               "_blank"
             )
           }
