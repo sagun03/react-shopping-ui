@@ -140,6 +140,7 @@ const Crousel = () => {
         speed={1000}
         autoplay={{
           delay: 3500,
+          disableOnInteraction: false,
         }}
         loop={true}
         modules={[Autoplay]}

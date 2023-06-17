@@ -62,13 +62,14 @@ const Logo = styled.h1`
   })} ${mobile({ display: "none" })};
 `;
 
-const Logo2 = styled.h1`
+const Logo2 = styled.div`
   display: none;
   font-weight: 400;
 
   ${mobile({
     display: "flex",
     height: "38px",
+    marginRight: "5px",
   })}
 `;
 
@@ -231,7 +232,11 @@ const NavBar = () => {
           )}
           <MenuItem>
             <Link to="/cart">
-              <Badge badgeContent={quantity} color="primary">
+              <Badge
+                badgeContent={quantity}
+                color="primary"
+                style={{ marginRight: "10px" }}
+              >
                 <ShoppingCartOutlined />
               </Badge>
             </Link>

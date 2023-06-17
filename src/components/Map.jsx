@@ -13,7 +13,7 @@ const ImgContainer = styled.div`
 const Image = styled.img`
   transition: transform 2s;
   &:hover {
-    transform: scale(1.25);
+    transform: scale(1.15);
   }
   cursor: pointer;
   ${mobile({
