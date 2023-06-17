@@ -2,7 +2,7 @@ import { SearchOutlined, ShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components";
 import React from "react";
 import { Link } from "react-router-dom";
-import { ScreenWith670px } from "../responsive";
+import { ScreenWith670px, mobile } from "../responsive";
 import { getPrice } from "../utils/helper";
 import { useDispatch } from "react-redux";
 import { addProducts } from "../redux/cartRedux";
@@ -103,6 +103,9 @@ const CustomButton = styled(Button)`
     transition: transform 2s;
     font-size: 11px;
     border-radius: 15px;
+    ${mobile({
+      fontSize: "13px",
+    })}
   }
   &:hover {
     box-shadow: none;
@@ -150,7 +153,7 @@ const Product = ({ img, id, title, size, price, ...rest }) => {
         <span
           style={{
             marginTop: "5px",
-            fontSize: "0.9rem",
+            fontSize: "1rem",
             alignItems: "center",
             fontWeight: 500,
           }}
@@ -160,7 +163,7 @@ const Product = ({ img, id, title, size, price, ...rest }) => {
         <span
           style={{
             marginTop: "3px",
-            fontSize: "0.8rem",
+            fontSize: "0.9rem",
             fontWeight: 400,
           }}
         >
@@ -170,7 +173,7 @@ const Product = ({ img, id, title, size, price, ...rest }) => {
           style={{
             display: "flex",
             justifyContent: "center",
-            fontSize: "0.9rem",
+            fontSize: "1rem",
             marginTop: "10px",
             fontWeight: 500,
             alignItems: "center",
@@ -178,7 +181,7 @@ const Product = ({ img, id, title, size, price, ...rest }) => {
         >
           <span
             style={{
-              fontSize: "0.75rem",
+              fontSize: "0.85rem",
               fontWeight: 300,
               textDecoration: "line-through",
               display: "flex",
@@ -200,7 +203,7 @@ const Product = ({ img, id, title, size, price, ...rest }) => {
           justifyContent: "center",
         }}
       >
-        <CustomButton variant="outlined" color="primary">
+        <CustomButton variant="outlined" color="primary" onClick={handleClick}>
           Add to Cart
         </CustomButton>
       </div>
