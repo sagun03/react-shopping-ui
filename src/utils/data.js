@@ -249,7 +249,7 @@ export const ClouserItems = [
     title: "Liquid Detergent Collection",
     categoryTitle: "Liquid Detergent",
     name: "detergent",
-    desc: "Experience the Power of Clean with Our Liquid Detergent Collection",
+    desc: "Experience the Power of Clean.",
   },
   {
     id: 3,
@@ -257,7 +257,7 @@ export const ClouserItems = [
     title: "Handwash Collection",
     categoryTitle: "Hand Wash",
     name: "handWash",
-    desc: "Keep Your Hands Protected and Refreshed with Our Handwash Collection",
+    desc: "Keep Your Hands Protected and Refreshed.",
   },
 
   {
@@ -266,7 +266,7 @@ export const ClouserItems = [
     title: "Toilet Cleaner Collection",
     categoryTitle: "Toilet Cleaner",
     name: "toiletCleaner",
-    desc: "Say Goodbye to Stubborn Stains and Embrace a Spotless Toilet with Our Toilet Cleaner Collection",
+    desc: "Say Goodbye to Stubborn Stains and Embrace a Spotless Toilet.",
   },
   {
     id: 20,
