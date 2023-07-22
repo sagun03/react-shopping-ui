@@ -80,7 +80,9 @@ const Container = styled.div`
 
 const Image = styled.img`
   z-index: 2;
+  width: 100%;
   height: 100%;
+  object-fit: contain;
 `;
 const Icon = styled.div`
   width: 40px;

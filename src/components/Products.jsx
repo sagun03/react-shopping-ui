@@ -194,7 +194,6 @@ const ListMenu = [
   { id: 4, title: "Floor Cleaner", name: "floorCleaner" },
   { id: 6, title: "Dish Washer", name: "dishWasher" },
   { id: 7, title: "Toilet Cleaner", name: "toiletCleaner" },
-  { id: 8, title: "Bathing Soap", name: "bathingSoap" },
 ];
 
 const Products = () => {
