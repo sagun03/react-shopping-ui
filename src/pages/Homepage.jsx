@@ -9,12 +9,14 @@ import SliderContainer from "../components/SliderContainer";
 import Virtual from "../components/Virtual";
 import Crousel from "../components/Crousel";
 import SimpleMap from "../components/Map";
+import Announcement from "../components/Announcement";
 
 const homepage = () => {
   return (
     <>
-      {/* <Announcement /> */}
       <NavBar />
+      <Announcement />
+
       <Crousel />
       <SliderContainer />
       <Categories />

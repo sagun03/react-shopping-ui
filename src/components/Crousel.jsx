@@ -14,7 +14,7 @@ import { ClouserItems } from "../utils/data";
 import { ScreenWith1080px, ScreenWith960px, tablet } from "../responsive";
 import { Link } from "react-router-dom";
 
-const Container = styled.div``;
+const Container = styled.div`to`;
 
 const Slide = styled.div`
   display: flex;

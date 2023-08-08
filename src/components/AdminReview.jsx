@@ -1,4 +1,5 @@
 import {
+  Button,
   Divider,
   Grid,
   List,
@@ -31,14 +32,21 @@ const StyledListItem = withStyles(() => ({
   },
 }))(ListItem);
 
-const Review = ({ products, order }) => {
+const AdminReview = ({ products, order, updateOrderStatus }) => {
+
   return (
     <React.Fragment>
       <Typography variant="h9" gutterBottom>
         Date: {order?.date}
       </Typography>
       <Typography variant="h6" gutterBottom>
-        Order summary
+        Order summary 
+      </Typography>
+      <Typography variant="h7" gutterBottom>
+        User Id: {order?.userId}
+      </Typography>
+      <Typography variant="h7" gutterBottom>
+        Name and Phone: {order?.name || 'n/a'} {order?.phoneNumber || "n/a"}
       </Typography>
       <StyledList disablePadding>
         {products.map((product, index) => (
@@ -72,10 +80,15 @@ const Review = ({ products, order }) => {
           </Typography>
           <Typography gutterBottom>{order?.status || 'Pending'}</Typography>
           {/* <Typography gutterBottom>{order?.address}</Typography> */}
+          <div style={{ display: 'flex', gap: ".5rem", flexDirection: "column"}}>
+          <Button variant="contained" disabled={order?.status === "Pending"}  color="primary" onClick={() => updateOrderStatus(order?.id,  "Confirmed")} > Change status to Pending </Button>
+          <Button variant="contained" disabled={order?.status === "Confirmed"}  color="primary" onClick={() => updateOrderStatus(order?.id,  "Confirmed")} > Change status to Confirmed </Button>
+          <Button variant="contained"  disabled={order?.status === "Delivered"} color="primary" onClick={() => updateOrderStatus(order?.id, "Delivered")} > Change status to Delivered </Button>
+          </div>
         </Grid>
       </Grid>
     </React.Fragment>
   );
 };
 
-export default Review;
+export default AdminReview;

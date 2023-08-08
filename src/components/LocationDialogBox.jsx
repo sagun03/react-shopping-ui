@@ -12,20 +12,49 @@ import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import { useUserAuth } from "../context/UserAuthContext";
 import { useDispatch } from "react-redux";
 import { clearCart } from "../redux/cartRedux";
+import { db } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
+import { useNavigate } from "react-router";
 
 const LocationDialogBox = ({ open, setOpen }) => {
   const dispatch = useDispatch();
+  const ordersCollectionRef = collection(db, "order");
 
   const handleClose = (event, reason) => {
     if (reason && reason === "backdropClick") return;
     setPincode("");
     setOpen(false);
   };
-  const handleClick = () => {
-    dispatch(clearCart());
-  };
   const { user } = useUserAuth();
-  const cart = useSelector((state) => state.cart);
+console.log(user, Boolean(user))
+const cart = useSelector((state) => state.cart);
+
+  const push = async () => {
+    if (Boolean(user)) {
+      console.log('user', user)
+     await addDoc(ordersCollectionRef, {
+      date: new Date().toLocaleDateString("en-GB"),
+      name: user[0]?.displayName || "", 
+      userId: user[0]?.uid || "",
+      emailId: user[0]?.email ||"", 
+      phoneNumber: user[0]?.phoneNumber ||"",
+      status: 'Pending',
+      products: cart?.products?.map((item) => ({ title: item?.title, quantity: item?.quantity, size: item?.size, price: item?.price})) || [],
+      total:  cart?.total < 200
+      ? cart?.total
+      : cart?.total -
+        ((20 / 100) * cart?.total + 0.0).toFixed(2)
+      });
+    }
+
+}
+const navigate = useNavigate();
+
+  const handleClick = async () => {
+    await push()
+    dispatch(clearCart());
+    navigate("/orders")
+  };
   const [pincode, setPincode] = useState("");
 
   return (

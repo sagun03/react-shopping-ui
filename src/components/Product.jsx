@@ -31,7 +31,7 @@ const WrapperContainer = styled.div`
   height: 22rem;
   margin: 20px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   ${ScreenWith670px({
     margin: 0,
     height: "25rem",

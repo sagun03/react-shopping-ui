@@ -11,6 +11,7 @@ import Orders from "./pages/Orders";
 import Checkout from "./pages/Checkout";
 import { CircularProgress } from "@material-ui/core";
 import ProductSearch from "./pages/ProductSearch";
+import Admin from "./pages/Admin";
 const Product = React.lazy(() => {
   return new Promise((resolve) => {
     setTimeout(() => resolve(import("./pages/Product")), 1000);
@@ -77,6 +78,7 @@ const App = () => {
             <Route path="/orders" element={<Orders />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/products" element={<ProductSearch />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </Router>
       </UserAuthContextProvider>

@@ -13,14 +13,14 @@ const Container = styled.div`
   overflow: hidden;
   z-index: 1299;
   position: fixed;
-  top: 0;
+  top: 54px;
   width: 100%;
   ${mobileS({ fontSize: "12px" })}
   ${mobileSuperSmall({ fontSize: "10px" })}
 `;
 const Announcement = () => {
   return (
-    <Container>Super Deal! Extra 20% Discount on Order Over Rs. 200</Container>
+    <Container>Super Deal! Free Shipping on Order over Rs. 200</Container>
   );
 };
 
