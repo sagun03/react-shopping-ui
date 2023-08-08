@@ -90,11 +90,11 @@ const MenuItem = styled.div`
 
 const StyledMenu = withStyles({
   paper: {
-    background: "teal",
+    background: "#2979ff",
     color: "white",
     marginTop: "10px",
     "&:hover": {
-      background: "#f2f6ff",
+      background: "teal",
     },
   },
 })((props) => (
@@ -116,7 +116,7 @@ const StyledMenu = withStyles({
 const StyledMenuItem = withStyles(() => ({
   root: {
     "&:focus": {
-      backgroundColor: "grey",
+      backgroundColor: "blue",
       "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
         color: "white",
       },
