@@ -18,7 +18,13 @@ import { useSearchParams } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import { CircularProgress, Divider, InputAdornment, Select, TextField } from "@material-ui/core";
+import {
+  CircularProgress,
+  Divider,
+  InputAdornment,
+  Select,
+  TextField,
+} from "@material-ui/core";
 // import { db } from "../firebase";
 // import { collection, getDocs } from "firebase/firestore";
 import { useEffect } from "react";
@@ -188,14 +194,14 @@ const Wrapper = styled.div`
 `;
 
 const CircularContainer = styled.div`
-display: block;
-position: absolute;
-top: 50%;
-left: 65%;
-${mobile({
-  top: "250px",
-  left: "48.5%",
-})}
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  ${mobile({
+    top: "250px",
+    left: "48.5%",
+  })}
 `;
 
 const ListMenu = [
@@ -221,9 +227,9 @@ const Products = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      setLoading(false)
-    }, 1500)
-  }, [])
+      setLoading(false);
+    }, 1500);
+  }, []);
   // const getProducts = useCallback(async () => {
   //   try {
   //     const data = await getDocs(productCollectionRef);
@@ -290,14 +296,14 @@ const Products = () => {
       setProductImageData(filterBySearch);
     }
   }, [search]);
-  const items =  productImageData
-  .slice()
-  .sort(sortCallBack)
-  .map((product) => (
-    <ProductImageWrapper key={uuidv4()}>
-      <Product {...product} key={uuidv4()} />
-    </ProductImageWrapper>
-  ));
+  const items = productImageData
+    .slice()
+    .sort(sortCallBack)
+    .map((product) => (
+      <ProductImageWrapper key={uuidv4()}>
+        <Product {...product} key={uuidv4()} />
+      </ProductImageWrapper>
+    ));
   return (
     <>
       <Wrapper>
@@ -406,11 +412,13 @@ const Products = () => {
             </Menu>
           </ProductMenuListMobile>
           <ProductImageContainer ref={parent}>
-           {loading ?  <CircularContainer
-                   
-                    >
-                      <CircularProgress />
-                    </CircularContainer> : items }
+            {loading ? (
+              <CircularContainer>
+                <CircularProgress />
+              </CircularContainer>
+            ) : (
+              items
+            )}
           </ProductImageContainer>
         </ProductsWrapper>
       </Container>
