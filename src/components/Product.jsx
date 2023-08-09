@@ -3,7 +3,6 @@ import styled from "styled-components";
 import React from "react";
 import { Link } from "react-router-dom";
 import { ScreenWith670px, mobile } from "../responsive";
-import { getPrice } from "../utils/helper";
 import { useDispatch } from "react-redux";
 import { addProducts } from "../redux/cartRedux";
 import { v4 as uuidv4 } from "uuid";
@@ -116,7 +115,7 @@ const CustomButton = styled(Button)`
     transform: scale(1.1);
   }
 `;
-const Product = ({ img, id, title, size, price, ...rest }) => {
+const Product = ({ img, id, title, size, price, defaultSize, ...rest }) => {
   const dispatch = useDispatch();
   const [openAlert, setOpenAlert] = useState(false);
 
@@ -124,12 +123,12 @@ const Product = ({ img, id, title, size, price, ...rest }) => {
     dispatch(
       addProducts({
         ...rest,
-        img,
+        img: img[defaultSize],
         title,
-        size,
+        size: defaultSize,
         quantity: 1,
         id,
-        price: getPrice(size),
+        price: price[defaultSize],
         productId: uuidv4(),
       })
     );
@@ -139,7 +138,7 @@ const Product = ({ img, id, title, size, price, ...rest }) => {
     <WrapperContainer>
       <Container>
         {/* <Circle /> */}
-        <Image src={img} />
+        <Image src={img[defaultSize]} />
         <Info>
           <Icon onClick={handleClick}>
             <ShoppingCartOutlined />
@@ -169,7 +168,7 @@ const Product = ({ img, id, title, size, price, ...rest }) => {
             fontWeight: 400,
           }}
         >
-          ({size}){" "}
+          ({defaultSize}){" "}
         </span>
         <span
           style={{
@@ -193,9 +192,9 @@ const Product = ({ img, id, title, size, price, ...rest }) => {
             }}
           >
             {" "}
-            Rs. {price}
+            Rs. {price[defaultSize]}
           </span>{" "}
-          Rs. {price - price * 0.1}
+          Rs. {price[defaultSize] - price[defaultSize] * 0.05}
         </span>
       </Content>
 

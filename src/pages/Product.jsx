@@ -58,6 +58,8 @@ const Desc = styled.p`
 const Price = styled.span`
   font-weight: 100;
   font-size: 40px;
+    text-decoration: line-through;
+     color: #615F5F;
 `;
 
 const FilterContainer = styled.div`
@@ -181,7 +183,19 @@ const Product = () => {
         <InfoContainer>
           <Title>{product?.title}</Title>
           {product?.productDescription?.map((desc) => <Desc>{desc}</Desc>)}
-          {size && <Price>Rs. {product?.price[size]}</Price>}
+          {size && <><Price>Rs. {product?.price[size]}     </Price> <span
+          style={{
+            fontWeight: '100',
+            fontSize: '40px',
+            marginLeft: '10px'
+          }}
+        >
+          
+          Rs. {product?.price[size] - product?.price[size] * 0.05}
+        </span>
+     
+        </>
+          }
           <FilterContainer>
             <Filter>
               <FilterTitle>Size</FilterTitle>

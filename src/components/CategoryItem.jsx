@@ -49,10 +49,18 @@ const Detail = styled.div`
     ${mobileS({ fontSize: ".8rem", marginTop: ".5rem" })}
     ${mobileSuperSmall({ fontSize: "0.8rem", marginTop: ".5rem" })};
 `;
-const Price = styled.div`
+const Price = styled.span`
+  font-weight: 100;
+  text-decoration: line-through;
+  color: #615F5F;
+  font-size: 1.7rem;
+  ${ScreenWith1470px({ fontSize: "1.6rem" })}
+  ${ScreenWith1200px({ fontSize: "1.4rem" })}
+  ${ScreenWith670px({ fontSize: "1.1rem" })}
+`;
+const Price2 = styled.span`
   font-weight: bold;
   font-size: 1.7rem;
-  font-family
   ${ScreenWith1470px({ fontSize: "1.6rem" })}
   ${ScreenWith1200px({ fontSize: "1.4rem" })}
   ${ScreenWith670px({ fontSize: "1.1rem" })}
@@ -82,6 +90,10 @@ const CategoryItem = ({ img, title, detail, price, id, defaultSize }) => {
           <Detail>{detail}</Detail>
         </Info>
         <Price>Rs. {price[defaultSize]}</Price>
+        <Price2
+        >  
+          Rs. {price[defaultSize] - price[defaultSize] * 0.05}
+        </Price2>
         <Link to={`/product/${id}`}>
           <Button>Shop Now</Button>
         </Link>
