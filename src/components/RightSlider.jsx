@@ -140,9 +140,9 @@ const RightSlider = () => {
           <Link to={`/products?name=handWash&title=Hand Wash`}>
             <Slide bg={"fcf1ed"}>
               <InfoContainer>
-                <Title>{"Strawberry Handwash"}</Title>
+                <Title>{"Premium Liquid Soap"}</Title>
                 <Desc>
-                  {"DON'T COMPROMISE ON CLEANING! GET FLAT 20% FOR NEW USERS"}
+                  {"DON'T COMPROMISE ON CLEANING! GET FLAT 20% ON ORDER ABOVE RS. 200"}
                 </Desc>
               </InfoContainer>
               <ImgContainer>
@@ -174,7 +174,7 @@ const RightSlider = () => {
               <InfoContainer>
                 <Title>{"Floor Cleaner"}</Title>
                 <Desc>
-                  {"DON'T COMPROMISE ON CLEANING! GET FLAT 20% FOR NEW USERS"}
+                  {"DON'T COMPROMISE ON CLEANING! GET FLAT 20% ON ORDER ABOVE RS. 200"}
                 </Desc>
               </InfoContainer>
             </Slide>

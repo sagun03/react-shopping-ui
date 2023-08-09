@@ -92,7 +92,7 @@ const Title = styled.h1`
 `;
 
 const Desc = styled.p`
-  margin: 50px 0px;
+  margin: 15px 0px;
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 3px;
