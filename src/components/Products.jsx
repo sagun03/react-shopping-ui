@@ -18,7 +18,7 @@ import { useSearchParams } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import { Divider, InputAdornment, Select, TextField } from "@material-ui/core";
+import { CircularProgress, Divider, InputAdornment, Select, TextField } from "@material-ui/core";
 // import { db } from "../firebase";
 // import { collection, getDocs } from "firebase/firestore";
 import { useEffect } from "react";
@@ -187,6 +187,17 @@ const Wrapper = styled.div`
   // text-align: center;
 `;
 
+const CircularContainer = styled.div`
+display: block;
+position: absolute;
+top: 50%;
+left: 65%;
+${mobile({
+  top: "250px",
+  left: "48.5%",
+})}
+`;
+
 const ListMenu = [
   { id: 1, title: "All", name: "" },
   { id: 2, title: "Liquid Detergent", name: "detergent" },
@@ -194,6 +205,7 @@ const ListMenu = [
   { id: 4, title: "Floor Cleaner", name: "floorCleaner" },
   { id: 6, title: "Dish Washer", name: "dishWasher" },
   { id: 7, title: "Toilet Cleaner", name: "toiletCleaner" },
+  { id: 7, title: "Glass Cleaner", name: "colin" },
 ];
 
 const Products = () => {
@@ -205,6 +217,13 @@ const Products = () => {
   const [selected, setSelected] = useState("All");
   const [priceSelect, setPriceSelect] = useState("default");
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 1500)
+  }, [])
   // const getProducts = useCallback(async () => {
   //   try {
   //     const data = await getDocs(productCollectionRef);
@@ -271,6 +290,14 @@ const Products = () => {
       setProductImageData(filterBySearch);
     }
   }, [search]);
+  const items =  productImageData
+  .slice()
+  .sort(sortCallBack)
+  .map((product) => (
+    <ProductImageWrapper key={uuidv4()}>
+      <Product {...product} key={uuidv4()} />
+    </ProductImageWrapper>
+  ));
   return (
     <>
       <Wrapper>
@@ -379,14 +406,11 @@ const Products = () => {
             </Menu>
           </ProductMenuListMobile>
           <ProductImageContainer ref={parent}>
-            {productImageData
-              .slice()
-              .sort(sortCallBack)
-              .map((product) => (
-                <ProductImageWrapper key={uuidv4()}>
-                  <Product {...product} key={uuidv4()} />
-                </ProductImageWrapper>
-              ))}
+           {loading ?  <CircularContainer
+                   
+                    >
+                      <CircularProgress />
+                    </CircularContainer> : items }
           </ProductImageContainer>
         </ProductsWrapper>
       </Container>

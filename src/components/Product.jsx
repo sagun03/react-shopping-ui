@@ -128,8 +128,9 @@ const Product = ({ img, id, title, size, price, defaultSize, ...rest }) => {
         size: defaultSize,
         quantity: 1,
         id,
-        price: price[defaultSize],
+        price: price[defaultSize] -  price[defaultSize] * 0.05,
         productId: uuidv4(),
+        originalPrice: price[defaultSize]
       })
     );
     setOpenAlert(true);

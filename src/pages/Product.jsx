@@ -4,27 +4,30 @@ import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import NewsLetter from "../components/NewsLetter";
-import jkLiquid from "./images/jkLiquid.png";
-import { mobile, ScreenWith670px } from "../responsive";
+import { mobile, tablet, ScreenWith670px } from "../responsive";
 import { useEffect } from "react";
 import { addProducts } from "../redux/cartRedux";
 import { useState } from "react";
 import { useLocation } from "react-router";
-import { getPrice, getProductById } from "../utils/helper";
+import { getProductById } from "../utils/helper";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import Alert from "../components/Alert";
+import { Link } from "react-router-dom";
+import { IconButton, CircularProgress } from "@material-ui/core";
 
 const Container = styled.div`
   margin-top: 75px;
-  ${mobile({ marginTop: '85px' })}
-
+  ${mobile({ marginTop: "85px" })}
 `;
 
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
   ${mobile({ padding: "10px", flexDirection: "column" })}
+  ${tablet({ padding: "10px", flexDirection: "column" })}
+
+  min-height: 60vh;
 `;
 
 const ImgContainer = styled.div`
@@ -58,8 +61,8 @@ const Desc = styled.p`
 const Price = styled.span`
   font-weight: 100;
   font-size: 40px;
-    text-decoration: line-through;
-     color: #615F5F;
+  text-decoration: line-through;
+  color: #615f5f;
 `;
 
 const FilterContainer = styled.div`
@@ -88,11 +91,12 @@ const FilterSize = styled.select`
 const FilterSizeOption = styled.option``;
 
 const AddContainer = styled.div`
-  width: 50%;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  ${mobile({ width: "100%" })}
+  justify-content: flex-start;
+  gap: 1rem;
+  ${mobile({ width: "50%", flexDirection: "column" })}
 `;
 
 const AmountContainer = styled.div`
@@ -122,6 +126,16 @@ const Button = styled.button`
     background-color: #f8f4f4;
   }
 `;
+const CircularContainer = styled.div`
+display: block;
+position: absolute;
+top: 40%;
+left: 50%;
+${mobile({
+  top: "40%",
+  left: "46.5%",
+})}
+`;
 
 const Product = () => {
   const [product, setProduct] = useState({});
@@ -132,9 +146,15 @@ const Product = () => {
   // const [price, setPrice] = useState(30);
   const dispatch = useDispatch();
   const [openAlert, setOpenAlert] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
   }, []);
 
   // useEffect(() => {
@@ -148,17 +168,19 @@ const Product = () => {
   }, [id]);
 
   useEffect(() => {
-    setSize(product?.defaultSize)
-  }, [product])
+    setSize(product?.defaultSize);
+  }, [product]);
 
   const handleClick = () => {
     dispatch(
       addProducts({
         ...product,
         quantity,
+        img: product?.img[size],
         size,
-        price: product?.price[size],
+        price: product?.price[size] - product?.price[size] * 0.05,
         productId: uuidv4(),
+        originalPrice: product?.price[size],
       })
     );
     setOpenAlert(true);
@@ -171,51 +193,72 @@ const Product = () => {
       setQuantity(quantity + 1);
     }
   };
-  console.log('size', size)
   return (
     <Container>
       <Announcement />
       <NavBar />
       <Wrapper>
-        <ImgContainer>
-          {size && <Image src={product?.img[size]} />}
-        </ImgContainer>
-        <InfoContainer>
-          <Title>{product?.title}</Title>
-          {product?.productDescription?.map((desc) => <Desc>{desc}</Desc>)}
-          {size && <><Price>Rs. {product?.price[size]}     </Price> <span
-          style={{
-            fontWeight: '100',
-            fontSize: '40px',
-            marginLeft: '10px'
-          }}
-        >
-          
-          Rs. {product?.price[size] - product?.price[size] * 0.05}
-        </span>
-     
-        </>
-          }
-          <FilterContainer>
-            <Filter>
-              <FilterTitle>Size</FilterTitle>
-              <FilterSize
-                value={size}
-                onChange={(e) => setSize(e.target.value)}
-              >
-                {product?.size && product?.size?.map((s) => <FilterSizeOption>{s}</FilterSizeOption>)}
-              </FilterSize>
-            </Filter>
-          </FilterContainer>
-          <AddContainer>
-            <AmountContainer>
-              <Remove onClick={() => handleQuantity("dec")} />
-              <Amount>{quantity}</Amount>
-              <Add onClick={() => handleQuantity("add")} />
-            </AmountContainer>
-            <Button onClick={() => handleClick()}>ADD TO CART</Button>
-          </AddContainer>
-        </InfoContainer>
+        {loading ? (
+          <CircularContainer>
+            <CircularProgress />
+          </CircularContainer>
+        ) : (
+          <>
+            {" "}
+            <ImgContainer>
+              {size && <Image src={product?.img[size]} />}
+            </ImgContainer>
+            <InfoContainer>
+              <Title>{product?.title}</Title>
+              {product?.productDescription?.map((desc) => (
+                <Desc>{desc}</Desc>
+              ))}
+              {size && (
+                <>
+                  <Price>Rs. {product?.price[size]} </Price>{" "}
+                  <span
+                    style={{
+                      fontWeight: "100",
+                      fontSize: "40px",
+                      marginLeft: "10px",
+                    }}
+                  >
+                    Rs. {((product?.price[size] - product?.price[size] * 0.05) + 0.00).toFixed(2)}
+                  </span>
+                </>
+              )}
+              <FilterContainer>
+                <Filter>
+                  <FilterTitle>Size</FilterTitle>
+                  <FilterSize
+                    value={size}
+                    onChange={(e) => setSize(e.target.value)}
+                  >
+                    {product?.size &&
+                      product?.size?.map((s) => (
+                        <FilterSizeOption>{s}</FilterSizeOption>
+                      ))}
+                  </FilterSize>
+                </Filter>
+              </FilterContainer>
+              <AddContainer>
+                <AmountContainer>
+                  <IconButton disabled={quantity === 1}>
+                    <Remove onClick={() => handleQuantity("dec")} />
+                  </IconButton>
+                  <Amount>{quantity}</Amount>
+                  <IconButton>
+                    <Add onClick={() => handleQuantity("add")} />
+                  </IconButton>
+                </AmountContainer>
+                <Button onClick={() => handleClick()}>ADD TO CART</Button>
+                <Link to="/cart">
+                  <Button onClick={() => handleClick()}>GO TO CART</Button>
+                </Link>
+              </AddContainer>
+            </InfoContainer>
+          </>
+        )}
       </Wrapper>
       <NewsLetter />
       <Footer />

@@ -45,7 +45,7 @@ export const SlidesItems = [
   {
     id: 1,
     img: Liquid2,
-    title: "Liquid Detergents",
+    title: "Liquid Detergent",
     categoryTitle: "Liquid Detergent",
     desc: "DON'T COMPROMISE ON CLEANING! GET FLAT 20% FOR NEW USERS",
     productDescription:
@@ -396,7 +396,7 @@ export const popularProducts = [
     id: 125,
     type: "handWash",
     title: "Strawberry Hand Wash",
-    defaultSize: "250 ml",
+    defaultSize: "1.2 liter",
     productDescription: [
       "A touch of luxury for your cleansing ritual.",
       "Experience the epitome of purity with our transparent liquid soap enriched with the goodness of Aloe Vera. Gently cleanse and nourish your skin with every use, while enjoying the soothing benefits of Aloe Vera.",
@@ -657,7 +657,8 @@ export const popularProducts = [
       "From ceramic to marble, granite to mosaic, J.K. Surface Cleaner proves its adaptability on a myriad of surfaces. Elevate your cleaning game with J.K. Surface Cleaner – where stains are conquered, and surfaces shine a new.",
     ],
     defaultSize: "500 ml",
-    size: ["500 ml", "1 liter", "5 liter"],  },
+    size: ["500 ml", "1 liter", "5 liter"],
+  },
   {
     id: 16,
     type: "floorCleaner",
@@ -675,7 +676,8 @@ export const popularProducts = [
       "From ceramic to marble, granite to mosaic, J.K. Surface Cleaner proves its adaptability on a myriad of surfaces. Elevate your cleaning game with J.K. Surface Cleaner – where stains are conquered, and surfaces shine a new.",
     ],
     defaultSize: "1 liter",
-    size: ["500 ml", "1 liter", "5 liter"],  },
+    size: ["500 ml", "1 liter", "5 liter"],
+  },
   {
     id: 16,
     type: "floorCleaner",
@@ -693,7 +695,8 @@ export const popularProducts = [
       "From ceramic to marble, granite to mosaic, J.K. Surface Cleaner proves its adaptability on a myriad of surfaces. Elevate your cleaning game with J.K. Surface Cleaner – where stains are conquered, and surfaces shine a new.",
     ],
     defaultSize: "5 liter",
-    size: ["500 ml", "1 liter", "5 liter"], },
+    size: ["500 ml", "1 liter", "5 liter"],
+  },
   {
     id: 166,
     type: "floorCleaner",
@@ -702,14 +705,15 @@ export const popularProducts = [
       "1 liter": floorCleaner1lwhite,
       "5 liter": floorCleaner5lwhite,
     },
-    price: {  "1 liter": 50, "5 liter": 200 },
+    price: { "1 liter": 50, "5 liter": 200 },
     productDescription: [
       "Revitalize your living space with JK White Floor Cleaner – the ultimate solution for gleaming floors.",
       "Experience the power of our advanced formula that effortlessly removes dirt and grime, leaving your floors brilliantly white and spotless.",
       "Elevate your cleaning routine with JK White Floor Cleaner – where cleanliness meets floor perfection.",
     ],
     defaultSize: "1 liter",
-    size: [ "1 liter", "5 liter"],  },
+    size: ["1 liter", "5 liter"],
+  },
   {
     id: 167,
     type: "floorCleaner",
@@ -717,14 +721,15 @@ export const popularProducts = [
       "1 liter": floorCleaner1lwhite,
       "5 liter": floorCleaner5lwhite,
     },
-    price: {  "1 liter": 50, "5 liter": 200 },
+    price: { "1 liter": 50, "5 liter": 200 },
     productDescription: [
       "Revitalize your living space with JK White Floor Cleaner – the ultimate solution for gleaming floors.",
       "Experience the power of our advanced formula that effortlessly removes dirt and grime, leaving your floors brilliantly white and spotless.",
       "Elevate your cleaning routine with JK White Floor Cleaner – where cleanliness meets floor perfection.",
     ],
     defaultSize: "5 liter",
-    size: [ "1 liter", "5 liter"],  },
+    size: ["1 liter", "5 liter"],
+  },
   {
     id: 17,
     type: "dishWasher",
@@ -732,14 +737,15 @@ export const popularProducts = [
     img: {
       "250 ml": dishcup,
     },
-    price: {  "250 ml": 35 },
+    price: { "250 ml": 35 },
     productDescription: [
       "Discover the JK Dish Cup – your versatile partner for kitchen cleanliness. ",
       "Designed for efficiency, our dish cup effortlessly tackles grease and stains, ensuring your dishes emerge spotless and gleaming.",
       "Elevate your dishwashing routine with the JK Dish Cup – where innovation meets pristine results.",
     ],
     defaultSize: "250 ml",
-    size: [ "250 ml"],   },
+    size: ["250 ml"],
+  },
   {
     id: 19,
     type: "dishWasher",
@@ -756,7 +762,8 @@ export const popularProducts = [
       "Unlike traditional bars, J.K. Dish Gel deep cleans without leaving any white residue. Feel the difference as it removes foul smells and introduces a refreshing lime fragrance. Choose the ultimate, choose J.K. Dish Gel – where stains vanish, and brilliance emerges.",
     ],
     defaultSize: "500 ml",
-    size: ["500 ml", "1.2 liter", "5 liter"],},
+    size: ["500 ml", "1.2 liter", "5 liter"],
+  },
   {
     id: 20,
     type: "dishWasher",
@@ -775,7 +782,8 @@ export const popularProducts = [
       "Soft on your hands, J.K. Dish Gel's powerful formula cuts through tough grease, ensuring sparkling clean results. Just one spoonful is enough to conquer a sink-full of dirty dishes, making your cleaning routine efficient and effective.",
       "Unlike traditional bars, J.K. Dish Gel deep cleans without leaving any white residue. Feel the difference as it removes foul smells and introduces a refreshing lime fragrance. Choose the ultimate, choose J.K. Dish Gel – where stains vanish, and brilliance emerges.",
     ],
-    size: ["500 ml", "1.2 liter", "5 liter"], },
+    size: ["500 ml", "1.2 liter", "5 liter"],
+  },
   {
     id: 200,
     type: "dishWasher",
@@ -794,7 +802,8 @@ export const popularProducts = [
       "Soft on your hands, J.K. Dish Gel's powerful formula cuts through tough grease, ensuring sparkling clean results. Just one spoonful is enough to conquer a sink-full of dirty dishes, making your cleaning routine efficient and effective.",
       "Unlike traditional bars, J.K. Dish Gel deep cleans without leaving any white residue. Feel the difference as it removes foul smells and introduces a refreshing lime fragrance. Choose the ultimate, choose J.K. Dish Gel – where stains vanish, and brilliance emerges.",
     ],
-    size: ["500 ml", "1.2 liter", "5 liter"], },
+    size: ["500 ml", "1.2 liter", "5 liter"],
+  },
 
   // {
   //   id: 22,

@@ -12,6 +12,7 @@ import { v4 as uuidv4 } from "uuid";
 import addToCart from "./images/addToCart.png";
 import { Link } from "react-router-dom";
 import OrderSummary from "../components/OrderSummary";
+import { IconButton } from "@material-ui/core";
 const Container = styled.div``;
 
 const Wrapper = styled.div`
@@ -84,6 +85,8 @@ const ProductDetail = styled.div`
 
 const Image = styled.img`
   width: 180px;
+      object-fit: contain;
+
   ${ScreenWith960px({ width: "160px" })}
   ${ScreenWith670px({ width: "120px" })}
 `;
@@ -131,6 +134,16 @@ const ProductAmount = styled.div`
 `;
 
 const ProductPrice = styled.div`
+  font-size: 30px;
+  font-weight: 200;
+  font-weight: 100;
+  text-decoration: line-through;
+  color: #615F5F;
+  ${mobile({ marginBottom: "20px", fontSize: "20px" })}
+  ${ScreenWith960px({ fontSize: "26px" })}
+  ${ScreenWith670px({ fontSize: "24px" })}
+`;
+const ProductPrice2 = styled.div`
   font-size: 30px;
   font-weight: 200;
   ${mobile({ marginBottom: "20px", fontSize: "20px" })}
@@ -192,7 +205,7 @@ const Cart = () => {
           <>
             {" "}
             <Top>
-              <Link to="/">
+              <Link to="/products">
                 {" "}
                 <TopButton>CONTINUE SHOPPING</TopButton>
               </Link>
@@ -221,21 +234,28 @@ const Cart = () => {
                       </ProductDetail>
                       <PriceDetail>
                         <ProductAmountContainer>
+                          <IconButton>
                           <Remove
                             onClick={() =>
                               handleClick("dec", item, item.productId)
                             }
                           />
+                          </IconButton>
                           <ProductAmount>{item?.quantity}</ProductAmount>
+                          <IconButton>
                           <Add
                             onClick={() =>
                               handleClick("add", item, item.productId)
                             }
                           />
+                          </IconButton>
                         </ProductAmountContainer>
                         <ProductPrice>
-                          Rs. {item?.price * item?.quantity}
+                          Rs. {item?.originalPrice * item?.quantity}
                         </ProductPrice>
+                        <ProductPrice2>
+                        Rs. {(item?.price * item?.quantity + 0.0).toFixed(2)}
+                        </ProductPrice2>
                       </PriceDetail>
                     </Product>
                     <Hr />

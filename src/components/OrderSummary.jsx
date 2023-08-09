@@ -55,7 +55,7 @@ const OrderSummary = () => {
       <SummaryTitle>ORDER SUMMARY</SummaryTitle>
       <SummaryItem>
         <SummaryItemText>Subtotal</SummaryItemText>
-        <SummaryItemPrice>Rs. {cart?.total}</SummaryItemPrice>
+        <SummaryItemPrice>Rs. {(cart?.total + 0.0).toFixed(2)}</SummaryItemPrice>
       </SummaryItem>
       {/* <SummaryItem>
         <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -81,7 +81,7 @@ const OrderSummary = () => {
           Rs.{" "}
           {cart?.total < 200
             ? cart?.total
-            : cart?.total - ((20 / 100) * cart?.total + 0.0).toFixed(2)}
+            : (cart?.total - ((20 / 100) * cart?.total + 0.0).toFixed(2) + 0.0).toFixed(2)}
         </SummaryItemPrice>
       </SummaryItem>
       {/* <a

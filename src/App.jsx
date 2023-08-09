@@ -12,11 +12,12 @@ import Checkout from "./pages/Checkout";
 import { CircularProgress } from "@material-ui/core";
 import ProductSearch from "./pages/ProductSearch";
 import Admin from "./pages/Admin";
-const Product = React.lazy(() => {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(import("./pages/Product")), 1000);
-  });
-});
+import Product from "./pages/Product";
+// const Product = React.lazy(() => {
+//   return new Promise((resolve) => {
+//     setTimeout(() => resolve(import("./pages/Product")), 1000);
+//   });
+// });
 const Home = React.lazy(() => {
   return new Promise((resolve) => {
     setTimeout(() => resolve(import("./pages/Homepage")), 1000);
@@ -53,22 +54,23 @@ const App = () => {
             <Route
               path="/product/:id"
               element={
-                <Suspense
-                  fallback={
-                    <div
-                      style={{
-                        display: "block",
-                        position: "absolute",
-                        top: "50%",
-                        left: "50%",
-                      }}
-                    >
-                      <CircularProgress />
-                    </div>
-                  }
-                >
-                  <Product />
-                </Suspense>
+                // <Suspense
+                //   fallback={
+                //     <div
+                //       style={{
+                //         display: "block",
+                //         position: "absolute",
+                //         top: "50%",
+                //         left: "50%",
+                //       }}
+                //     >
+                //       <CircularProgress />
+                //     </div>
+                //   }
+                // >
+                //   <Product />
+                // </Suspense>
+                <Product />
               }
             />
             <Route path="/cart" element={<Cart />} />
