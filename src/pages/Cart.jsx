@@ -185,6 +185,7 @@ const Cart = () => {
       );
     }
   };
+  console.log('cart', cart)
   return (
     <Container>
       <Announcement />

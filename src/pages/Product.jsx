@@ -172,6 +172,7 @@ const Product = () => {
   }, [product]);
 
   const handleClick = () => {
+    console.log('product, ', product)
     dispatch(
       addProducts({
         ...product,
@@ -253,7 +254,7 @@ const Product = () => {
                 </AmountContainer>
                 <Button onClick={() => handleClick()}>ADD TO CART</Button>
                 <Link to="/cart">
-                  <Button onClick={() => handleClick()}>GO TO CART</Button>
+                  <Button >GO TO CART</Button>
                 </Link>
               </AddContainer>
             </InfoContainer>
