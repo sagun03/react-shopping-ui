@@ -16,7 +16,9 @@ import { v4 as uuidv4 } from "uuid";
 import Alert from "../components/Alert";
 
 const Container = styled.div`
-  margin-top: 50px;
+  margin-top: 75px;
+  ${mobile({ marginTop: '85px' })}
+
 `;
 
 const Wrapper = styled.div`
@@ -33,9 +35,9 @@ const ImgContainer = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  height: 80vh;
-  object-fit: cover;
-  ${mobile({ height: "40vh", width: "60%" })}
+  height: 55vh;
+  object-fit: contain;
+  ${mobile({ height: "35vh", width: "60%" })}
 `;
 
 const InfoContainer = styled.div`
@@ -124,8 +126,8 @@ const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [quantity, setQuantity] = useState(1);
-  const [size, setSize] = useState("100 ml");
-  const [price, setPrice] = useState(30);
+  const [size, setSize] = useState("");
+  // const [price, setPrice] = useState(30);
   const dispatch = useDispatch();
   const [openAlert, setOpenAlert] = useState(false);
 
@@ -133,9 +135,9 @@ const Product = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    setPrice(getPrice(size));
-  }, [size]);
+  // useEffect(() => {
+  //   setPrice(getPrice(size));
+  // }, [size]);
 
   useEffect(() => {
     if (id) {
@@ -143,13 +145,17 @@ const Product = () => {
     }
   }, [id]);
 
+  useEffect(() => {
+    setSize(product?.defaultSize)
+  }, [product])
+
   const handleClick = () => {
     dispatch(
       addProducts({
         ...product,
         quantity,
         size,
-        price: getPrice(size),
+        price: product?.price[size],
         productId: uuidv4(),
       })
     );
@@ -163,18 +169,19 @@ const Product = () => {
       setQuantity(quantity + 1);
     }
   };
+  console.log('size', size)
   return (
     <Container>
       <Announcement />
       <NavBar />
       <Wrapper>
         <ImgContainer>
-          <Image src={jkLiquid} />
+          {size && <Image src={product?.img[size]} />}
         </ImgContainer>
         <InfoContainer>
           <Title>{product?.title}</Title>
-          <Desc>{product?.productDescription}</Desc>
-          <Price>Rs. {price}</Price>
+          {product?.productDescription?.map((desc) => <Desc>{desc}</Desc>)}
+          {size && <Price>Rs. {product?.price[size]}</Price>}
           <FilterContainer>
             <Filter>
               <FilterTitle>Size</FilterTitle>
@@ -182,11 +189,7 @@ const Product = () => {
                 value={size}
                 onChange={(e) => setSize(e.target.value)}
               >
-                <FilterSizeOption>100 ml</FilterSizeOption>
-                <FilterSizeOption>250 ml</FilterSizeOption>
-                <FilterSizeOption>500 ml</FilterSizeOption>
-                <FilterSizeOption>1 liter</FilterSizeOption>
-                <FilterSizeOption>5 liter</FilterSizeOption>
+                {product?.size && product?.size?.map((s) => <FilterSizeOption>{s}</FilterSizeOption>)}
               </FilterSize>
             </Filter>
           </FilterContainer>

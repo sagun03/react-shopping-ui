@@ -77,49 +77,94 @@ export const SlidesItems = [
 export const categories = [
   {
     id: 4,
-    img: Liquid2,
-    title: "LIQUID DETERGENT",
+    title: "Top Load Liquid Detergent",
     detail: "Clean beyond measure with our liquid treasure",
-    price: 200,
     productDescription:
-      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+     ["Experience the pinnacle of stain removal with JK Liquid Detergent – the ultimate solution for spotless laundry.",
+    "Achieve faster stain removal directly in your washing machine. This powerful liquid detergent swiftly dissolves in high water levels, effortlessly reaching stains without leaving any residue on your clothes or machine.",
+    "Unveil freshness beyond appearance. Our detergent not only rejuvenates your attire but also imparts a lasting, invigorating scent.",
+    "Tackle tough stains while preserving your fabric's original color. Trust in the efficacy of JK Liquid Detergent for a laundry experience that's unparalleled."
+    ],
+    img: {
+      "250 ml": topload250ml,
+      "1 liter": topload1l,
+      "5 liter": topload5l
+    },
+    defaultSize: "250 ml",
+    size: ["250 ml", "1 liter", "5 liter"],
+    price: { "250 ml": 65, "1 liter": 200, "5 liter": 900 },
   },
   {
     id: 5,
-    img: Liquid2,
-    title: "HANDWASH COLLECTION!",
+    title: "Transparent Alovera Liquid Soap",
     detail: "Clean hands, happy heart - with every wash",
-    price: 150,
-    productDescription:
-      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+    productDescription: [
+      "A touch of luxury for your cleansing ritual.",
+      "Experience the epitome of purity with our transparent liquid soap enriched with the goodness of Aloe Vera. Gently cleanse and nourish your skin with every use, while enjoying the soothing benefits of Aloe Vera.",
+      "Crafted for those who seek quality, this premium liquid soap provides a transparent and invigorating cleansing experience. Elevate your daily routine with the goodness of Aloe Vera and the trusted excellence of JK.",
+    ],
+    img: {
+      "250 ml": Alovera250ml,
+      "1.2 liter": Alovera1l,
+    },
+    defaultSize: "250 ml",
+    size: ["250 ml", "1.2 liter",],
+    price: { "250 ml": 89, "1.2 liter": 250 },
   },
   {
     id: 6,
-    img: Liquid2,
-    title: "DISH WASHER",
+    img: {
+      "500 ml": dishgel500l,
+      "1.2 liter": dishgel1l,
+      "5 liter": dishge5l,
+    },
+    title: "Dish Gel",
     detail:
       "Let your dishwasher do the dirty work - for sparkling clean dishes every time",
-    price: 80,
-    productDescription:
-      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+    price: { "500  ml": 85, "1.2 liter": 130, "5 liter": 600 },
+    productDescription: [
+      "Experience the luxury of cleaning expensive crockery and cookware without the worry of scratches. Its gentle touch preserves your items' integrity while the superior fragrance lingers long after your utensils are rinsed.",
+      "Soft on your hands, J.K. Dish Gel's powerful formula cuts through tough grease, ensuring sparkling clean results. Just one spoonful is enough to conquer a sink-full of dirty dishes, making your cleaning routine efficient and effective.",
+      "Unlike traditional bars, J.K. Dish Gel deep cleans without leaving any white residue. Feel the difference as it removes foul smells and introduces a refreshing lime fragrance. Choose the ultimate, choose J.K. Dish Gel – where stains vanish, and brilliance emerges.",
+    ],
+    defaultSize: "500 ml",
+    size: ["500 ml", "1.2 liter", "5 liter"],
   },
   {
     id: 7,
-    img: Liquid2,
-    title: "TOILET CLEANER",
+    img: {
+      "250 ml": toiletCleaner250ml,
+      "650 ml": toiletCleaner1l,
+      "5 liter": toiletCleaner5l,
+    },
+    title: "Toilet Cleaner",
     detail: "Powerful cleaning for a refreshing, hygienic throne",
-    price: 80,
-    productDescription:
-      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+    price: { "250 ml": 45, "650 ml": 85, "5 liter": 500 },
+    productDescription: [
+      "Say goodbye to foul odors as our potent cleaner keeps your bathroom smelling fresh. The easy-to-use nozzle targets tricky spots in toilet pot rims, leaving no corner untouched. Designed for both Indian and Western toilets, J.K. Toilet Cleaner's unique shape allows easy pouring into deep corners under the toilet rim.",
+      "Unleash 50 times more cleaning power with J.K. Toilet Cleaner. Its powerful agents obliterate tough stains like hard water stains, rust, and lime scale, ensuring an immaculate and shiny toilet bowl. The enduring fragrance leaves your bathroom pleasantly scented for hours, catering to even the busiest households.",
+      "Elevate your toilet cleaning experience with J.K. Toilet Cleaner. Trust in its effectiveness, trust in its hygiene, and embrace the brilliance of a truly pristine toilet.",
+    ],
+    defaultSize: "650 ml",
+    size: ["250 ml", "650 ml", "5 liter"],
   },
   {
     id: 8,
-    img: Liquid2,
-    title: "FLOOR CLEANER",
+    img: {
+      "500 ml": floorCleaner250ml,
+      "1 liter": floorCleaner1l,
+      "5 liter": floorCleaner5l,
+    },
+    title: "Surface cleaner",
     detail: "Step into a spotless world - with every sweep, mop and swirl",
-    price: 60,
-    productDescription:
-      "PROTECT EVERY FIBER, PREVENT COLOUR FADING IN FABRIC, IT DOES NOT FADE COLOURS INFACT IT INCREASES THE LIFE OF THE FABRIC AS IT ACT AS CONDITIONER, REMOVE STAIN BETTER THAN POWDER, MADE FOR ALL FABRICS WOOLEN ,COTTON ETC",
+    price: { "500 ml": 80, "1 liter": 150, "5 liter": 625 },
+    productDescription: [
+      "Discover the power of J.K. Surface Cleaner – the versatile cleaner that obliterates tough stains, from coffee to ketchup, soy sauce, mustard sauce, and even olive oil.",
+      "Experience the invigorating aroma of lavender as you clean, leaving behind refreshed surfaces and a delightful ambiance. With a user-friendly formula that safeguards your hands, cleaning becomes a breeze.",
+      "From ceramic to marble, granite to mosaic, J.K. Surface Cleaner proves its adaptability on a myriad of surfaces. Elevate your cleaning game with J.K. Surface Cleaner – where stains are conquered, and surfaces shine a new.",
+    ],
+    defaultSize: "500 ml",
+    size: ["500 ml", "1 liter", "5 liter"],
   },
 ];
 

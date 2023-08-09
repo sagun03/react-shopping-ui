@@ -18,10 +18,10 @@ const InfoContainer = styled.div`
 
 const Image = styled.img`
   display: block;
-  width: 10rem;
+  // width: 10rem;
 
-  ${mobileS({ width: "8rem" })}
-  ${mobileSuperSmall({ width: "7rem" })}
+  // ${mobileS({ width: "8rem" })}
+  // ${mobileSuperSmall({ width: "7rem" })}
 `;
 
 const Info = styled.div`
@@ -73,7 +73,7 @@ const Button = styled.button`
   }
 `;
 
-const CategoryItem = ({ img, title, detail, price, id }) => {
+const CategoryItem = ({ img, title, detail, price, id, defaultSize }) => {
   return (
     <>
       <InfoContainer>
@@ -81,12 +81,12 @@ const CategoryItem = ({ img, title, detail, price, id }) => {
           <Title>{title}</Title>
           <Detail>{detail}</Detail>
         </Info>
-        <Price>Rs. {price}</Price>
+        <Price>Rs. {price[defaultSize]}</Price>
         <Link to={`/product/${id}`}>
           <Button>Shop Now</Button>
         </Link>
       </InfoContainer>
-      <Image src={img} />
+      <Image src={img[defaultSize]} />
     </>
   );
 };

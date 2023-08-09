@@ -1,18 +1,50 @@
-.mySwiper {
+.mySwiper1 {
   width: 90%;
   height: 17rem;
   position: unset !important;
+  padding: 1.5rem !important;
 }
-
-.mySwiper .swiper-slide {
+@keyframes rotate {
+	100% {
+		transform: rotate(1turn);
+	}
+}
+.mySwiper1 .swiper-slide {
   /* background-image: linear-gradient(135deg, #ffecd2 20%); */
-  background-color: #f9f9ff;
+  /* background-color: #f9f9ff; */
   display: flex;
+  /* border: 2px solid black; */
   border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 1rem;
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
+
+  &::before {
+		content: '';
+		position: absolute;
+		z-index: -2;
+    left: 21%;
+    top: -52%;
+    width: 60%;
+    height: 200%;
+		background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+    background: linear-gradient(90deg, transparent, teal, teal, teal, teal, transparent);		
+    animation: rotate 8s linear infinite;
+	}
+	
+	&::after {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		left: 4px;
+		top: 4px;
+		width: calc(100% - 8px);
+		height: calc(100% - 10px);
+		background: rgb(248,250,255);
+		border-radius: 5px;
+	}
 }
 
 .mySwiperCards {

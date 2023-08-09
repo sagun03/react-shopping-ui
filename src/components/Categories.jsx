@@ -16,8 +16,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 5rem;
-  margin-bottom: 5rem;
+  padding-bottom: 3rem;
+  margin-bottom: 2rem;
 `;
 
 const HeadingContainer = styled.div`
@@ -57,7 +57,7 @@ const Categories = () => {
           effect={"fade"}
           // centeredSlides={false}
           loopFillGroupWithBlank={true}
-          slidesPerView={3}
+          // slidesPerView={3}
           autoplay={{
             delay: 0,
             disableOnInteraction: false,
@@ -69,6 +69,9 @@ const Categories = () => {
           loop={true}
           modules={[Navigation, Pagination, Autoplay]}
           breakpoints={{
+            1600: {
+              slidesPerView: 3.5,
+            },
             990: {
               slidesPerView: 3,
             },
@@ -80,7 +83,7 @@ const Categories = () => {
               pagination: true,
             },
           }}
-          className="mySwiper"
+          className="mySwiper1"
         >
           {categories.map((item, index) => (
             <SwiperSlide key={item.id}>
