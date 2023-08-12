@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import Announcement from "../components/Announcement";
 import Categories from "../components/Categories";
 import Footer from "../components/Footer";
@@ -13,6 +13,7 @@ import Announcement from "../components/Announcement";
 import BottomNav from "../components/BottomNav";
 
 const homepage = () => {
+
   return (
     <div style={{ overflow: 'auto'}}>
       <NavBar />

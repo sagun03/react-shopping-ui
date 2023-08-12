@@ -21,6 +21,8 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { useUserAuth } from "../context/UserAuthContext";
 import Alert from "./Alert";
 import Logos from "../pages/images/logo.png";
+import PersonIcon from '@material-ui/icons/Person';
+import ReorderIcon from '@material-ui/icons/Reorder';
 
 const Container = styled.div`
   height: 55px;
@@ -41,7 +43,11 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  ${mobile({ padding: "10px 0px" })}
+  ${ScreenWith670px({
+    justifyContent: 'space-between',
+    width: '95%',
+    padding: "10px 10px"
+  })}
 `;
 
 const Left = styled.div`
@@ -69,7 +75,7 @@ const Logo2 = styled.div`
   ${mobile({
     display: "flex",
     height: "38px",
-    marginRight: "5px",
+    marginRight: "20px",
   })}
 `;
 
@@ -85,8 +91,40 @@ const MenuItem = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
+  
   ${mobile({ fontSize: "12px" })}
 `;
+
+const MenuItem2 = styled.div`
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  
+  ${mobile({ fontSize: "12px" })}
+  ${ScreenWith670px({ display: 'none'})}
+`;
+
+const MenuItemMyUser = styled.div`
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  
+  ${mobile({ fontSize: "12px" })}
+  ${ScreenWith670px({ display: 'none'})}
+`;
+
+const MenuItemMyUser2 = styled.div`
+  font-size: 14px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  
+  ${mobile({ fontSize: "12px" })}
+  ${ScreenWith670px({ display: 'flex'})}
+`;
+
 
 const StyledMenu = withStyles({
   paper: {
@@ -178,14 +216,15 @@ const NavBar = () => {
     <Container>
       <Wrapper>
         <Left>
+          <MenuItemMyUser2><ReorderIcon /></MenuItemMyUser2>
           <Link to="/">
-            <MenuItem>
+            <MenuItem2>
               <HomeIcon />
-            </MenuItem>
+            </MenuItem2>
           </Link>
           {user.accessToken ? (
             <Link to="/orders">
-              <MenuItem>My Orders</MenuItem>
+              <MenuItem2>My Orders</MenuItem2>
             </Link>
           ) : (
             <Link to="/register">
@@ -200,16 +239,23 @@ const NavBar = () => {
               {" "}
               <img src={Logos} alt="logo" />
             </Logo2>
+       
           </Center>
         </Link>
         <Right>
           {user.accessToken ? (
             <>
-              <MenuItem onClick={handleClick}>
+              <MenuItemMyUser onClick={handleClick}>
                 {(user?.displayName?.slice(0, 5)?.toUpperCase() ||
                   user?.email?.slice(0, 5)?.toUpperCase() ||
                   user?.phoneNumber?.slice(0, 5)) + ".."}
-              </MenuItem>
+              </MenuItemMyUser>
+              <MenuItemMyUser2 onClick={handleClick}>
+                <PersonIcon />
+                {/* {(user?.displayName?.toUpperCase() ||
+                  user?.email?.slice(0, 5)?.toUpperCase() ||
+                  user?.phoneNumber)} */}
+              </MenuItemMyUser2>
               <StyledMenu
                 id="customized-menu"
                 anchorEl={anchorEl}
@@ -230,7 +276,7 @@ const NavBar = () => {
               <MenuItem>SIGN IN</MenuItem>
             </Link>
           )}
-          <MenuItem>
+          <MenuItem2 item="cart">
             <Link to="/cart">
               <Badge
                 badgeContent={quantity}
@@ -240,7 +286,7 @@ const NavBar = () => {
                 <ShoppingCartOutlined />
               </Badge>
             </Link>
-          </MenuItem>
+          </MenuItem2>
         </Right>
       </Wrapper>
       {error && (

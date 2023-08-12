@@ -81,8 +81,8 @@ const navigate = useNavigate();
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            For Now We are limited to only one city that is Dhampur dist. Bijnor
-            UP, with Pin code 246761
+            Right now, we're operating exclusive in Dhampur dist. Bijnor
+            UP (Pin code: 246761)
           </DialogContentText>
         </DialogContent>
         <DialogActions>

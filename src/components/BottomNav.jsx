@@ -58,6 +58,10 @@ const BottomNav = () => {
         value={value}
         onChange={(event, newValue) => {
           navigate(bottomNavigationValues[newValue]);
+          if (newValue === value) {
+            window.location.reload();
+            return;
+          }
           if (newValue !== 4) {
             setValue(newValue);
           }

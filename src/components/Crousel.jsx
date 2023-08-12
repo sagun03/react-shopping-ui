@@ -1,6 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styled from "styled-components";
+import { useEffect } from "react";
 
 // Import Swiper styles
 import "swiper/css";
@@ -130,6 +131,9 @@ const Button = styled.button`
 `;
 
 const Crousel = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Container>
       <Swiper

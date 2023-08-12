@@ -138,6 +138,9 @@ const ProductImageContainer = styled.div`
 const ProductHeader = styled.div`
   padding: 20px 60px;
   border-bottom: 1px solid #d8d8d8;
+  ${ScreenWith670px({
+   marginTop: '80px'
+  })}
 `;
 
 const ProductHeaderContainer = styled.div`
@@ -191,6 +194,9 @@ const Wrapper = styled.div`
   margin-top: 60px;
   padding: 90px 0px;
   // text-align: center;
+  ${ScreenWith670px({
+    display: 'none'
+  })}
 `;
 
 const CircularContainer = styled.div`
@@ -228,7 +234,7 @@ const Products = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 500);
   }, []);
   // const getProducts = useCallback(async () => {
   //   try {
