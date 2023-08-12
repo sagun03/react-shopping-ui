@@ -8,6 +8,7 @@ import {
   ListItemIcon,
   ListItemText,
   Menu,
+  SwipeableDrawer,
   withStyles,
 } from "@material-ui/core";
 import { mobile, mobileSuperSmall, ScreenWith670px } from "../responsive";
@@ -21,8 +22,8 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { useUserAuth } from "../context/UserAuthContext";
 import Alert from "./Alert";
 import Logos from "../pages/images/logo.png";
-import PersonIcon from '@material-ui/icons/Person';
-import ReorderIcon from '@material-ui/icons/Reorder';
+import PersonIcon from "@material-ui/icons/Person";
+import ReorderIcon from "@material-ui/icons/Reorder";
 
 const Container = styled.div`
   height: 55px;
@@ -44,9 +45,9 @@ const Wrapper = styled.div`
   justify-content: space-around;
   width: 100%;
   ${ScreenWith670px({
-    justifyContent: 'space-between',
-    width: '95%',
-    padding: "10px 10px"
+    justifyContent: "space-between",
+    width: "95%",
+    padding: "10px 10px",
   })}
 `;
 
@@ -75,14 +76,14 @@ const Logo2 = styled.div`
   ${mobile({
     display: "flex",
     height: "38px",
-    marginRight: "20px",
+    marginRight: "0px",
   })}
 `;
 
 const Right = styled.div`
   display: flex;
   align-items: center;
-  justify-content: "center";
+  justify-content: center;
   gap: 1rem;
 `;
 
@@ -91,7 +92,7 @@ const MenuItem = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
-  
+
   ${mobile({ fontSize: "12px" })}
 `;
 
@@ -100,9 +101,9 @@ const MenuItem2 = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
-  
+
   ${mobile({ fontSize: "12px" })}
-  ${ScreenWith670px({ display: 'none'})}
+  ${ScreenWith670px({ display: "none" })}
 `;
 
 const MenuItemMyUser = styled.div`
@@ -110,9 +111,9 @@ const MenuItemMyUser = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
-  
+
   ${mobile({ fontSize: "12px" })}
-  ${ScreenWith670px({ display: 'none'})}
+  ${ScreenWith670px({ display: "none" })}
 `;
 
 const MenuItemMyUser2 = styled.div`
@@ -120,11 +121,10 @@ const MenuItemMyUser2 = styled.div`
   cursor: pointer;
   display: none;
   align-items: center;
-  
-  ${mobile({ fontSize: "12px" })}
-  ${ScreenWith670px({ display: 'flex'})}
-`;
 
+  ${mobile({ fontSize: "12px" })}
+  ${ScreenWith670px({ display: "flex" })}
+`;
 
 const StyledMenu = withStyles({
   paper: {
@@ -212,24 +212,32 @@ const NavBar = () => {
     }
   };
   const { quantity } = useSelector((state) => state.cart);
+  const [anchor, setAnchor] = useState(false);
+  const toggleDrawer = (open) => (event) => {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setAnchor(open)
+  };
   return (
     <Container>
       <Wrapper>
         <Left>
-          <MenuItemMyUser2><ReorderIcon /></MenuItemMyUser2>
-          <Link to="/">
+          <MenuItemMyUser2 onClick={toggleDrawer(true)}>
+            <ReorderIcon />
+          </MenuItemMyUser2>
+          {user.accessToken && (
             <MenuItem2>
-              <HomeIcon />
+              <Link to="/">
+                <HomeIcon />
+              </Link>{" "}
             </MenuItem2>
-          </Link>
-          {user.accessToken ? (
-            <Link to="/orders">
-              <MenuItem2>My Orders</MenuItem2>
-            </Link>
-          ) : (
-            <Link to="/register">
-              <MenuItem>REGISTER</MenuItem>
-            </Link>
+          )}
+          {user.accessToken && (
+            <MenuItem2>
+              <Link to="/orders">My Orders</Link>
+            </MenuItem2>
           )}
         </Left>
         <Link to="/">
@@ -239,7 +247,6 @@ const NavBar = () => {
               {" "}
               <img src={Logos} alt="logo" />
             </Logo2>
-       
           </Center>
         </Link>
         <Right>
@@ -272,9 +279,14 @@ const NavBar = () => {
               </StyledMenu>
             </>
           ) : (
-            <Link to="/login">
-              <MenuItem>SIGN IN</MenuItem>
-            </Link>
+            <>
+              {/* <Link to="/register">
+              <MenuItem>REGISTER</MenuItem>
+            </Link> */}
+              <Link to="/login">
+                <MenuItem>SIGN IN</MenuItem>
+              </Link>
+            </>
           )}
           <MenuItem2 item="cart">
             <Link to="/cart">
@@ -300,6 +312,14 @@ const NavBar = () => {
       <Backdrop open={loading} onClick={() => setLoading(false)}>
         <CircularProgress color="primary" />
       </Backdrop>
+      <SwipeableDrawer
+            open={anchor}
+            anchor="left"
+            onClose={toggleDrawer(false)}
+            onOpen={toggleDrawer(true)}
+          >
+            <div>Hello</div>
+          </SwipeableDrawer>
     </Container>
   );
 };
