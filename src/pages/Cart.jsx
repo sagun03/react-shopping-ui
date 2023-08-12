@@ -13,6 +13,7 @@ import addToCart from "./images/addToCart.png";
 import { Link } from "react-router-dom";
 import OrderSummary from "../components/OrderSummary";
 import { IconButton } from "@material-ui/core";
+import BottomNav from "../components/BottomNav";
 const Container = styled.div``;
 
 const Wrapper = styled.div`
@@ -269,6 +270,7 @@ const Cart = () => {
         )}
       </Wrapper>
       <Footer />
+      <BottomNav />
     </Container>
   );
 };

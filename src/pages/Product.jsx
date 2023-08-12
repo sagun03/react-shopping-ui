@@ -15,6 +15,7 @@ import { v4 as uuidv4 } from "uuid";
 import Alert from "../components/Alert";
 import { Link } from "react-router-dom";
 import { IconButton, CircularProgress } from "@material-ui/core";
+import BottomNav from "../components/BottomNav";
 
 const Container = styled.div`
   margin-top: 75px;
@@ -143,7 +144,6 @@ const Product = () => {
   const id = location.pathname.split("/")[2];
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("");
-  // const [price, setPrice] = useState(30);
   const dispatch = useDispatch();
   const [openAlert, setOpenAlert] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -271,6 +271,7 @@ const Product = () => {
           setOpen={setOpenAlert}
         />
       )}
+      <BottomNav />
     </Container>
   );
 };

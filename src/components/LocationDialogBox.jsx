@@ -26,12 +26,10 @@ const LocationDialogBox = ({ open, setOpen }) => {
     setOpen(false);
   };
   const { user } = useUserAuth();
-console.log(user, Boolean(user))
 const cart = useSelector((state) => state.cart);
 
   const push = async () => {
     if (Boolean(user)) {
-      console.log('user', user)
      await addDoc(ordersCollectionRef, {
       date: new Date().toLocaleDateString("en-GB"),
       name: user[0]?.displayName || "", 

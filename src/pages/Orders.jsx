@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import NewsLetter from "../components/NewsLetter";
 import OrdersComponent from "../components/OrdersComponent";
+import BottomNav from "../components/BottomNav";
 
 const Orders = () => {
   useEffect(() => {
@@ -16,6 +17,7 @@ const Orders = () => {
       <OrdersComponent />
       <NewsLetter />
       <Footer />
+      <BottomNav />
     </>
   );
 };

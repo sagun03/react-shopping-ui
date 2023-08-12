@@ -10,22 +10,25 @@ import Virtual from "../components/Virtual";
 import Crousel from "../components/Crousel";
 import SimpleMap from "../components/Map";
 import Announcement from "../components/Announcement";
+import BottomNav from "../components/BottomNav";
 
 const homepage = () => {
   return (
-    <>
+    <div style={{ overflow: 'auto'}}>
       <NavBar />
       <Announcement />
-
-      <Crousel />
-      <SliderContainer />
-      <Categories />
-      <Virtual />
-      {/* <Products /> */}
-      <SimpleMap />
-      <NewsLetter />
-      <Footer />
-    </>
+      <div>
+        {" "}
+        <Crousel />
+        <SliderContainer />
+        <Categories />
+        <Virtual />
+        <SimpleMap />
+        <NewsLetter />
+        <Footer />
+      </div>
+      <BottomNav />
+    </div>
   );
 };
 
