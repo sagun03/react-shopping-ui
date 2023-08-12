@@ -31,10 +31,10 @@ const BottomNavigationActionUi = styled(BottomNavigationAction)`
 `;
 
 const bottomNavigationValues = {
-  0: '/',
-  1: '/products',
-  2: '/orders',
-  3: '/cart',
+  0: "/",
+  1: "/products",
+  2: "/orders",
+  3: "/cart",
 };
 const BottomNav = () => {
   const { user } = useUserAuth();
@@ -43,14 +43,14 @@ const BottomNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
   console.log(location);
- 
+
   useEffect(() => {
     const getKeyByValue = (object, value) => {
-      return +(Object.keys(object).find(key => object[key] === value));
-    }
-    console.log(getKeyByValue(bottomNavigationValues, location.pathname))
-  setValue(getKeyByValue(bottomNavigationValues, location.pathname))
-  }, [setValue, location ])
+      return +Object.keys(object).find((key) => object[key] === value);
+    };
+    console.log(getKeyByValue(bottomNavigationValues, location.pathname));
+    setValue(getKeyByValue(bottomNavigationValues, location.pathname));
+  }, [setValue, location]);
   return (
     <PaperUi elevation={3}>
       <BottomNavigation
@@ -58,7 +58,9 @@ const BottomNav = () => {
         value={value}
         onChange={(event, newValue) => {
           navigate(bottomNavigationValues[newValue]);
-          setValue(newValue);
+          if (newValue !== 4) {
+            setValue(newValue);
+          }
         }}
       >
         <BottomNavigationActionUi label="Home" icon={<HomeIcon />} showLabel />
@@ -87,12 +89,14 @@ const BottomNav = () => {
             </Badge>
           }
         />
-
-        <BottomNavigationActionUi
-          label="Call Us"
-          icon={<CallIcon />}
-          showLabel
-        />
+        <a href="tel:+918755447070">
+          {" "}
+          <BottomNavigationActionUi
+            label="Call Us"
+            icon={<CallIcon />}
+            showLabel
+          />
+        </a>
       </BottomNavigation>
     </PaperUi>
   );
