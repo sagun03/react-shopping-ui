@@ -106,56 +106,62 @@ const Admin = () => {
     await updateDoc(userDoc, udpatedField);
     window.location.reload();
   };
-  console.log('user', user)
   return (
     <>
       <Announcement />
       <NavBar />
-      <Title>Admin Pannel</Title>
-      <Continer>
-        {" "}
-        <div
-          style={{
-            flexBasis: "80%",
-            justifyContent: "center",
-            display: "flex",
-          }}
-        >
-          Please Enter Id of user:
-        </div>
-        <TextField
-          required
-          id="user id"
-          name="user id"
-          label="Enter user id"
-          variant="standard"
-          fullWidth
-          onChange={(e) => setUserId(e.target.value)}
-        />
-        <Button variant="contained" onClick={filterData} color="primary">
-          {" "}
-          Search{" "}
-        </Button>
-      </Continer>
-
-      {user[0]?.uid === "102573091226640558754" && userOrders?.length > 0 ? (
+      {user?.email === process.env.REACT_APP_ADMIN ? (
         <>
-          <Wrapper>
-            {updateOrders?.map((order) => (
-              <>
-                <OrderWrapper>
-                  <AdminReview
-                    order={order}
-                    products={order?.products}
-                    updateOrderStatus={updateOrderStatus}
-                  />
-                </OrderWrapper>
-              </>
-            ))}{" "}
-          </Wrapper>
+          {" "}
+          <Title>Admin Pannel</Title>
+          <Continer>
+            {" "}
+            <div
+              style={{
+                flexBasis: "80%",
+                justifyContent: "center",
+                display: "flex",
+              }}
+            >
+              Please Enter Id of user:
+            </div>
+            <TextField
+              required
+              id="user id"
+              name="user id"
+              label="Enter user id"
+              variant="standard"
+              fullWidth
+              onChange={(e) => setUserId(e.target.value)}
+            />
+            <Button variant="contained" onClick={filterData} color="primary">
+              {" "}
+              Search{" "}
+            </Button>
+          </Continer>
+          {user[0]?.uid === "102573091226640558754" &&
+          userOrders?.length > 0 ? (
+            <>
+              <Wrapper>
+                {updateOrders?.map((order) => (
+                  <>
+                    <OrderWrapper>
+                      <AdminReview
+                        order={order}
+                        products={order?.products}
+                        updateOrderStatus={updateOrderStatus}
+                      />
+                    </OrderWrapper>
+                  </>
+                ))}{" "}
+              </Wrapper>
+            </>
+          ) : (
+            <Wrapper>No orders with given userd!</Wrapper>
+          )}
         </>
       ) : (
-        <Wrapper>No orders with given userd!</Wrapper>
+        <Title>You do not have access to this page</Title>
       )}
       <Footer />
     </>

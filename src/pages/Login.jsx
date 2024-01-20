@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useUserAuth } from "../context/UserAuthContext";
 import { FormHelperText } from "@material-ui/core";
 import GoogleButton from "react-google-button";
+import { Helmet } from "react-helmet-async";
 
 const Container = styled.div`
   width: 100vw;
@@ -107,6 +108,13 @@ const Login = () => {
     }
   };
   return (
+    <>
+     <Helmet>
+        <title>Login</title>
+        <meta name="description" content="Login to See the Orders" />
+        <link rel="canonical" href="/login" />
+      </Helmet>
+   
     <Container>
       <Wrapper>
         <Title>SIGN IN</Title>
@@ -145,6 +153,7 @@ const Login = () => {
         </WrapperContainer>
       </Wrapper>
     </Container>
+    </>
   );
 };
 

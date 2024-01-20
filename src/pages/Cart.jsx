@@ -14,6 +14,8 @@ import { Link } from "react-router-dom";
 import OrderSummary from "../components/OrderSummary";
 import { IconButton } from "@material-ui/core";
 import BottomNav from "../components/BottomNav";
+import { Helmet } from "react-helmet-async";
+
 const Container = styled.div``;
 
 const Wrapper = styled.div`
@@ -86,7 +88,7 @@ const ProductDetail = styled.div`
 
 const Image = styled.img`
   width: 180px;
-      object-fit: contain;
+  object-fit: contain;
 
   ${ScreenWith960px({ width: "160px" })}
   ${ScreenWith670px({ width: "120px" })}
@@ -139,7 +141,7 @@ const ProductPrice = styled.div`
   font-weight: 200;
   font-weight: 100;
   text-decoration: line-through;
-  color: #615F5F;
+  color: #615f5f;
   ${mobile({ marginBottom: "20px", fontSize: "20px" })}
   ${ScreenWith960px({ fontSize: "26px" })}
   ${ScreenWith670px({ fontSize: "24px" })}
@@ -186,92 +188,99 @@ const Cart = () => {
       );
     }
   };
-  console.log('cart', cart)
   return (
-    <Container>
-      <Announcement />
-      <NavBar />
-      <Wrapper>
-        {cart?.products.length === 0 ? (
-          <Link to="/">
-            <Title>Click Here to Add Product</Title>
-          </Link>
-        ) : (
-          <Title>YOUR BAG</Title>
-        )}
-        {cart?.products.length === 0 ? (
-          <CartImageContainer>
-            <CartImage src={addToCart} alt="add to cart" />
-          </CartImageContainer>
-        ) : (
-          <>
-            {" "}
-            <Top>
-              <Link to="/products">
-                {" "}
-                <TopButton>CONTINUE SHOPPING</TopButton>
-              </Link>
-              <TopTexts>
-                <TopText>Shopping Bag({cart?.quantity})</TopText>
-              </TopTexts>
-              {/* <Link to="/checkout">
+    <>
+      <Helmet>
+        <title>Shopping Cart</title>
+        <meta name="description" content="Add Products to the Shopping Cart." />
+        <link rel="canonical" href="/cart" />
+      </Helmet>
+      <Container>
+        <Announcement />
+        <NavBar />
+        <Wrapper>
+          {cart?.products.length === 0 ? (
+            <Link to="/">
+              <Title>Click Here to Add Product</Title>
+            </Link>
+          ) : (
+            <Title>YOUR BAG</Title>
+          )}
+          {cart?.products.length === 0 ? (
+            <CartImageContainer>
+              <CartImage src={addToCart} alt="add to cart" />
+            </CartImageContainer>
+          ) : (
+            <>
+              {" "}
+              <Top>
+                <Link to="/products">
+                  {" "}
+                  <TopButton>CONTINUE SHOPPING</TopButton>
+                </Link>
+                <TopTexts>
+                  <TopText>Shopping Bag({cart?.quantity})</TopText>
+                </TopTexts>
+                {/* <Link to="/checkout">
                 <TopButton type="filled">CHECKOUT NOW</TopButton>
               </Link> */}
-            </Top>
-            <Bottom>
-              <Info>
-                {cart.products?.map((item) => (
-                  <Fragment key={uuidv4()}>
-                    <Product>
-                      <ProductDetail>
-                        <Image src={item?.img} />
-                        <Details>
-                          <ProductName>
-                            <b>Product:</b> {item?.title}
-                          </ProductName>
-                          <ProductSize>
-                            <b>Size:</b> {item?.size}
-                          </ProductSize>
-                        </Details>
-                      </ProductDetail>
-                      <PriceDetail>
-                        <ProductAmountContainer>
-                          <IconButton>
-                          <Remove
-                            onClick={() =>
-                              handleClick("dec", item, item.productId)
-                            }
-                          />
-                          </IconButton>
-                          <ProductAmount>{item?.quantity}</ProductAmount>
-                          <IconButton>
-                          <Add
-                            onClick={() =>
-                              handleClick("add", item, item.productId)
-                            }
-                          />
-                          </IconButton>
-                        </ProductAmountContainer>
-                        <ProductPrice>
-                          Rs. {item?.originalPrice * item?.quantity}
-                        </ProductPrice>
-                        <ProductPrice2>
-                        Rs. {(item?.price * item?.quantity + 0.0).toFixed(2)}
-                        </ProductPrice2>
-                      </PriceDetail>
-                    </Product>
-                    <Hr />
-                  </Fragment>
-                ))}
-              </Info>
-              <OrderSummary />
-            </Bottom>{" "}
-          </>
-        )}
-      </Wrapper>
-      <Footer />
-      <BottomNav />
-    </Container>
+              </Top>
+              <Bottom>
+                <Info>
+                  {cart.products?.map((item) => (
+                    <Fragment key={uuidv4()}>
+                      <Product>
+                        <ProductDetail>
+                          <Image src={item?.img} />
+                          <Details>
+                            <ProductName>
+                              <b>Product:</b> {item?.title}
+                            </ProductName>
+                            <ProductSize>
+                              <b>Size:</b> {item?.size}
+                            </ProductSize>
+                          </Details>
+                        </ProductDetail>
+                        <PriceDetail>
+                          <ProductAmountContainer>
+                            <IconButton>
+                              <Remove
+                                onClick={() =>
+                                  handleClick("dec", item, item.productId)
+                                }
+                              />
+                            </IconButton>
+                            <ProductAmount>{item?.quantity}</ProductAmount>
+                            <IconButton>
+                              <Add
+                                onClick={() =>
+                                  handleClick("add", item, item.productId)
+                                }
+                              />
+                            </IconButton>
+                          </ProductAmountContainer>
+                          <ProductPrice>
+                            Rs. {item?.originalPrice * item?.quantity}
+                          </ProductPrice>
+                          <ProductPrice2>
+                            Rs.{" "}
+                            {(item?.price * item?.quantity + 0.0).toFixed(2)}
+                          </ProductPrice2>
+                        </PriceDetail>
+                      </Product>
+                      <Hr />
+                    </Fragment>
+                  ))}
+                </Info>
+                <OrderSummary />
+              </Bottom>{" "}
+            </>
+          )}
+        </Wrapper>
+        <Footer />
+        <BottomNav />
+      </Container>
+    </>
   );
 };
 

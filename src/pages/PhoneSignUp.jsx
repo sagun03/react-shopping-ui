@@ -16,6 +16,7 @@ import { useState } from "react";
 import { Link } from "./Login";
 import { useUserAuth } from "../context/UserAuthContext";
 import OTPInput from "react-otp-input";
+import { Helmet } from "react-helmet-async";
 
 const PhoneSignUp = () => {
   const [number, setNumber] = useState("");
@@ -62,6 +63,12 @@ const PhoneSignUp = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>Login</title>
+        <meta name="description" content="Use mobile nummber to login" />
+        <link rel="canonical" href="/phonesignup" />
+      </Helmet>
+
       <Container>
         <Wrapper>
           <Title>Login With Phone</Title>

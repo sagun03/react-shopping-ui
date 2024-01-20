@@ -11,10 +11,20 @@ import Crousel from "../components/Crousel";
 import SimpleMap from "../components/Map";
 import Announcement from "../components/Announcement";
 import BottomNav from "../components/BottomNav";
+import { Helmet } from 'react-helmet-async'
 
 const homepage = () => {
 
   return (
+    <>
+    <Helmet>
+    <title>Homepage</title>
+    <meta
+      name="description"
+      content="Shop for our latest products now."
+    />
+    <link rel="canonical" href="/" />
+    </Helmet>
     <div style={{ overflow: 'auto'}}>
       <NavBar />
       <Announcement />
@@ -30,6 +40,7 @@ const homepage = () => {
       </div>
       <BottomNav />
     </div>
+    </>
   );
 };
 

@@ -64,12 +64,14 @@ const NewsLetter = () => {
     <Cointainer>
       <Title>NewsLetter</Title>
       <Description>Get Timely updates from your favorite products.</Description>
+      <form name="newsletter" netlify>
       <InputCointainer>
-        <Input placeholder="Your email" />
-        <Button>
+        <Input placeholder="Your email" type="email" name="email" />
+        <Button type="submit">
           <Send />
         </Button>
       </InputCointainer>
+      </form>
     </Cointainer>
   );
 };

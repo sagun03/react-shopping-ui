@@ -1,0 +1,9 @@
+https://thejkproducts.com/
+https://thejkproducts.com/product/:id
+https://thejkproducts.com/cart
+https://thejkproducts.com/login
+https://thejkproducts.com/register
+https://thejkproducts.com/phonesignup
+https://thejkproducts.com/orders
+https://thejkproducts.com/checkout
+https://thejkproducts.com/products

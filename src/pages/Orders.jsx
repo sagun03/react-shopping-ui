@@ -5,6 +5,7 @@ import NavBar from "../components/NavBar";
 import NewsLetter from "../components/NewsLetter";
 import OrdersComponent from "../components/OrdersComponent";
 import BottomNav from "../components/BottomNav";
+import { Helmet } from "react-helmet-async";
 
 const Orders = () => {
   useEffect(() => {
@@ -12,6 +13,11 @@ const Orders = () => {
   }, []);
   return (
     <>
+     <Helmet>
+        <title>Orders</title>
+        <meta name="description" content="Check Orders." />
+        <link rel="canonical" href="/orders" />
+      </Helmet>
       <Announcement />
       <NavBar />
       <OrdersComponent />

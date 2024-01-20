@@ -4,12 +4,14 @@ import ReactDOM from "react-dom";
 import store, { persistor } from "./redux/store";
 import App from "./App";
 import { PersistGate } from "redux-persist/integration/react";
-
+import { HelmetProvider } from "react-helmet-async";
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <React.StrictMode>
-        <App />
+        <HelmetProvider>
+          <App />
+        </HelmetProvider>
       </React.StrictMode>
     </PersistGate>
   </Provider>,

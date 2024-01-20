@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useUserAuth } from "../context/UserAuthContext";
 import { FormHelperText } from "@material-ui/core";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 export const Container = styled.div`
   width: 100vw;
@@ -116,6 +117,13 @@ const Register = () => {
     }
   };
   return (
+    <>
+     <Helmet>
+        <title>Register</title>
+        <meta name="description" content="Register to see the Recent Orders" />
+        <link rel="canonical" href="/register" />
+      </Helmet>
+
     <Container>
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
@@ -156,6 +164,7 @@ const Register = () => {
         </Form>
       </Wrapper>
     </Container>
+    </>
   );
 };
 

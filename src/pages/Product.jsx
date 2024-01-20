@@ -16,6 +16,7 @@ import Alert from "../components/Alert";
 import { Link } from "react-router-dom";
 import { IconButton, CircularProgress } from "@material-ui/core";
 import BottomNav from "../components/BottomNav";
+import { Helmet } from "react-helmet-async";
 
 const Container = styled.div`
   margin-top: 75px;
@@ -128,14 +129,14 @@ const Button = styled.button`
   }
 `;
 const CircularContainer = styled.div`
-display: block;
-position: absolute;
-top: 40%;
-left: 50%;
-${mobile({
-  top: "40%",
-  left: "46.5%",
-})}
+  display: block;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  ${mobile({
+    top: "40%",
+    left: "46.5%",
+  })}
 `;
 
 const Product = () => {
@@ -172,7 +173,7 @@ const Product = () => {
   }, [product]);
 
   const handleClick = () => {
-    console.log('product, ', product)
+    console.log("product, ", product);
     dispatch(
       addProducts({
         ...product,
@@ -195,84 +196,97 @@ const Product = () => {
     }
   };
   return (
-    <Container>
-      <Announcement />
-      <NavBar />
-      <Wrapper>
-        {loading ? (
-          <CircularContainer>
-            <CircularProgress />
-          </CircularContainer>
-        ) : (
-          <>
-            {" "}
-            <ImgContainer>
-              {size && <Image src={product?.img[size]} />}
-            </ImgContainer>
-            <InfoContainer>
-              <Title>{product?.title}</Title>
-              {product?.productDescription?.map((desc) => (
-                <Desc>{desc}</Desc>
-              ))}
-              {size && (
-                <>
-                  <Price>Rs. {product?.price[size]} </Price>{" "}
-                  <span
-                    style={{
-                      fontWeight: "100",
-                      fontSize: "40px",
-                      marginLeft: "10px",
-                    }}
-                  >
-                    Rs. {((product?.price[size] - product?.price[size] * 0.05) + 0.00).toFixed(2)}
-                  </span>
-                </>
-              )}
-              <FilterContainer>
-                <Filter>
-                  <FilterTitle>Size</FilterTitle>
-                  <FilterSize
-                    value={size}
-                    onChange={(e) => setSize(e.target.value)}
-                  >
-                    {product?.size &&
-                      product?.size?.map((s) => (
-                        <FilterSizeOption>{s}</FilterSizeOption>
-                      ))}
-                  </FilterSize>
-                </Filter>
-              </FilterContainer>
-              <AddContainer>
-                <AmountContainer>
-                  <IconButton disabled={quantity === 1}>
-                    <Remove onClick={() => handleQuantity("dec")} />
-                  </IconButton>
-                  <Amount>{quantity}</Amount>
-                  <IconButton>
-                    <Add onClick={() => handleQuantity("add")} />
-                  </IconButton>
-                </AmountContainer>
-                <Button onClick={() => handleClick()}>ADD TO CART</Button>
-                <Link to="/cart">
-                  <Button >GO TO CART</Button>
-                </Link>
-              </AddContainer>
-            </InfoContainer>
-          </>
+    <>
+      <Helmet>
+        <title>Product Detail</title>
+        <meta name="description" content="Details of the Selected Product." />
+        <link rel="canonical" href="/product/:id" />
+      </Helmet>
+
+      <Container>
+        <Announcement />
+        <NavBar />
+        <Wrapper>
+          {loading ? (
+            <CircularContainer>
+              <CircularProgress />
+            </CircularContainer>
+          ) : (
+            <>
+              {" "}
+              <ImgContainer>
+                {size && <Image src={product?.img[size]} />}
+              </ImgContainer>
+              <InfoContainer>
+                <Title>{product?.title}</Title>
+                {product?.productDescription?.map((desc) => (
+                  <Desc>{desc}</Desc>
+                ))}
+                {size && (
+                  <>
+                    <Price>Rs. {product?.price[size]} </Price>{" "}
+                    <span
+                      style={{
+                        fontWeight: "100",
+                        fontSize: "40px",
+                        marginLeft: "10px",
+                      }}
+                    >
+                      Rs.{" "}
+                      {(
+                        product?.price[size] -
+                        product?.price[size] * 0.05 +
+                        0.0
+                      ).toFixed(2)}
+                    </span>
+                  </>
+                )}
+                <FilterContainer>
+                  <Filter>
+                    <FilterTitle>Size</FilterTitle>
+                    <FilterSize
+                      value={size}
+                      onChange={(e) => setSize(e.target.value)}
+                    >
+                      {product?.size &&
+                        product?.size?.map((s) => (
+                          <FilterSizeOption>{s}</FilterSizeOption>
+                        ))}
+                    </FilterSize>
+                  </Filter>
+                </FilterContainer>
+                <AddContainer>
+                  <AmountContainer>
+                    <IconButton disabled={quantity === 1}>
+                      <Remove onClick={() => handleQuantity("dec")} />
+                    </IconButton>
+                    <Amount>{quantity}</Amount>
+                    <IconButton>
+                      <Add onClick={() => handleQuantity("add")} />
+                    </IconButton>
+                  </AmountContainer>
+                  <Button onClick={() => handleClick()}>ADD TO CART</Button>
+                  <Link to="/cart">
+                    <Button>GO TO CART</Button>
+                  </Link>
+                </AddContainer>
+              </InfoContainer>
+            </>
+          )}
+        </Wrapper>
+        <NewsLetter />
+        <Footer />
+        {openAlert && (
+          <Alert
+            open={openAlert}
+            type={"success"}
+            message={"Your Product has been added into Cart"}
+            setOpen={setOpenAlert}
+          />
         )}
-      </Wrapper>
-      <NewsLetter />
-      <Footer />
-      {openAlert && (
-        <Alert
-          open={openAlert}
-          type={"success"}
-          message={"Your Product has been added into Cart"}
-          setOpen={setOpenAlert}
-        />
-      )}
-      <BottomNav />
-    </Container>
+        <BottomNav />
+      </Container>
+    </>
   );
 };
 
