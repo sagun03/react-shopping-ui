@@ -66,7 +66,7 @@ const PhoneSignUp = () => {
       <Helmet>
         <title>Login</title>
         <meta name="description" content="Use mobile nummber to login" />
-        <link rel="canonical" href="/phonesignup" />
+        <link rel="canonical" href="https://thejkproducts.com/phonesignup" />
       </Helmet>
 
       <Container>

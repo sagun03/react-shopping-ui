@@ -23,7 +23,7 @@ const homepage = () => {
       name="description"
       content="Shop for our latest products now."
     />
-    <link rel="canonical" href="/" />
+    <link rel="canonical" href="https://thejkproducts.com/" />
     </Helmet>
     <div style={{ overflow: 'auto'}}>
       <NavBar />

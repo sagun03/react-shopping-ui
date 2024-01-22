@@ -64,7 +64,9 @@ const NewsLetter = () => {
     <Cointainer>
       <Title>NewsLetter</Title>
       <Description>Get Timely updates from your favorite products.</Description>
-      <form name="newsletter" netlify>
+      <form name="newsletter" netlify data-netlify="true">
+      <input type="hidden" name="form-name" value="newsletter"/>
+
       <InputCointainer>
         <Input placeholder="Your email" type="email" name="email" />
         <Button type="submit">

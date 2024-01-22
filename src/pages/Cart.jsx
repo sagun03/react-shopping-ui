@@ -193,7 +193,7 @@ const Cart = () => {
       <Helmet>
         <title>Shopping Cart</title>
         <meta name="description" content="Add Products to the Shopping Cart." />
-        <link rel="canonical" href="/cart" />
+        <link rel="canonical" href="https://thejkproducts.com/cart" />
       </Helmet>
       <Container>
         <Announcement />
