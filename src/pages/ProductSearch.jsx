@@ -11,7 +11,7 @@ const ProductSearch = () => {
        <Helmet>
         <title>Products Page</title>
         <meta name="description" content="Search for Products in this page" />
-        <link rel="canonical" href="https://thejkproducts.com/products" />
+        <link rel="canonical" href="/products" />
       </Helmet>
       <NavBar />
       <Announcement />

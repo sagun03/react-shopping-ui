@@ -200,7 +200,7 @@ const Product = () => {
       <Helmet>
         <title>Product Detail</title>
         <meta name="description" content="Details of the Selected Product." />
-        <link rel="canonical" href="https://thejkproducts.com/product/:id" />
+        <link rel="canonical" href="/product/:id" />
       </Helmet>
 
       <Container>

@@ -13,7 +13,7 @@ const Checkout = () => {
       <Helmet>
         <title>Checkout</title>
         <meta name="description" content="Checkout page" />
-        <link rel="canonical" href="https://thejkproducts.com/checkout" />
+        <link rel="canonical" href="/checkout" />
       </Helmet>
       <Announcement />
       <NavBar />
