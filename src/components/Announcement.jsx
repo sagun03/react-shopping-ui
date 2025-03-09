@@ -3,7 +3,7 @@ import { mobileS, mobileSuperSmall } from "../responsive";
 
 const Container = styled.div`
   height: fit-content;
-  background-color: teal;
+  background-color: #F44336;
   color: white;
   display: flex;
   justify-content: center;
@@ -20,7 +20,7 @@ const Container = styled.div`
 `;
 const Announcement = () => {
   return (
-    <Container>Super Deal! Free Shipping on Order over Rs. 200</Container>
+    <Container>Super Deal! Free Shipping on Order over Rs. 300</Container>
   );
 };
 

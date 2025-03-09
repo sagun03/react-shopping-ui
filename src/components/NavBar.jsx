@@ -28,11 +28,12 @@ import ReorderIcon from "@material-ui/icons/Reorder";
 const Container = styled.div`
   height: 55px;
   overflow: hidden;
-  background-color: white;
+  background-color: #0A5BD1;
   position: fixed;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   top: 0px;
   width: 100%;
+  color: white;
   z-index: 1299;
   ${mobile({ top: "0px" })}
   ${mobileSuperSmall({ top: "0px" })}

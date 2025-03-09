@@ -14,9 +14,9 @@ import colin250ml from "../pages/images/colin500mlp.png";
 import dishcup from "../pages/images/dishcup.png";
 import dishgel1l from "../pages/images/dishgel1l.png";
 import dishgel500l from "../pages/images/dishgel500ml.png";
-import dishge5l from "../pages/images/dishge5l.png";
+import dishge5l from "../pages/images/dishgel5l.png";
 import topload5l from "../pages/images/topload5l.png";
-import topload1l from "../pages/images/topLoad1l.png";
+// import topload1l from "../pages/images/topLoad1l.png";
 import topload250ml from "../pages/images/TopLoad250ml.png";
 import easywash500ml from "../pages/images/easywash500ml.png";
 import easywash1l from "../pages/images/easywash.png";
@@ -87,7 +87,7 @@ export const categories = [
     ],
     img: {
       "250 ml": topload250ml,
-      "1 liter": topload1l,
+      "1 liter": topload250ml,
       "5 liter": topload5l,
     },
     defaultSize: "250 ml",
@@ -181,7 +181,7 @@ export const popularProducts = [
     ],
     img: {
       "250 ml": topload250ml,
-      "1 liter": topload1l,
+      "1 liter": topload250ml,
       "5 liter": topload5l,
     },
     defaultSize: "5 liter",
@@ -200,7 +200,7 @@ export const popularProducts = [
     ],
     img: {
       "250 ml": topload250ml,
-      "1 liter": topload1l,
+      "1 liter": topload250ml,
       "5 liter": topload5l,
     },
     defaultSize: "1 liter",
@@ -219,7 +219,7 @@ export const popularProducts = [
     ],
     img: {
       "250 ml": topload250ml,
-      "1 liter": topload1l,
+      "1 liter": topload250ml,
       "5 liter": topload5l,
     },
     defaultSize: "250 ml",
@@ -860,34 +860,38 @@ export const popularProducts = [
 export const ClouserItems = [
   {
     id: 1,
-    img: FrontLoadCollection1,
+    img: 'https://jkblobstore.blob.core.windows.net/jk-images-new/ALL JPEG FILE/Front load/Front load-20.jpg',
+    mobileImg: 'https://jkblobstore.blob.core.windows.net/jk-images-new/ALL JPEG FILE/Front load/Front load-19.jpg',
     title: "Liquid Detergent Collection",
     categoryTitle: "Liquid Detergent",
     name: "detergent",
-    desc: "Experience the Power of Clean.",
+    desc: "Experience the Power of Clean!",
   },
   {
     id: 3,
-    img: HandwashColection3,
+    img: 'https://jkblobstore.blob.core.windows.net/jk-images-new/ALL JPEG FILE/hand wash/hand wash-20.jpg',
     title: "Handwash Collection",
+    mobileImg: 'https://jkblobstore.blob.core.windows.net/jk-images-new/ALL JPEG FILE/hand wash/hand wash-19.jpg',
     categoryTitle: "Hand Wash",
     name: "handWash",
-    desc: "Keep Your Hands Protected and Refreshed.",
+    desc: "Keep Your Hands Protected and Refreshed!",
   },
 
   {
     id: 2,
-    img: ToiletColection3,
+    img: 'https://jkblobstore.blob.core.windows.net/jk-images-new/ALL JPEG FILE/Toilet Cleaner/Toilet Cleaner-16.jpg',
     title: "Toilet Cleaner Collection",
     categoryTitle: "Toilet Cleaner",
+    mobileImg: 'https://jkblobstore.blob.core.windows.net/jk-images-new/ALL JPEG FILE/Toilet Cleaner/Toilet Cleaner-15.jpg',
     name: "toiletCleaner",
-    desc: "Say Goodbye to Stubborn Stains and Embrace a Spotless Toilet.",
+    desc: "Say Goodbye to Stubborn Stains and Embrace a Spotless Toilet!",
   },
   {
     id: 20,
-    img: Colin,
+    img: 'https://jkblobstore.blob.core.windows.net/jk-images-new/ALL JPEG FILE/JK Glass Cleaner/JK Glass Cleaner-23.jpg',
     title: "Glass Cleaner Collection",
     categoryTitle: "Glass Cleaner",
+    mobileImg: 'https://jkblobstore.blob.core.windows.net/jk-images-new/ALL JPEG FILE/JK Glass Cleaner/JK Glass Cleaner-22.jpg',
     name: "glassCleaner",
     desc: "Crystal clear shine, every time!",
   },
