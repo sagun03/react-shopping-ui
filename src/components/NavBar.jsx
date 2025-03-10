@@ -24,6 +24,7 @@ import Alert from "./Alert";
 import Logos from "../pages/images/logo.png";
 import PersonIcon from "@material-ui/icons/Person";
 import ReorderIcon from "@material-ui/icons/Reorder";
+import SideBar from "./SideBar";
 
 const Container = styled.div`
   height: 55px;
@@ -313,14 +314,15 @@ const NavBar = () => {
       <Backdrop open={loading} onClick={() => setLoading(false)}>
         <CircularProgress color="primary" />
       </Backdrop>
-      <SwipeableDrawer
+      <SideBar anchor={anchor} toggleDrawer={toggleDrawer} />
+      {/* <SwipeableDrawer
             open={anchor}
             anchor="left"
             onClose={toggleDrawer(false)}
             onOpen={toggleDrawer(true)}
           >
             <div>Hello</div>
-          </SwipeableDrawer>
+          </SwipeableDrawer> */}
     </Container>
   );
 };
