@@ -1,6 +1,6 @@
 import React from "react";
 // import Announcement from "../components/Announcement";
-import Categories from "../components/Categories";
+// import Categories from "../components/Categories";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import NewsLetter from "../components/NewsLetter";
@@ -12,6 +12,7 @@ import SimpleMap from "../components/Map";
 import Announcement from "../components/Announcement";
 import BottomNav from "../components/BottomNav";
 import { Helmet } from 'react-helmet-async'
+import Categories from "../components/Home/Catrgories";
 
 const homepage = () => {
 
@@ -67,8 +68,9 @@ const homepage = () => {
       <div>
         {" "}
         <Crousel />
-        <SliderContainer />
         <Categories />
+        <SliderContainer />
+        {/* <Categories /> */}
         <Virtual />
         <SimpleMap />
         <NewsLetter />

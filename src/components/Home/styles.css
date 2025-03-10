@@ -1,0 +1,97 @@
+.mySwiper1 {
+    width: 100%;
+    height: 22rem;
+    position: unset !important;
+    padding: 1.5rem !important;
+  }
+  
+  @keyframes rotate {
+    100% {
+      transform: rotate(1turn);
+    }
+  }
+  
+  .mySwiper1 .swiper-slide {
+    display: flex;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 1.25rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    /* background: linear-gradient(135deg, #f9f9ff, #e0eaff); */
+  
+    /* Rotating Gradient Effect */
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      left: 21%;
+      top: -52%;
+      width: 70%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, #004f8d, #0073e6, #0073e6, #004f8d, transparent);
+      animation: rotate 8s linear infinite;
+    }
+  
+    /* Inner Background Layer */
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: 4px;
+      top: 4px;
+      width: calc(100% - 8px);
+      height: calc(100% - 10px);
+      background: white;
+      border-radius: 5px;
+    }
+  }
+
+  
+  /* Hide additional swiper cards by default */
+  .mySwiperCards {
+    display: none;
+  }
+  
+  /* Responsive Adjustments */
+  @media only screen and (max-width: 670px) {
+    .mySwiper1 {
+      width: 90%;
+      height: 17rem;
+    }
+  }
+  
+  @media only screen and (max-width: 539px) {
+    .mySwiper1 {
+      width: 100%;
+      height: 18rem;
+    }
+    
+    .mySwiperCards {
+      display: flex;
+      width: 75%;
+      height: 30rem;
+      overflow: visible !important;
+    }
+  
+    .mySwiperCards .swiper-slide {
+      background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+      display: flex;
+      border-radius: 10px;
+      padding: 1rem;
+      box-sizing: border-box;
+      position: relative;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .mySwiperCards {
+      width: 80%;
+      height: 16rem;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }
+  
