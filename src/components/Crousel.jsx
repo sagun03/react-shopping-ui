@@ -52,9 +52,16 @@ const Image = styled.img`
     height: "75%",
     width: "100%"
   })}
-
+  
+  ${ScreenWith1080px({
+    height: "70%",
+  })}
+  ${ScreenWith960px({
+    height: "65%",
+  })}
+  
   ${mobile({
-    height: "64%",
+    height: "55%",
   })}
 
 `;
@@ -71,13 +78,14 @@ const InfoContainer = styled.div`
   right: 50px;
 
   ${ScreenWith1200px({
-    bottom: "10px",
+    bottom: "50px",
     right: "unset",
   })}
 
   ${ScreenWith1080px({
     padding: "30px",
     flex: "0.9",
+    
   })}
   ${ScreenWith960px({
     padding: "20px",
@@ -90,7 +98,7 @@ const InfoContainer = styled.div`
     textAlign: "center",
     alignItems: "center",
     padding: "30px",
-    bottom: "20px",
+    bottom: "50px",
   })}
 `;
 
@@ -124,16 +132,17 @@ const Desc = styled.p`
   transform: translateY(-30px);
   opacity: 0;
   ${ScreenWith1200px({
-    fontSize: "24px",
+    fontSize: "28px",
+  })}
+
+  ${ScreenWith1080px({
+    fontSize: "30px",
   })}
 
   ${tablet({
     fontSize: "30px",
   })}
 
-  ${mobile({
-    fontSize: "20px",
-  })}
 `;
 
 const Button = styled.button`
