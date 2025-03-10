@@ -869,9 +869,9 @@ export const ClouserItems = [
   },
   {
     id: 3,
-    img: 'https://jkblobstore.blob.core.windows.net/jk-images-new/ALL JPEG FILE/hand wash/hand wash-20.jpg',
+    img: 'https://jkblobstore.blob.core.windows.net/jk-images-new/ALL JPEG FILE/surface cleaner lemon/surface cleaner lemon-20.jpg',
     title: "Handwash Collection",
-    mobileImg: 'https://jkblobstore.blob.core.windows.net/jk-images-new/ALL JPEG FILE/hand wash/hand wash-19.jpg',
+    mobileImg: 'https://jkblobstore.blob.core.windows.net/jk-images-new/ALL JPEG FILE/surface cleaner lemon/surface cleaner lemon-19.jpg',
     categoryTitle: "Hand Wash",
     name: "handWash",
     desc: "Keep Your Hands Protected and Refreshed!",

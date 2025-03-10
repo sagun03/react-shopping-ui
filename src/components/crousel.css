@@ -1,6 +1,6 @@
 .myCrousel {
   width: 100%;
-  height: 94vh;
+  flex: 7.5;
   margin-top: 70px;
   position: unset !important;
 }
@@ -36,23 +36,12 @@
   transform: translateY(0);
 }
 
-@media only screen and (max-width: 1280px) {
+@media only screen and (max-width: 550px) {
   .myCrousel {
-    height: 84vh;
+    flex: 1;
   }
 }
 
-@media only screen and (max-width: 990px) {
-  .myCrousel {
-    height: 74vh;
-  }
-}
-
-@media only screen and (max-width: 750px) {
-  .myCrousel {
-    height: 85vh;
-  }
-}
 /* @media only screen and (max-width: 480px) {
   .myCrousel {
     height: 84vh;

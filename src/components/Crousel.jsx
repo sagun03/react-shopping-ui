@@ -14,8 +14,14 @@ import { Autoplay } from "swiper";
 import { ClouserItems } from "../utils/data";
 import { mobile, ScreenWith1080px, ScreenWith1200px, ScreenWith960px, tablet } from "../responsive";
 import { Link } from "react-router-dom";
+import HeroSectionComponent from "./HeroSection";
 
-const Container = styled.div`to`;
+const Container = styled.div`
+display: flex;
+position: relative;
+flex-direction: column;
+height: 100vh;
+`;
 
 const Slide = styled.div`
   display: flex;
@@ -23,6 +29,7 @@ const Slide = styled.div`
   height: inherit;
   flex-direction: column;
   position: relative;
+  
   ${tablet({
     flexDirection: "column",
   })}
@@ -31,6 +38,7 @@ const Slide = styled.div`
 const ImgContainer = styled.div`
   flex: 1;
   height: 100%;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -46,30 +54,14 @@ const ImgContainer = styled.div`
 
 const Image = styled.img`
   height: 100%;
+  width: 100%;
   object-fit: fill;
-
-    ${ScreenWith1200px({
-    height: "75%",
-    width: "100%"
-  })}
-  
-  ${ScreenWith1080px({
-    height: "70%",
-  })}
-  ${ScreenWith960px({
-    height: "65%",
-  })}
-  
-  ${mobile({
-    height: "55%",
-  })}
-
+ 
 `;
 
 const InfoContainer = styled.div`
   flex: 1;
   padding: 50px;
-  position: absolute;
   bottom: 30px;
   display: flex;
   flex-direction: column;
@@ -201,19 +193,21 @@ const Crousel = () => {
               <Slide>
                 <ImgContainer className="img">
                 <Image src={isMobile ? mobileImg : img} alt="Slide Image" />
+                {/* <Image src={img} alt="Slide Image" /> */}
                 </ImgContainer>
-                <InfoContainer className="info">
-                  {/* <Title className="title">{title}</Title> */}
+                {/* <InfoContainer className="info">
+                  <Title className="title">{title}</Title>
                 {!isDesktop &&  <Desc className="desc">{desc}</Desc>}
                   <Link to={`/products?name=${name}&title=${categoryTitle}`}>
                     <Button className="buttton">SHOP NOW</Button>
                   </Link>
-                </InfoContainer>
+                </InfoContainer> */}
               </Slide>
             </SwiperSlide>
           )
         )}
       </Swiper>
+      <HeroSectionComponent />
     </Container>
   );
 };
